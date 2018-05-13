@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+        
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR -->
+	
+	<view-state id="ListadoDispositivos" >
+		<on-entry>
+			<set name="flowScope.dispositivo" value="serviceDispositivosImpl.listadoDispositivos()"></set>
+		</on-entry>
+		<transition on="nuevodisp" to="AltaDispositivos"></transition>
+		<transition on="editardisp" to="EditarDispositivos"></transition>
+	</view-state>
+	
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaDispositivos" >
+		<on-entry>
+			<set name="flowScope.dispositivo" value="new com.ayto.proyecto.modelo.Dispositivos()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoDispositivos"></transition>
+		<transition on="guardar" to="ListadoDispositivos">
+			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(Dispositivos)"></evaluate> 
+		</transition>
+	</view-state>
+	
+<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	<view-state id="EditarDispositivos" view="ListadoDispositivos" >
+		<on-entry>
+			<set name="flowScope.dispositivo" value="serviceDispositivosImpl.detalleDispositivos(requestParameters.id)"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoDispositivos"></transition>
+		<transition on="editar" to="ListadoDispositivos">
+			 <evaluate expression="serviceDispositivosImpl.modificarDispositivos(Dispositivos)"></evaluate> 
+		</transition>
+	</view-state>
+	
+</flow>

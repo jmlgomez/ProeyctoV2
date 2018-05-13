@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">temporal</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306</property>
+        <property name="hibernate.default_schema">telefonia</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping class="com.ayto.proyecto.modelo.CompaniasTerminales" />
+        <mapping class="com.ayto.proyecto.modelo.TiposContratos" />
+        <mapping class="com.ayto.proyecto.modelo.Dispositivos" />
+        <mapping class="com.ayto.proyecto.modelo.Users" />
+        <mapping class="com.ayto.proyecto.modelo.TiposTarifas" />
+        <mapping class="com.ayto.proyecto.modelo.TiposTerminales" />
+        <mapping class="com.ayto.proyecto.modelo.Usuarios" />
+        <mapping class="com.ayto.proyecto.modelo.HistEstados" />
+        <mapping class="com.ayto.proyecto.modelo.Terminales" />
+        <mapping class="com.ayto.proyecto.modelo.EstadosTarjetas" />
+        <mapping class="com.ayto.proyecto.modelo.EstadosTerminales" />
+        <mapping class="com.ayto.proyecto.modelo.ModelosTerminales" />
+        <mapping class="com.ayto.proyecto.modelo.Operadores" />
+        <mapping class="com.ayto.proyecto.modelo.Tarjetas" />
+        <mapping class="com.ayto.proyecto.modelo.LotesTerminales" />
+        <mapping class="com.ayto.proyecto.modelo.ModelosDispositivos" />
+        <mapping class="com.ayto.proyecto.modelo.AveriasTarjetas" />
+        <mapping class="com.ayto.proyecto.modelo.Roles" />
+        <mapping class="com.ayto.proyecto.modelo.AveriasTerminales" />
+        <mapping class="com.ayto.proyecto.modelo.Marcas" />
+        <mapping class="com.ayto.proyecto.modelo.DepartamentosAyto" />
+        <mapping class="com.ayto.proyecto.modelo.Entregas" />
+        <mapping class="com.ayto.proyecto.modelo.TiposTarjetas" />
+    </session-factory>
+</hibernate-configuration>

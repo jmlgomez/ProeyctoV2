@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:ldap="http://www.springframework.org/schema/ldap"
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/beans 
+       		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       	http://www.springframework.org/schema/ldap 
+       		http://www.springframework.org/schema/ldap/spring-ldap-2.0.xsd">
+       		
+    <ldap:context-source
+    	username="Web2010@gijon"
+   		password="Diciembre2010"
+    	url="ldap://gijon.local:389" 
+    	base="dc=gijon,dc=local"
+    	referral="follow"
+    	
+    	/>
+    	
+<!--     <bean id="contextSource" -->
+<!-- 	        class="org.springframework.security.ldap.DefaultSpringSecurityContextSource"> -->
+<!-- 	  <constructor-arg value="ldap://gijon.local:389/dc=gijon,dc=local"/> -->
+<!-- 	  <property name="userDn" value="cn=Web2010,dc=gijon,dc=local"/> -->
+<!-- 	  <property name="password" value="Diciembre2010"/> -->
+<!-- 	</bean>   -->
+    <ldap:ldap-template id="ldapTemplate" context-source-ref="contextSource" />
+</beans>

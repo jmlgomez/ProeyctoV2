@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+
+
+>
+	<h2>Alta  Tarjeta</h2>
+	<h:form id="AltaTarjetas" >
+			<h:panelGroup id="AltaTarjetas" layout="block" styleClass="AltaTarjetas">
+				<ui:fragment id="AltaTarjetasfrag">
+					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
+  							
+  						
+  							ICC: <p:inputText required="true" value="#{tarjetas.icc}"/>
+  							<p></p>
+  							Número Corto: <p:inputText required="true" value="#{tarjetas.numCorto}"/>
+  							<p></p>
+  							Número Largo: <p:inputText required="true" value="#{tarjetas.numlargo}"/>
+  							<p></p>
+  							PIN <p:inputText  required="true" value="#{tarjetas.pin}"/>
+  							<p></p>
+  							PUK<p:inputText required="true" value="#{tarjetas.puk}"/>
+  							<p></p> 
+  							Observaciones
+  							<p:inputTextarea rows="6" cols="33" required="false" value="#{tarjetas.observaciones}"/>/>
+  							<p></p>
+  							
+  							
+						<h:commandButton value="Guardar" id="guardar" action="guardar"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"></h:commandButton>
+			
+				</ui:fragment>
+			</h:panelGroup>
+        </h:form>
+</ui:composition>

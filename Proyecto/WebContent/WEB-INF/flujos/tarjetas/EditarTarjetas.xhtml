@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+
+
+>
+	<h2>Editar Tarjeta</h2>
+	
+	<h:form id="EditarTarjetas" >
+			<h:panelGroup id="EditarTarjetas" layout="block" styleClass="EditarTarjetas">
+				<ui:fragment id="EditarTarjetasfrag">
+					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
+  							
+  						
+  							ICC: <p:inputText required="true" value="#{tarjetas.icc}"/>
+  							<p></p>
+  							Número Corto: <p:inputText required="true" value="#{tarjetas.numCorto}"/>
+  							<p></p>
+  							Número Largo: <p:inputText required="true" value="#{tarjetas.numlargo}"/>
+  							<p></p>
+  							PIN <p:inputText  required="true" value="#{tarjetas.pin}"/>
+  							<p></p>
+  							PUK<p:inputText required="true" value="#{tarjetas.puk}"/>
+  							
+  							
+						<h:commandButton value="Guardar" id="guardartarj" action="guardartarj"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelartarj" action="cancelartarj"></h:commandButton>
+			
+				</ui:fragment>
+			</h:panelGroup>
+        </h:form>
+</ui:composition>

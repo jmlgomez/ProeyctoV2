@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+	
+	<view-state id="ListadoTarjetas" >
+		<on-entry>
+			<set name="flowScope.tarjetas" value="serviceTarjetasImpl.listarTarjetas()"></set>
+		</on-entry>
+		<transition on="nuevatarjeta" to="AltaTarjetas"></transition>
+		<transition on="editar" to="EditarTarjetas"></transition>
+	</view-state>
+
+	
+	<view-state id="AltaTarjetas" >
+		<on-entry>
+			<set name="flowScope.tarjeta" value="new com.ayto.proyecto.modelo.Tarjetas()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoTarjetas"></transition>
+		<transition on="guardar" to="ListadoListadoTarjetas">
+			 <evaluate expression="serviceUsuariosImpl.insertarTarjetas(tarjeta)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	
+	<view-state id="EditarTarjetas" view="ListadoTarjetas" >
+		<on-entry>
+			<set name="flowScope.tarjeta" value="serviceTarjetasImpl.detalleTarjetas(requestParameters.id)"></set>
+		</on-entry>
+		<transition on="cancelartarj" to="ListadoTarjetas"></transition>
+		<transition on="guardartarj" to="ListadoTarjetas">
+			 <evaluate expression="serviceTarjetasImpl.modificarTarjetas(tarjeta)"></evaluate> 
+		</transition>
+	
+	</view-state>
+</flow>

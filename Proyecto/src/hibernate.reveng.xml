@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="telefonia" match-name=".*"/>
+  <table-filter match-catalog="telefonia" match-name="averiasTarjetas"/>
+  <table-filter match-catalog="telefonia" match-name="averiasTerminales"/>
+  <table-filter match-catalog="telefonia" match-name="companiasTerminales"/>
+  <table-filter match-catalog="telefonia" match-name="departamentosAyto"/>
+  <table-filter match-catalog="telefonia" match-name="dispositivos"/>
+  <table-filter match-catalog="telefonia" match-name="entregas"/>
+  <table-filter match-catalog="telefonia" match-name="estadosTarjetas"/>
+  <table-filter match-catalog="telefonia" match-name="estadosTerminales"/>
+  <table-filter match-catalog="telefonia" match-name="histEstados"/>
+  <table-filter match-catalog="telefonia" match-name="lotesTerminales"/>
+  <table-filter match-catalog="telefonia" match-name="marcas"/>
+  <table-filter match-catalog="telefonia" match-name="modelosDispositivos"/>
+  <table-filter match-catalog="telefonia" match-name="modelosTerminales"/>
+  <table-filter match-catalog="telefonia" match-name="operadores"/>
+  <table-filter match-catalog="telefonia" match-name="roles"/>
+  <table-filter match-catalog="telefonia" match-name="tarjetas"/>
+  <table-filter match-catalog="telefonia" match-name="terminales"/>
+  <table-filter match-catalog="telefonia" match-name="tiposContratos"/>
+  <table-filter match-catalog="telefonia" match-name="tiposTarifas"/>
+  <table-filter match-catalog="telefonia" match-name="tiposTarjetas"/>
+  <table-filter match-catalog="telefonia" match-name="tiposTerminales"/>
+  <table-filter match-catalog="telefonia" match-name="users"/>
+  <table-filter match-catalog="telefonia" match-name="users_roles"/>
+  <table-filter match-catalog="telefonia" match-name="usuarios"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+	
+	
+	<view-state id="ListadoUsuarios" >
+		<on-entry>
+			<set name="flowScope.usuarios" value="serviceUsuariosImpl.listarUsuarios()"></set>
+		</on-entry>
+		<transition on="nuevousuario" to="AltaUsuarios"></transition>
+		<transition on="editar" to="EditarUsuario"></transition>
+	</view-state>
+
+	<view-state id="EditarUsuario" view="ListadoUsuarios" >
+		<on-entry>
+			<set name="flowScope.usuario" value="serviceUsuariosImpl.detalleUsuarios(requestParameters.id)"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoUsuarios"></transition>
+		<transition on="guardar" to="ListadoUsuarios">
+			 <evaluate expression="serviceUsuariosImpl.modificarUsuarios(usuario)"></evaluate> 
+		</transition>
+	</view-state>
+	<view-state id="AltaUsuarios" >
+		<on-entry>
+			<set name="flowScope.usuario" value="new com.ayto.proyecto.modelo.Usuarios()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoUsuarios"></transition>
+		<transition on="guardar" to="ListadoUsuarios">
+			 <evaluate expression="serviceUsuariosImpl.insertarUsuarios(usuario)"></evaluate> 
+		</transition>
+	</view-state>
+	
+</flow>
