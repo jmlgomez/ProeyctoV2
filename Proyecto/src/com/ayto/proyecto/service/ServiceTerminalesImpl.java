@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.TerminalesDAO;
 import com.ayto.proyecto.modelo.CompaniasTerminales;
@@ -16,7 +17,7 @@ import com.ayto.proyecto.modelo.Marcas;
 import com.ayto.proyecto.modelo.ModelosTerminales;
 import com.ayto.proyecto.modelo.Terminales;
 import com.ayto.proyecto.modelo.TiposTerminales;
-
+@Service
 public class ServiceTerminalesImpl implements ServiceTerminales{
 	
 	

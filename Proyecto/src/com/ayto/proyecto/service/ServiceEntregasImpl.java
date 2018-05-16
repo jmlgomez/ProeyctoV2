@@ -6,11 +6,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.EntregasDAO;
 import com.ayto.proyecto.modelo.Entregas;
 import com.ayto.proyecto.modelo.Operadores;
-
+@Service
 public class ServiceEntregasImpl implements ServiceEntregas{
 	
 	@Autowired

@@ -14,43 +14,38 @@
 						<table class="ListadoDispositivos">
 							<thead>
 								<tr>
-									<th></th>
 									<th>Tipo de Dispositivo</th>
-									<th>Número de Serie</th>
+									<th>Numero de Serie</th>
 									<th>Observaciones</th>
-									
-									
+									<th></th>
 									
 								</tr>
 							</thead>
 							<TBODY>
-								<ui:repeat value="#{Dispositivos}" var="disp">
+								<ui:repeat value="#{dispositivos}" var="disp">
 									<tr>
-										<td>
 
-											
-											
-										</td>
 										<td>
 											#{disp.tipoDispositivo}
 										</td>
+										
 										<td>
-											#{disp.numeroserieDispositivo)
+											#{disp.numeroserieDispositivo}
 										</td>
-									   	
+										
 										<td>
 											#{disp.observaciones}
 										</td>
 										<td>
-						<h:commandButton value="Modificar" id="modificar" action="modificar"></h:commandButton>
-						<h:commandButton value="Borrar" id="borrar" action="borrar"></h:commandButton>
+											<h:commandButton value="Modificar" id="modificar" action="modificar"></h:commandButton>
+											<h:commandButton value="Borrar" id="borrar" action="borrar"></h:commandButton>
 										</td>	
 										
 								    </tr>
 								</ui:repeat>
 							</TBODY>
 						</table>
-						<h:commandButton value="Nuevo Dispositivo" id="guardar" action="guardar"></h:commandButton>
+						<h:commandButton value="Nuevo Dispositivo" id="nuevodisp" action="nuevodisp"></h:commandButton>
 						<h:commandButton value="Cancelar" id="cancelar"></h:commandButton>
 				</ui:fragment>
 			</h:panelGroup>

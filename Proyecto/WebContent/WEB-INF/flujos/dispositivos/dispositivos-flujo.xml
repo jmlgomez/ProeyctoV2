@@ -10,6 +10,7 @@
 	<view-state id="ListadoDispositivos" >
 		<on-entry>
 			<set name="flowScope.dispositivo" value="serviceDispositivosImpl.listadoDispositivos()"></set>
+			
 		</on-entry>
 		<transition on="nuevodisp" to="AltaDispositivos"></transition>
 		<transition on="editardisp" to="EditarDispositivos"></transition>
@@ -20,11 +21,12 @@
 	<view-state id="AltaDispositivos" >
 		<on-entry>
 			<set name="flowScope.dispositivo" value="new com.ayto.proyecto.modelo.Dispositivos()"></set>
+			<set name="flowScope.tiposdispositivos" value="serviceDispositivosImpl.listadoModelosDispositivos()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoDispositivos"></transition>
 		<transition on="guardar" to="ListadoDispositivos">
-			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(Dispositivos)"></evaluate> 
+			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(dispositivo)"></evaluate> 
 		</transition>
 	</view-state>
 	

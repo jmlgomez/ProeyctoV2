@@ -62,7 +62,7 @@ public class UsuariosDAOImpl implements UsuariosDAO {
 	public void modificarUsuarios(Usuarios u) {
 		try {
 
-			entityManager.persist(u);
+			entityManager.merge(u);
 
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de usuarios" + ex.getMessage());

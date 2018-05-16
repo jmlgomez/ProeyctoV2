@@ -6,12 +6,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.DispositivosDAO;
 import com.ayto.proyecto.modelo.Dispositivos;
 import com.ayto.proyecto.modelo.ModelosDispositivos;
 
+@Service
 public class ServiceDispositivosImpl implements ServiceDispositivos{
 	
 	

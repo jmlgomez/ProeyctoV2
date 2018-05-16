@@ -42,7 +42,7 @@ try {
 			return true;
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar el usuario!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar el usuario! >"+e.getMessage(), "Contácta con administrador."));
 			 
 		}
 		return false;

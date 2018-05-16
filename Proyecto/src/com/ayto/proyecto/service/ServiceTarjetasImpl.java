@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.TarjetasDAO;
 import com.ayto.proyecto.modelo.EstadosTarjetas;
@@ -13,6 +14,7 @@ import com.ayto.proyecto.modelo.Tarjetas;
 import com.ayto.proyecto.modelo.TiposContratos;
 import com.ayto.proyecto.modelo.TiposTarifas;
 import com.ayto.proyecto.modelo.TiposTarjetas;
+@Service
 
 public class ServiceTarjetasImpl implements ServiceTarjetas {
 	
