@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.AveriasTarjetasDAO;
 import com.ayto.proyecto.modelo.AveriasTarjetas;
+import com.ayto.proyecto.modelo.Dispositivos;
 
 @Service
 public class AveriasTarjetasDAOImpl implements AveriasTarjetasDAO {
@@ -49,7 +50,10 @@ public class AveriasTarjetasDAOImpl implements AveriasTarjetasDAO {
 	public void borrarAveriasTarjetas(AveriasTarjetas avt) {
 		try {
 			
-			enti.remove(avt);
+			AveriasTarjetas averiatarjeta=enti.find(AveriasTarjetas.class, avt.getIdaveriaTarjeta());
+		    enti.remove(averiatarjeta);
+			
+			
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de Averias Trajetas"+ex.getMessage());
@@ -63,7 +67,7 @@ public class AveriasTarjetasDAOImpl implements AveriasTarjetasDAO {
 	public void modificarAveriasTarjetas(AveriasTarjetas avt) {
 		try {
 			
-			enti.persist(avt);
+			enti.merge(avt);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la mododificación Averias Tarjetas"+ex.getMessage());

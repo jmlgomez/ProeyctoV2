@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.DispositivosDAO;
 import com.ayto.proyecto.modelo.Dispositivos;
+import com.ayto.proyecto.modelo.Entregas;
 import com.ayto.proyecto.modelo.ModelosDispositivos;
 
 @Service
@@ -45,7 +46,7 @@ public class DispositivosDAOImpl implements DispositivosDAO {
 	@Transactional
 	public void modificarDispositivos(Dispositivos disp) {
 		try{	
-			enti.persist(disp);
+			enti.merge(disp);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion Dispositivos "+ex.getMessage());
@@ -57,8 +58,11 @@ public class DispositivosDAOImpl implements DispositivosDAO {
 	@Override
 	@Transactional
 	public void borrarDispositivos(Dispositivos disp) {
-		try{	
-			enti.remove(disp);
+		try{
+			
+			Dispositivos dispositivo=enti.find(Dispositivos.class, disp.getIdDispositivo());
+		    enti.remove(dispositivo);
+
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Dispositivos "+ex.getMessage());
@@ -113,7 +117,7 @@ try {
 	@Transactional
 	public void modificarModelosDisositivos(ModelosDispositivos mdisp) {
 		try{	
-			enti.persist(mdisp);
+			enti.merge(mdisp);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion Modelos Dispositivos "+ex.getMessage());
@@ -125,7 +129,11 @@ try {
 	@Override
 	@Transactional
 	public void borrarModelosDisositivos(ModelosDispositivos mdisp) {
-		try{	
+		try{
+			
+			ModelosDispositivos modelodispositivo=enti.find(ModelosDispositivos.class, mdisp.getIdModeloDispositivo());
+		    enti.remove(modelodispositivo);
+			
 			enti.remove(mdisp);
 			
 		} catch (HibernateException ex) {

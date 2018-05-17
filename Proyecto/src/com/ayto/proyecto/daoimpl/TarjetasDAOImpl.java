@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.ayto.proyecto.dao.TarjetasDAO;
 import com.ayto.proyecto.modelo.EstadosTarjetas;
 import com.ayto.proyecto.modelo.Tarjetas;
+import com.ayto.proyecto.modelo.Terminales;
 import com.ayto.proyecto.modelo.TiposContratos;
 import com.ayto.proyecto.modelo.TiposTarifas;
 import com.ayto.proyecto.modelo.TiposTarjetas;
@@ -48,7 +49,10 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void borrarTarjetas(Tarjetas tarj) {
 		try {
-			enti.remove(tarj);
+			
+			Tarjetas tarjeta=enti.find(Tarjetas.class, tarj.getIdTarjeta());
+		    enti.remove(tarjeta);
+			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Tarjeta" + ex.getMessage());
 
@@ -60,7 +64,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void modificarTarjetas(Tarjetas tarj) {
 		try {
-			enti.persist(tarj);
+			enti.merge(tarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacioon Tarjeta" + ex.getMessage());
 
@@ -114,7 +118,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void modificaEstadosTarjetas(EstadosTarjetas esttarj) {
 		try {
-			enti.persist(esttarj);
+			enti.merge(esttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion EsatdosTarjeta" + ex.getMessage());
 
@@ -126,6 +130,11 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void borrarEstadosTarjetas(EstadosTarjetas esttarj) {
 		try {
+			
+			
+			EstadosTarjetas estadotarjeta=enti.find(EstadosTarjetas.class, esttarj.getIdEstadoTarjeta());
+		    enti.remove(estadotarjeta);
+			
 			enti.remove(esttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado EsatdosTarjeta" + ex.getMessage());
@@ -179,7 +188,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void modificarTipoTarjetas(TiposTarjetas ttarj) {
 		try {
-			enti.persist(ttarj);
+			enti.merge(ttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificación Tipo_Tarjeta" + ex.getMessage());
 
@@ -190,7 +199,10 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void borrarTipoTarjetas(TiposTarjetas ttarj) {
 		try {
-			enti.remove(ttarj);
+			
+			TiposTarjetas tipotarjeta=enti.find(TiposTarjetas.class, ttarj.getIdTipoTarjeta());
+		    enti.remove(tipotarjeta);   
+			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Tipo_Tarjeta" + ex.getMessage());
 
@@ -242,7 +254,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void modificarTiposContratos(TiposContratos tcontrato) {
 		try {
-			enti.persist(tcontrato);
+			enti.merge(tcontrato);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion TiposContratos" + ex.getMessage());
 
@@ -254,7 +266,10 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void borrarTiposContratos(TiposContratos tcontrato) {
 		try {
-			enti.remove(tcontrato);
+			
+			TiposContratos tipocontrato=enti.find(TiposContratos.class, tcontrato.getIdTipoContrato());
+		    enti.remove(tipocontrato);   
+			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado TiposContratos" + ex.getMessage());
 
@@ -307,7 +322,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void modificarTipoTarifas(TiposTarifas ttarf) {
 		try {
-			enti.persist(ttarf);
+			enti.merge(ttarf);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion TiposTarifas" + ex.getMessage());
 
@@ -319,7 +334,11 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void borrarTipoTarifa(TiposTarifas ttarf) {
 		try {
-			enti.remove(ttarf);
+			
+			TiposTarifas tipotarifa=enti.find(TiposTarifas.class, ttarf.getIdTipoTarifa());
+		    enti.remove(tipotarifa);
+			
+			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado TiposTarifas" + ex.getMessage());
 

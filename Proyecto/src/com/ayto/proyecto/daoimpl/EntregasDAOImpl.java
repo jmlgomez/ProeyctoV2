@@ -14,6 +14,7 @@ import com.ayto.proyecto.dao.EntregasDAO;
 
 import com.ayto.proyecto.modelo.Entregas;
 import com.ayto.proyecto.modelo.Operadores;
+import com.ayto.proyecto.modelo.Tarjetas;
 
 @Service
 public class EntregasDAOImpl  implements EntregasDAO {
@@ -49,7 +50,8 @@ public class EntregasDAOImpl  implements EntregasDAO {
 		
 			try {
 				
-				enti.remove(e);
+				Entregas entrega=enti.find(Entregas.class, e.getIdEntrega());
+			    enti.remove(entrega);	
 				
 			} catch (HibernateException ex) {
 				System.out.println("Error al realizar el borrado Entregas"+ex.getMessage());
@@ -62,7 +64,7 @@ public class EntregasDAOImpl  implements EntregasDAO {
 	public void modificarEntregas(Entregas e) {
 try {
 			
-			enti.persist(e);
+			enti.merge(e);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la actualizaciÃ³n Entregas"+ex.getMessage());
@@ -116,7 +118,7 @@ try {
 	public void modificarOperadores(Operadores o) {
 try {
 			
-			enti.persist(o);
+			enti.merge(o);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la actualizaciÃ³n Operadores "+ex.getMessage());
@@ -129,8 +131,9 @@ try {
 	public void borrarOperadores(Operadores o) {
 try {
 			
-			enti.remove(o);
-			
+		Operadores operador=enti.find(Operadores.class, o.getIdOperador());
+		enti.remove(operador);
+	
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Operadores "+ex.getMessage());
 			

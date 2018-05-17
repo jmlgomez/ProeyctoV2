@@ -48,7 +48,8 @@ public class UsuariosDAOImpl implements UsuariosDAO {
 	public void borrarUsuarios(Usuarios u) {
 		try {
 
-			entityManager.remove(u);
+			 Usuarios usuario=entityManager.find(Usuarios.class, u.getIdUsuario());
+             entityManager.remove(usuario);
 
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de usuarios" + ex.getMessage());
@@ -120,7 +121,8 @@ public class UsuariosDAOImpl implements UsuariosDAO {
 	public void borrarDepartamentosAyto(DepartamentosAyto da) {
 		try {
 
-			entityManager.remove(da);
+			DepartamentosAyto departamento =entityManager.find(DepartamentosAyto.class, da.getIdDepAyto());
+             entityManager.remove(departamento);
 
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de departamentos AYTO" + ex.getMessage());
@@ -134,7 +136,7 @@ public class UsuariosDAOImpl implements UsuariosDAO {
 	public void modificarDepartamentosAyto(DepartamentosAyto da) {
 		try {
 
-			entityManager.persist(da);
+			entityManager.merge(da);
 
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de departamentos AYTO" + ex.getMessage());

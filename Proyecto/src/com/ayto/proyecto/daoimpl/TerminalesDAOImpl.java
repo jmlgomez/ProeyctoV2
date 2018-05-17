@@ -54,8 +54,9 @@ try {
 	@Transactional
 	public void borrarTerminales(Terminales t) {
 try {
+	Terminales terminal=enti.find(Terminales.class, t.getIdTerminal());
+    enti.remove(terminal);
 			
-			enti.remove(t);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Terminales"+ex.getMessage());
@@ -70,7 +71,7 @@ try {
 
 	try {
 		
-		enti.persist(t);
+		enti.merge(t);
 		
 	} catch (HibernateException ex) {
 		System.out.println("Error al realizar la modificacion Terminales"+ex.getMessage());
@@ -114,7 +115,6 @@ try {
 	@Transactional
 	public void insertarMarca(Marcas m) {
 try {
-			
 			enti.persist(m);
 			
 		} catch (HibernateException ex) {
@@ -128,8 +128,7 @@ try {
 	@Transactional
 	public void modificarMarca(Marcas m) {
 try {
-			
-			enti.persist(m);
+		enti.merge(m);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de Marcas"+ex.getMessage());
@@ -143,8 +142,8 @@ try {
 	@Transactional
 	public void borrarMarca(Marcas m) {
 try {
-			
-			enti.remove(m);
+	Marcas marca=enti.find(Marcas.class, m.getIdMarca());
+    enti.remove(marca);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de Marcas"+ex.getMessage());
@@ -202,7 +201,7 @@ try {
 	public void modificarModelosTerminales(ModelosTerminales mt) {
 try {
 			
-			enti.persist(mt);
+			enti.merge(mt);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de modelo de terminal"+ex.getMessage());
@@ -215,8 +214,9 @@ try {
 	@Transactional
 	public void borrarModelosTerminales(ModelosTerminales mt) {
 try {
-			
-			enti.remove(mt);
+		ModelosTerminales modeloterminal=enti.find(ModelosTerminales.class, mt.getIdModeloTerminal());
+		enti.remove(modeloterminal);
+	
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de modelo de terminal"+ex.getMessage());
@@ -273,7 +273,7 @@ try {
 		
 			try {
 						
-						enti.persist(et);
+						enti.merge(et);
 						
 					} catch (HibernateException ex) {
 						System.out.println("Error al realizar la modificacion de estados terminales"+ex.getMessage());
@@ -288,9 +288,9 @@ try {
 	public void borrarEstados(EstadosTerminales et) {
 		
 			try {
-						
-						enti.remove(et);
-						
+				EstadosTerminales estadosterminales=enti.find(EstadosTerminales.class, et.getIdEstadoTerminal());
+			    enti.remove(estadosterminales);
+				
 					} catch (HibernateException ex) {
 						System.out.println("Error al realizar el borrado de estados terminales"+ex.getMessage());
 						
@@ -348,7 +348,7 @@ try {
 	public void modificarHistEstados(HistEstados he) {
 try {
 			
-			enti.persist(he);
+			enti.merge(he);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de HistEstados"+ex.getMessage());
@@ -362,8 +362,9 @@ try {
 	public void borrarHistEstados(HistEstados he) {
 try {
 			
-			enti.remove(he);
-			
+	HistEstados histestado=enti.find(HistEstados.class, he.getIdHistEstado());
+    enti.remove(histestado);
+	
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion de HistEstados"+ex.getMessage());
 			
@@ -419,7 +420,7 @@ try {
 	public void modificarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			
-			enti.persist(lotterm);
+			enti.merge(lotterm);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de LotesTerminales"+ex.getMessage());
@@ -432,8 +433,10 @@ try {
 	@Transactional
 	public void borrarLotesTerminales(LotesTerminales lotterm) {
 		try {
+					
+			LotesTerminales loteterminal=enti.find(LotesTerminales.class, lotterm.getIdLoteTerminal());
+		    enti.remove(loteterminal);
 			
-			enti.remove(lotterm);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de LotesTerminales"+ex.getMessage());
@@ -491,7 +494,7 @@ try {
 	public void modificarTiposTerminales(TiposTerminales tt) {
 try {
 			
-			enti.persist(tt);
+			enti.merge(tt);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de tipos de terminal"+ex.getMessage());
@@ -504,8 +507,10 @@ try {
 	@Transactional
 	public void borrarTiposTerminales (TiposTerminales tt) {
 try {
-			
-			enti.remove(tt);
+	
+	TiposTerminales tipoterminal=enti.find(TiposTerminales.class, tt.getIdTipoTerminal());
+    enti.remove(tipoterminal);
+	
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de tipos de terminal"+ex.getMessage());
@@ -562,7 +567,7 @@ try {
 	public void modificarCompaniasTerminales(CompaniasTerminales comterm) {
 try {
 			
-			enti.persist(comterm);
+			enti.merge(comterm);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion de Compañias Terminales"+ex.getMessage());
@@ -576,7 +581,9 @@ try {
 	public void borrarCompaniasTerminales(CompaniasTerminales comterm) {
 try {
 			
-			enti.remove(comterm);
+	CompaniasTerminales companiaterminal=enti.find(CompaniasTerminales.class, comterm.getIdCompaniaTerminal());
+    enti.remove(companiaterminal);
+	
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado de Compañias Terminales"+ex.getMessage());

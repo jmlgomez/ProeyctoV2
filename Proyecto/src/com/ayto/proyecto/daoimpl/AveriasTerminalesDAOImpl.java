@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.AveriasTerminalesDAO;
 import com.ayto.proyecto.modelo.AveriasTerminales;
+import com.ayto.proyecto.modelo.Tarjetas;
 
 @Service
 public class AveriasTerminalesDAOImpl implements AveriasTerminalesDAO {
@@ -47,7 +48,8 @@ try {
 	public void borrarAveriasTerminales(AveriasTerminales at) {
 			try {
 			
-				enti.remove(at);
+				AveriasTerminales averiasterminal=enti.find(AveriasTerminales.class, at.getIdaveriasTerminal());
+			    enti.remove(averiasterminal);
 				
 			} catch (HibernateException ex) {
 				System.out.println("Error al realizar el borrado Averiasterminales "+ex.getMessage());
@@ -61,7 +63,7 @@ try {
 	public void modificarAveriasTerminales(AveriasTerminales at) {
 try {
 			
-			enti.persist(at);
+			enti.merge(at);
 			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion Averiasterminales "+ex.getMessage());
