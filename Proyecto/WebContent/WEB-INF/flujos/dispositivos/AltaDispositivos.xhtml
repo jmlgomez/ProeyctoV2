@@ -19,16 +19,17 @@ template="/WEB-INF/plantillas/general.xhtml"
   							<h2>ALTA DISPOSITIVO</h2>
   							<p></p>
   							Tipo de Dispositivo: 
-  							<h:selectOneMenu value="#{dispositivo.tipoDispositivo}">
-  							 <f:selectItems value="#{tiposdispositivos}" var="tipodisp" itemLabel="#{tipodisp.modeloDispositivo}" itemValue="#{tipodisp.idModeloDispositivo}" />
-  								
-					        </h:selectOneMenu>
+  							<h:selectOneMenu value="#{dispositivos.tipoDispositivo}">
+  							 <f:selectItems value="#{tipoDispositivo}" var="tipodisp" 
+  							 		itemLabel="#{tipodisp.modelosDispositivo}" 
+  							 		itemValue="#{tipodisp.idModeloDispositivo}" />	
+					        </h:selectOneMenu> 
   							<p></p>
-  							Número de Serie: <p:inputText required="true" value="#{dispositivo.numeroserieDispositivo}"/>
+  							Número de Serie: <p:inputText required="true" value="#{dispositivos.numeroserieDispositivo}"/>
   							<p></p>
   							Observaciones
   							<p></p> 
-  							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivo.observaciones}"/>
+  							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivos.observaciones}"/>
   							<p></p>
   							
 						<h:commandButton value="Guardar" id="guardar" action="guardar"></h:commandButton>

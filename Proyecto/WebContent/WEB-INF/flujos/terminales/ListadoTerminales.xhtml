@@ -7,25 +7,28 @@
 		xmlns:c="http://java.sun.com/jsp/jstl/core"
 		>
 	
-	<h:form id="ListadoUsuarios" >
-			<h:panelGroup id="ListadoUsuariosfrag" layout="block" styleClass="ListadoUsuarios">
-				<ui:fragment id="FListadoUsuariosfrag">
+	<h:form id="ListadoTerminales" >
+			<h:panelGroup id="ListadoTerminalesfrag" layout="block" styleClass="ListadoTerminales">
+				<ui:fragment id="FListadoTerminalesfrag">
 		
-						<table class="ListadoUsuarios">
+						<table class="Terminales">
 							<thead>
 								<tr>
 									<th></th>
-									<th>Primer Apellido</th>
-									<th>Segundo Apellido</th>
-									<th>Nombre</th>
-									<th>Nombre de Usuario</th>
-									<th>Id de Empleado </th>
-									<th>DNI</th>
+									<th>Fecha de alta</th>
+									<th>IMEI</th>
+									<th>Lote</th>
+									<th>Tipo de Temrinal</th>
+									<th>Compañia </th>
+									<th>Marca</th>
+									<th>Modelo de Terminal</th>
+									<th>Estado del Terminal</th>
+									<th>Observaciones</th>
 									
 								</tr>
 							</thead>
 							<TBODY>
-								<ui:repeat value="#{usuarios}" var="u">
+								<ui:repeat value="#{terminal}" var="term">
 									<tr>
 										<td>
 
@@ -33,33 +36,52 @@
 											
 										</td>
 										<td>
-											#{u.primerApellido}
+											#{term.fechaAlta}
 										</td>
 										<td>
-											#{u.segundoApellido}
+											#{term.imei}
 										</td>
 									   	
 										<td>
-											#{uu.nombre}
+											#{term.lotesTerminales}
 										</td>
 										
 										<td>
-											#{u.nombreUsuario}
+											#{term.tiposTerminales}
 										</td>
 										<td>
-											#{u.idEmpleado}
-										</td>
-										<td>
-											#{u.dni}
+											#{term.companiasTerminales}
 										</td>
 										
+										<td>
+											#{term.modelosTerminales}
+										</td>
+										
+										<td>
+											#{term.estadosTerminales}
+										</td>
+										
+										<td>
+											#{term.observaciones}
+										</td>
+										
+										
+										<td>
+										<p:commandButton id="modificar" value="Modificar" action="modificar" >
+											<f:setPropertyActionListener value="#{term}" target="#{terminal}" />
+										</p:commandButton>
+										<p:commandButton id="borrar" value="Borrar" action="borrar" >
+											<f:setPropertyActionListener value="#{term}" target="#{terminal}" />
+										</p:commandButton>
+										
+										</td>
 										
 								    </tr>
 								</ui:repeat>
 							</TBODY>
 						</table>
-						<h:commandButton value="Nuevo Usuario" id="nuevousuario" action="nuevousuario"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelarusuario"></h:commandButton>
+						<h:commandButton value="Nuevo Terminal" id="nuevo" action="nuevo"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"></h:commandButton>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

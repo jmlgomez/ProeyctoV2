@@ -37,8 +37,14 @@
 											#{disp.observaciones}
 										</td>
 										<td>
-											<h:commandButton value="Modificar" id="modificar" action="modificar"></h:commandButton>
-											<h:commandButton value="Borrar" id="borrar" action="borrar"></h:commandButton>
+											<h:commandButton value="Modificar" id="modificar" action="modificar">
+											<f:setPropertyActionListener value="#{disp}" target="#{dispositivos}" />
+											
+											</h:commandButton>
+											<h:commandButton value="Borrar" id="borrar" action="borrar">
+											<f:setPropertyActionListener value="#{disp}" target="#{dispositivos}" />
+											
+											</h:commandButton>
 										</td>	
 										
 								    </tr>

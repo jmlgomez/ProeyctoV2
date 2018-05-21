@@ -7,7 +7,7 @@
 	
 	<view-state id="ListadoTarjetas" >
 		<on-entry>
-			<set name="flowScope.tarjetas" value="serviceTarjetasImpl.listarTarjetas()"></set>
+			<set name="flowScope.tarjeta" value="serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
 		<transition on="nuevatarjeta" to="AltaTarjetas"></transition>
 		<transition on="editar" to="EditarTarjetas"></transition>
@@ -30,8 +30,8 @@
 		<on-entry>
 			<set name="flowScope.tarjeta" value="serviceTarjetasImpl.detalleTarjetas(requestParameters.id)"></set>
 		</on-entry>
-		<transition on="cancelartarj" to="ListadoTarjetas"></transition>
-		<transition on="guardartarj" to="ListadoTarjetas">
+		<transition on="cancelar" to="ListadoTarjetas"></transition>
+		<transition on="guardar" to="ListadoTarjetas">
 			 <evaluate expression="serviceTarjetasImpl.modificarTarjetas(tarjeta)"></evaluate> 
 		</transition>
 	

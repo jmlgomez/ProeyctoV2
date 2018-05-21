@@ -14,23 +14,33 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<meta name="content-language" content="es" />
-	
+	 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+	 	<link rel="stylesheet" type="text/css" href="css/base.css"/>
+	 	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
 		
 		<title><ui:insert name="title" /></title>
 	</h:head>
 	
 	<h:body>
-	   <div id="cabecera">
-	   --- Cabecera ---
-	   </div>
-	   <div id="navegacion">
-	   	<ul>
-	   		<li>Usuarios</li>
-	   	</ul>
-	   </div>
+ 		<div id="cabecera">
+	  
+	  
+		</div>
+
+
 	   <div id="cuerpo">
 			<ui:insert name="content" />
+			
+		<nav class="navegacion-light bg-light" id="navegacion">
+	    <h6>Menu</h6>
+	    <form class="form-inline-block">
+ 		<button type="button" class="btn btn-outline-success">Usuarios</button>
+ 	 	<button type="button" class="btn btn-outline-success">Terminales</button>
+  		<button type="button" class="btn btn-outline-success">Tarjetas</button>
+  		<button type="button" class="btn btn-outline-success">Dispositivos</button>
+  		</form>
+		</nav>
 	   </div>
 	</h:body>
 

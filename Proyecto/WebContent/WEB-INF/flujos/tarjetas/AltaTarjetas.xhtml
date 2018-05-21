@@ -25,6 +25,36 @@
   							<p></p>
   							PUK<p:inputText required="true" value="#{tarjetas.puk}"/>
   							<p></p> 
+  							Tipo de Tarjeta
+  							<h:selectOneMenu value="#{tarjetas.TiposTarjetas}">
+  							 <f:selectItems value="#{TiposTarjetas" var="modtar" 
+  							 		itemLabel="#{modtar.tipoTarjeta" 
+  							 		itemValue="#{modtar.idTipoTarjeta}" />	
+					        </h:selectOneMenu>
+					        
+					        Tipo de Tarifa
+  							<h:selectOneMenu value="#{tarjetas.TiposTarifas}">
+  							 <f:selectItems value="#{TiposTarifas" var="ttarf" 
+  							 		itemLabel="#{ttarf.tipoTarifa" 
+  							 		itemValue="#{ttarf.idTipoTarifa}" />	
+					        </h:selectOneMenu>
+					        
+					        Tipo de Contrato
+  							<h:selectOneMenu value="#{tarjetas.TiposContratos}">
+  							 <f:selectItems value="#{TiposTiposContratos" var="tcontr" 
+  							 		itemLabel="#{tcontr.tipoContrato" 
+  							 		itemValue="#{tcontr.idTipoContrato}" />	
+					        </h:selectOneMenu>
+					        
+					         
+					        Estado de la tarjeta
+  							<h:selectOneMenu value="#{tarjetas.EstadosTarjetas}">
+  							 <f:selectItems value="#{EstadosTarjetas" var="esttarj" 
+  							 		itemLabel="#{esttarj.estadoTarjeta" 
+  							 		itemValue="#{tcontr.idEstadoTarjeta}" />	
+					        </h:selectOneMenu>
+					        
+					        
   							Observaciones
   							<p:inputTextarea rows="6" cols="33" required="false" value="#{tarjetas.observaciones}"/>/>
   							<p></p>

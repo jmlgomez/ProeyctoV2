@@ -5,40 +5,43 @@
         http://www.springframework.org/schema/webflow/spring-webflow.xsd">
         
 <!-- ******************************************************************************************************** -->
-	<!-- PARA LISTAR -->
+	<!-- PARA LISTAR /BORRAR -->
 	
 	<view-state id="ListadoDispositivos" >
+		<var name="dispositivos" class="com.ayto.proyecto.modelo.Dispositivos"/>
 		<on-entry>
-			<set name="flowScope.dispositivo" value="serviceDispositivosImpl.listadoDispositivos()"></set>
+			<set name="flowScope.dispositivos" value="serviceDispositivosImpl.listadoDispositivos()"></set>
 			
 		</on-entry>
 		<transition on="nuevodisp" to="AltaDispositivos"></transition>
-		<transition on="editardisp" to="EditarDispositivos"></transition>
+		<transition on="modificar" to="EditarDispositivos">
+		<set name="flowScope.dispositivos" value="dispositivos" />
+		</transition>
+		<transition on="borrar" to="ListadoDispositivos">
+		<evaluate expression="serviceDispositivosImpl.borrarDispositivos(dispositivos)"></evaluate> 
+		</transition>
 	</view-state>
 	
 <!-- ******************************************************************************************************** -->
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaDispositivos" >
 		<on-entry>
-			<set name="flowScope.dispositivo" value="new com.ayto.proyecto.modelo.Dispositivos()"></set>
-			<set name="flowScope.tiposdispositivos" value="serviceDispositivosImpl.listadoModelosDispositivos()"></set>
+			<set name="flowScope.dispositivos" value="new com.ayto.proyecto.modelo.Dispositivos()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoDispositivos"></transition>
 		<transition on="guardar" to="ListadoDispositivos">
-			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(dispositivo)"></evaluate> 
+			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(dispositivos)"></evaluate> 
 		</transition>
 	</view-state>
 	
 <!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
-	<view-state id="EditarDispositivos" view="ListadoDispositivos" >
-		<on-entry>
-			<set name="flowScope.dispositivo" value="serviceDispositivosImpl.detalleDispositivos(requestParameters.id)"></set>
-		</on-entry>
+	<view-state id="EditarDispositivos" >
+		
 		<transition on="cancelar" to="ListadoDispositivos"></transition>
-		<transition on="editar" to="ListadoDispositivos">
-			 <evaluate expression="serviceDispositivosImpl.modificarDispositivos(Dispositivos)"></evaluate> 
+		<transition on="guardar" to="ListadoDispositivos">
+			 <evaluate expression="serviceDispositivosImpl.modificarDispositivos(dispositivos)"></evaluate> 
 		</transition>
 	</view-state>
 	

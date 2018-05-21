@@ -20,12 +20,17 @@
 									<th>Número Largo</th>
 									<th>PIN</th>
 									<th>PUK</th>
+									<th>Tipo de Tarjeta</th>
+									<th>Tipo de Tarifa</th>
+									<th>Tipo de Contrato</th>
+									<th>Estado de la tarjeta</th>
+									<th>Observaciones</th>
 									
 									
 								</tr>
 							</thead>
 							<TBODY>
-								<ui:repeat value="#{tarjetas}" var="tar">
+								<ui:repeat value="#{tarjeta}" var="tar">
 									<tr>
 										<td>
 
@@ -47,7 +52,33 @@
 										<td>
 											#{tar.puk}
 										</td>
+										<td>
+											#{tar.tiposTarjetas}
+										</td>
+										<td>
+											#{tar.tiposTarifas}
+										</td>
+										<td>
+											#{tar.tiposContratos}
+										</td>
+										<td>
+											#{tar.estadosTarjetas}
+										</td>
+										<td>
+											#{tar.observaciones}
+										</td>
 								    </tr>
+								    <td>
+										<p:commandButton id="modificar" value="Modificar" action="modificar" >
+											<f:setPropertyActionListener value="#{tar}" target="#{tarjeta}" />
+										</p:commandButton>
+										<p:commandButton id="borrar" value="Borrar" action="borrar" >
+											<f:setPropertyActionListener value="#{tar}" target="#{tarjeta}" />
+										</p:commandButton>
+										
+										</td>
+								    
+								    
 								</ui:repeat>
 							</TBODY>
 						</table>
