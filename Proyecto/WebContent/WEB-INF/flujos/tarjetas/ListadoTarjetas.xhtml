@@ -11,7 +11,7 @@
 			<h:panelGroup id="ListadoTarjetas" layout="block" styleClass="ListadoTarjetas">
 				<ui:fragment id="ListadoTarjetasfrag">
 		
-						<table class="ListadoTarjetas">
+						<table class="ListadoUsuarios table table-striped">
 							<thead>
 								<tr>
 									<th></th>
@@ -30,7 +30,7 @@
 								</tr>
 							</thead>
 							<TBODY>
-								<ui:repeat value="#{tarjeta}" var="tar">
+								<ui:repeat value="#{tarjetas}" var="tar">
 									<tr>
 										<td>
 
@@ -53,7 +53,7 @@
 											#{tar.puk}
 										</td>
 										<td>
-											#{tar.tiposTarjetas}
+											#{tar.tiposTarjetas.tipoTarjeta}
 										</td>
 										<td>
 											#{tar.tiposTarifas}
@@ -67,23 +67,23 @@
 										<td>
 											#{tar.observaciones}
 										</td>
-								    </tr>
-								    <td>
-										<p:commandButton id="modificar" value="Modificar" action="modificar" >
+								    
+								    	<td>
+										<p:commandButton id="modificar" class="btn btn-secondary" value="Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{tar}" target="#{tarjeta}" />
 										</p:commandButton>
-										<p:commandButton id="borrar" value="Borrar" action="borrar" >
+										<p:commandButton id="borrar" class="btn btn-secondary" value="Borrar" action="borrar" >
 											<f:setPropertyActionListener value="#{tar}" target="#{tarjeta}" />
 										</p:commandButton>
 										
 										</td>
 								    
-								    
+								    </tr>
 								</ui:repeat>
 							</TBODY>
 						</table>
-						<h:commandButton value="Nueva Tarjeta" id="nuevatarjeta" action="nuevatarjeta"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelartarjeta"></h:commandButton>
+						<h:commandButton value="Nueva Tarjeta" class="btn btn-dark" id="nuevatarjeta" action="nuevatarjeta"></h:commandButton>
+						
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

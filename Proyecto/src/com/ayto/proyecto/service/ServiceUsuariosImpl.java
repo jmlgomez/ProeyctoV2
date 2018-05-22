@@ -39,6 +39,7 @@ public class ServiceUsuariosImpl implements ServiceUsuarios {
 		
 try {
 			usuariosDAO.borrarUsuarios(u);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "borrado", " ya ta"));
 			return true;
 			
 		}catch (Exception e) {

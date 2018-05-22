@@ -8,6 +8,7 @@
 
 
 >
+	<div class="form-group col-md-6">
 	<h2>Alta  Tarjeta</h2>
 	<h:form id="AltaTarjetas" >
 			<h:panelGroup id="AltaTarjetas" layout="block" styleClass="AltaTarjetas">
@@ -15,15 +16,15 @@
 					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
   							
   						
-  							ICC: <p:inputText required="true" value="#{tarjetas.icc}"/>
+  							ICC: <p:inputText required="true" class="form-control" placeholder="Introduce el ICC" value="#{tarjetas.icc}"/>
   							<p></p>
-  							Número Corto: <p:inputText required="true" value="#{tarjetas.numCorto}"/>
+  							Número Corto: <p:inputText required="true" class="form-control" placeholder="Introduce el número corto" value="#{tarjetas.numCorto}"/>
   							<p></p>
-  							Número Largo: <p:inputText required="true" value="#{tarjetas.numlargo}"/>
+  							Número Largo: <p:inputText required="true" class="form-control" placeholder="Introduce el número largo" value="#{tarjetas.numlargo}"/>
   							<p></p>
-  							PIN <p:inputText  required="true" value="#{tarjetas.pin}"/>
+  							PIN <p:inputText  required="true" class="form-control" placeholder="Introduce el PIN" value="#{tarjetas.pin}"/>
   							<p></p>
-  							PUK<p:inputText required="true" value="#{tarjetas.puk}"/>
+  							PUK<p:inputText required="true" class="form-control" placeholder="Introduce el PUK" value="#{tarjetas.puk}"/>
   							<p></p> 
   							Tipo de Tarjeta
   							<h:selectOneMenu value="#{tarjetas.TiposTarjetas}">
@@ -60,9 +61,9 @@
   							<p></p>
   							
   							
-						<h:commandButton value="Guardar" id="guardar" action="guardar"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"></h:commandButton>
-			
+						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-primary"></h:commandButton>
+				</div>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

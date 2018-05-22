@@ -7,7 +7,7 @@
 	
 	<view-state id="ListadoTarjetas" >
 		<on-entry>
-			<set name="flowScope.tarjeta" value="serviceTarjetasImpl.listarTarjetas()"></set>
+			<set name="flowScope.tarjetas" value="serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
 		<transition on="nuevatarjeta" to="AltaTarjetas"></transition>
 		<transition on="editar" to="EditarTarjetas"></transition>

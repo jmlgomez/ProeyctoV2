@@ -16,25 +16,26 @@ template="/WEB-INF/plantillas/general.xhtml"
 				<ui:fragment id="AltaDispositivosfrag">
 					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
   							
-  							<h2>ALTA DISPOSITIVO</h2>
+  							<h2>Alta Dispositivos</h2>
   							<p></p>
+  							<div class="form-group col-md-6">
   							Tipo de Dispositivo: 
-  							<h:selectOneMenu value="#{dispositivos.tipoDispositivo}">
-  							 <f:selectItems value="#{tipoDispositivo}" var="tipodisp" 
-  							 		itemLabel="#{tipodisp.modelosDispositivo}" 
+  							<h:selectOneMenu value="#{modelosDispositivos}">
+  							 <f:selectItems value="#{modelosDispositivos}" var="tipodisp" 
+  							 		itemLabel="#{tipodisp.modelosDispositivos}" 
   							 		itemValue="#{tipodisp.idModeloDispositivo}" />	
 					        </h:selectOneMenu> 
   							<p></p>
-  							Número de Serie: <p:inputText required="true" value="#{dispositivos.numeroserieDispositivo}"/>
+  							Número de Serie: <p:inputText class="form-control" placeholder="Introduce el número de serie" required="true" value="#{dispositivo.numeroserieDispositivo}"/>
   							<p></p>
   							Observaciones
   							<p></p> 
-  							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivos.observaciones}"/>
+  							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivo.observaciones}"/>
   							<p></p>
   							
-						<h:commandButton value="Guardar" id="guardar" action="guardar"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"></h:commandButton>
-			
+						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary"></h:commandButton>
+				</div>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

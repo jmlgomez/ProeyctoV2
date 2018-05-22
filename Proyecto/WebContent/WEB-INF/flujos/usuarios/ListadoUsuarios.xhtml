@@ -14,40 +14,29 @@
 			<h:panelGroup id="ListadoUsuariosfrag" layout="block" styleClass="ListadoUsuarios">
 				<ui:fragment id="FListadoUsuariosfrag">
 		
-						<table class="ListadoUsuarios">
+						<table class="ListadoUsuarios table table-striped" >
 							<thead>
 								<tr>
 									<th></th>
-									<th>Primer Apellido</th>
-									<th>Segundo Apellido</th>
-									<th>Nombre</th>
+									<th>Nombre y apellidos</th>
 									<th>Nombre de Usuario</th>
 									<th>Id de Empleado </th>
 									<th>DNI</th>
-									
+									<th>Puesto</th>
+									<th>Terminal Propio</th>
+									<th> Opciones </th>
 								</tr>
 							</thead>
 							<TBODY>
+								<h3>Listado Usuarios</h3>
 								<ui:repeat value="#{usuarios}" var="u">
 									<tr>
-										<td>
-
-											
-											
+										<td>			
 										</td>
 										<td>
-											#{u.primerApellido}
-						
+											#{u.nombre} #{u.primerApellido} #{u.segundoApellido}
 										</td>
-										<td>
-											#{u.segundoApellido}
-											
-										</td>
-									   	
-										<td>
-											#{u.nombre}
-										</td>
-										
+					
 										<td>
 											#{u.nombreUsuario}
 										</td>
@@ -58,10 +47,17 @@
 											#{u.dni}
 										</td>
 										<td>
-										<p:commandButton id="modificar" value="Modificar" action="modificar" >
+											#{u.puesto}
+										</td>
+										<td>
+											<img src="img/#{u.terminalPropio?'pulsado':'sinpulsar'}.png" />
+										</td>
+										
+										<td>
+										<p:commandButton id="modificar" class="btn btn-secondary" value="Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />
-										</p:commandButton>
-										<p:commandButton id="borrar" value="Borrar" action="borrar" >
+										</p:commandButton> 
+										<p:commandButton id="borrar" class="btn btn-danger" value="Borrar" action="borrar" >
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />
 										</p:commandButton>
 										
@@ -73,8 +69,8 @@
 								
 							</TBODY>
 						</table>
-						<h:commandButton value="Nuevo Usuario" id="nuevousuario" action="nuevousuario"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelarusuario"></h:commandButton>
+						<h:commandButton class="btn btn-dark" value="Nuevo Usuario" id="nuevousuario" action="nuevousuario"></h:commandButton>
+						
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

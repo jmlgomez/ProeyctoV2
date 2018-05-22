@@ -14,8 +14,8 @@ import com.ayto.proyecto.modelo.Tarjetas;
 import com.ayto.proyecto.modelo.TiposContratos;
 import com.ayto.proyecto.modelo.TiposTarifas;
 import com.ayto.proyecto.modelo.TiposTarjetas;
-@Service
 
+@Service
 public class ServiceTarjetasImpl implements ServiceTarjetas {
 	
 	@Autowired	

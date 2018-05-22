@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es" itemscope="" itemtype="http://schema.org/WebPage"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
-
+xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       
       >
@@ -14,9 +14,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<meta name="content-language" content="es" />
+		<base href="/Proyecto/"/>
 	 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
 	 	<link rel="stylesheet" type="text/css" href="css/base.css"/>
-	 	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
 		
 		<title><ui:insert name="title" /></title>
@@ -24,23 +24,19 @@
 	
 	<h:body>
  		<div id="cabecera">
-	  
-	  
+ 			<h1>Gestión de tarjetas para moviles</h1>	
 		</div>
-
-
+		<p:messages id="messages" showDetail="true" closable="true"></p:messages>
+<nav class="navegacion-light form-inline-block" id="navegacion">
+ 		<a href="telefonia/usuarios" class="btn btn-outline-success">Usuarios</a>
+ 	 	<a href="telefonia/terminales"  class="btn btn-outline-success">Terminales</a>
+  		<a href="telefonia/tarjetas"  class="btn btn-outline-success">Tarjetas</a>
+  		<a href="telefonia/dispositivos"  class="btn btn-outline-success">Dispositivos</a>
+		</nav>
 	   <div id="cuerpo">
 			<ui:insert name="content" />
 			
-		<nav class="navegacion-light bg-light" id="navegacion">
-	    <h6>Menu</h6>
-	    <form class="form-inline-block">
- 		<button type="button" class="btn btn-outline-success">Usuarios</button>
- 	 	<button type="button" class="btn btn-outline-success">Terminales</button>
-  		<button type="button" class="btn btn-outline-success">Tarjetas</button>
-  		<button type="button" class="btn btn-outline-success">Dispositivos</button>
-  		</form>
-		</nav>
+
 	   </div>
 	</h:body>
 

@@ -8,17 +8,17 @@
 	<!-- PARA LISTAR /BORRAR -->
 	
 	<view-state id="ListadoDispositivos" >
-		<var name="dispositivos" class="com.ayto.proyecto.modelo.Dispositivos"/>
+		<var name="dispositivo" class="com.ayto.proyecto.modelo.Dispositivos"/>
 		<on-entry>
 			<set name="flowScope.dispositivos" value="serviceDispositivosImpl.listadoDispositivos()"></set>
 			
 		</on-entry>
 		<transition on="nuevodisp" to="AltaDispositivos"></transition>
 		<transition on="modificar" to="EditarDispositivos">
-		<set name="flowScope.dispositivos" value="dispositivos" />
+		<set name="flowScope.dispositivo" value="dispositivo" />
 		</transition>
 		<transition on="borrar" to="ListadoDispositivos">
-		<evaluate expression="serviceDispositivosImpl.borrarDispositivos(dispositivos)"></evaluate> 
+		<evaluate expression="serviceDispositivosImpl.borrarDispositivos(dispositivo)"></evaluate> 
 		</transition>
 	</view-state>
 	
@@ -26,12 +26,13 @@
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaDispositivos" >
 		<on-entry>
-			<set name="flowScope.dispositivos" value="new com.ayto.proyecto.modelo.Dispositivos()"></set>
+			<set name="flowScope.dispositivo" value="new com.ayto.proyecto.modelo.Dispositivos()"></set>
+			<set name="flowScope.modelosDispositivos" value="serviceDispositivosImpl.listadoModelosDispositivos()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoDispositivos"></transition>
 		<transition on="guardar" to="ListadoDispositivos">
-			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(dispositivos)"></evaluate> 
+			 <evaluate expression="serviceDispositivosImpl.insertarDispositivos(dispositivo)"></evaluate> 
 		</transition>
 	</view-state>
 	
@@ -41,7 +42,7 @@
 		
 		<transition on="cancelar" to="ListadoDispositivos"></transition>
 		<transition on="guardar" to="ListadoDispositivos">
-			 <evaluate expression="serviceDispositivosImpl.modificarDispositivos(dispositivos)"></evaluate> 
+			 <evaluate expression="serviceDispositivosImpl.modificarDispositivos(dispositivo)"></evaluate> 
 		</transition>
 	</view-state>
 	

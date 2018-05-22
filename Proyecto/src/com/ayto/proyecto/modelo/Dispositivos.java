@@ -77,6 +77,7 @@ public class Dispositivos implements java.io.Serializable {
 		this.numeroserieDispositivo = numeroserieDispositivo;
 	}
 
+	
 	@Column(name = "tipo_Dispositivo", nullable = false, length = 70)
 	public String getTipoDispositivo() {
 		return this.tipoDispositivo;

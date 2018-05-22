@@ -1,5 +1,31 @@
+#body{
+	margin: 0 auto;
+}
+
+
+header img{
+    width: 100%; 
+    max-width: 100%;
+    height: auto; 
+    display: block; 
+}
+
+#cabecera{
+	background: #fff url("images/cabecera1.jpg") scroll no-repeat 0 0;
+}
+#cuerpo{
+	margin-left: 135px;
+}
+
 #navegacion{
-	 width: 100%; 
-    height: 50px; 
-    background-color: black;
+	width: 130px;
+	position: static;
+	left:0;
+	display:inline-block;
+	float:left;
+	text-align: center;
+}
+#navegacion a{
+	display:inline-block;
+	width: 115px;
 }
