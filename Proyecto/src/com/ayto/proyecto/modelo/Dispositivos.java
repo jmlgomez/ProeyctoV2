@@ -28,7 +28,6 @@ public class Dispositivos implements java.io.Serializable {
 	private String tipoDispositivo;
 	private Boolean activo;
 	private String observaciones;
-
 	public Dispositivos() {
 	}
 
@@ -58,7 +57,7 @@ public class Dispositivos implements java.io.Serializable {
 		this.idDispositivo = idDispositivo;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idModeloDispositivo")
 	public ModelosDispositivos getModelosDispositivos() {
 		return this.modelosDispositivos;
@@ -68,6 +67,8 @@ public class Dispositivos implements java.io.Serializable {
 		this.modelosDispositivos = modelosDispositivos;
 	}
 
+	
+	
 	@Column(name = "numeroserie_Dispositivo", nullable = false, length = 70)
 	public String getNumeroserieDispositivo() {
 		return this.numeroserieDispositivo;

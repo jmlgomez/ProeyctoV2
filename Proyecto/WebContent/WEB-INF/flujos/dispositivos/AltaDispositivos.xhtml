@@ -19,10 +19,10 @@ template="/WEB-INF/plantillas/general.xhtml"
   							<h2>Alta Dispositivos</h2>
   							<p></p>
   							<div class="form-group col-md-6">
-  							Tipo de Dispositivo: 
-  							<h:selectOneMenu value="#{modelosDispositivos}">
+  							Modelo de Dispositivo: 
+  							<h:selectOneMenu value="#{dispositivo.modelosDispositivos}" >
   							 <f:selectItems value="#{modelosDispositivos}" var="tipodisp" 
-  							 		itemLabel="#{tipodisp.modelosDispositivos}" 
+  							 		itemLabel="#{tipodisp.modeloDispositivo}" 
   							 		itemValue="#{tipodisp.idModeloDispositivo}" />	
 					        </h:selectOneMenu> 
   							<p></p>

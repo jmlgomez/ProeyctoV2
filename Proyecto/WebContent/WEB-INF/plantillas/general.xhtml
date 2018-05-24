@@ -24,20 +24,22 @@ xmlns:p="http://primefaces.org/ui"
 	
 	<h:body>
  		<div id="cabecera">
- 			<h1>Gestión de tarjetas para moviles</h1>	
+ 			<h1>Gestión de Telefonía</h1>
+ 			<div id="usuario">Hola, (aqui vendria el usuario)</div>	
+ 			<div id="sesion">Cerrar sesión</div>
 		</div>
 		<p:messages id="messages" showDetail="true" closable="true"></p:messages>
-<nav class="navegacion-light form-inline-block" id="navegacion">
+		<nav class="navegacion-light form-inline-block" id="navegacion">
  		<a href="telefonia/usuarios" class="btn btn-outline-success">Usuarios</a>
- 	 	<a href="telefonia/terminales"  class="btn btn-outline-success">Terminales</a>
-  		<a href="telefonia/tarjetas"  class="btn btn-outline-success">Tarjetas</a>
-  		<a href="telefonia/dispositivos"  class="btn btn-outline-success">Dispositivos</a>
+ 	 	<a href="telefonia/terminales" class="btn btn-outline-success">Terminales</a>
+  		<a href="telefonia/tarjetas" class="btn btn-outline-success">Tarjetas</a>
+  		<a href="telefonia/dispositivos" class="btn btn-outline-success">Dispositivos</a>
 		</nav>
 	   <div id="cuerpo">
 			<ui:insert name="content" />
-			
-
+	
 	   </div>
+	   <div id="footer">Web creada por: Jose Manuel López Gómez</div>
 	</h:body>
 
 </f:view>

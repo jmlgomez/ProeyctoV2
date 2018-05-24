@@ -1,5 +1,6 @@
-#body{
+body{
 	margin: 0 auto;
+	background: url("images/fondo8.jpg") no-repeat fixed right bottom;
 }
 
 
@@ -11,14 +12,18 @@ header img{
 }
 
 #cabecera{
-	background: #fff url("images/cabecera1.jpg") scroll no-repeat 0 0;
+	background: #fff url("images/gotas.jpg") scroll no-repeat 0 0;
+	padding:30px;
+	color:white;
 }
 #cuerpo{
-	margin-left: 135px;
+	margin-top:20px;
+	margin-left: 150px;
 }
 
 #navegacion{
-	width: 130px;
+	margin-top:20px;
+	width: 140px;
 	position: static;
 	left:0;
 	display:inline-block;
@@ -26,6 +31,28 @@ header img{
 	text-align: center;
 }
 #navegacion a{
+	margin: 7px;
 	display:inline-block;
 	width: 115px;
+}
+#usuario
+{
+	color: white;
+	position:absolute;
+	top: 30px;
+	right: 10px;
+}
+#sesion {
+	text-decoration:underline;
+	position: absolute;
+	right: 10px;
+}
+#footer {
+	position: fixed;
+	font-style:oblique;
+	bottom: 0;
+	right: 0;
+	color: grey;
+	font-size: 10pt;
+	margin: 5px;
 }

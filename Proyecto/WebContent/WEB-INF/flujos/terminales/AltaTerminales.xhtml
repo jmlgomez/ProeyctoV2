@@ -20,48 +20,37 @@
   							<div class="form-group col-md-6">
   							
   							<label>Fecha de alta </label>
-  							<p:calendar required="true" value="#{terminales.fechaAlta}"/>
+  							<p:calendar required="true" value="#{terminal.fechaAlta}"/>
   							<label>IMEI: </label>
-  							<p:inputText required="true" value="#{terminales.imei}"/>
+  							<p:inputText required="true" value="#{terminal.imei}"/>
   							</div>
   							Lote
-  							<h:selectOneMenu value="#{terminales.lotesTerminales}">
+  							<h:selectOneMenu value="#{terminal.lotesTerminales}">
   							 <f:selectItems value="#{lotesTerminales}" var="lotes" 
   							 		itemLabel="#{lotes.lote}" 
   							 		itemValue="#{lotes.idLoteTerminal}" />	
 					        </h:selectOneMenu>
 					        Tipo de Terminal
-  							<h:selectOneMenu value="#{terminales.tiposTerminales}">
-  							 <f:selectItems value="#{tiposTerminales" var="tipoterm" 
+  							<h:selectOneMenu value="#{terminal.tiposTerminales}">
+  							 <f:selectItems value="#{tiposTerminales}" var="tipoterm" 
   							 		itemLabel="#{tipoterm.tipoTerminal}" 
   							 		itemValue="#{tipoterm.idTipoTerminal}" />	
 					        </h:selectOneMenu>
 					        
 					         Compañia
-  							<h:selectOneMenu value="#{terminales.companiasTerminales}">
-  							 <f:selectItems value="#{companiasTerminales" var="compter" 
-  							 		itemLabel="#{compter.companiasTerminal" 
+  							<h:selectOneMenu value="#{terminal.companiasTerminales}">
+  							 <f:selectItems value="#{companiasTerminales}" var="compter" 
+  							 		itemLabel="#{compter.companiasTerminal}" 
   							 		itemValue="#{compter.idCompaniaTerminal}" />	
 					        </h:selectOneMenu>
 					        
-					         Marca
-  							<h:selectOneMenu value="#{terminales.modelosTerminales.marcas}">
-  							 <f:selectItems value="#{marcas" var="marc" 
-  							 		itemLabel="#{marc.marca" 
-  							 		itemValue="#{marc.idMarca}" />	
-					        </h:selectOneMenu>
 					        
-					         Modelo de Terminal
-  							<h:selectOneMenu value="#{terminales.modelosTerminales}">
-  							 <f:selectItems value="#{modelosTerminales" var="modter" 
-  							 		itemLabel="#{modter.modelos" 
-  							 		itemValue="#{modter.idModeloTerminal}" />	
-					        </h:selectOneMenu>
+					         
 					        
 					         Estado del terminal
-  							<h:selectOneMenu value="#{terminales.estadosTerminales}">
-  							 <f:selectItems value="#{estadosTerminales" var="ester" 
-  							 		itemLabel="#{ester.estado" 
+  							<h:selectOneMenu value="#{terminal}">
+  							 <f:selectItems value="#{estadosTerminales}" var="ester" 
+  							 		itemLabel="#{ester.estado}" 
   							 		itemValue="#{ester.idEstadoTerminal}" />	
 					        </h:selectOneMenu>
 					        

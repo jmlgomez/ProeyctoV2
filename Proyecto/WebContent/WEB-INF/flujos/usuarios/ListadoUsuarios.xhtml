@@ -50,14 +50,14 @@
 											#{u.puesto}
 										</td>
 										<td>
-											<img src="img/#{u.terminalPropio?'pulsado':'sinpulsar'}.png" />
+											<img src="img/#{u.terminalPropio?'CheckOK':'CheckBad'}.png" />
 										</td>
 										
 										<td>
-										<p:commandButton id="modificar" class="btn btn-secondary" value="Modificar" action="modificar" >
+										<p:commandButton id="modificar" class="btn btn-secondary separata" value="Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />
 										</p:commandButton> 
-										<p:commandButton id="borrar" class="btn btn-danger" value="Borrar" action="borrar" >
+										<p:commandButton id="borrar" class="separata btn btn-danger" value="Borrar" action="borrar" >
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />
 										</p:commandButton>
 										

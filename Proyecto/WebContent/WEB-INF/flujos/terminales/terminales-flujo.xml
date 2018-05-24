@@ -10,9 +10,9 @@
 	<!-- PARA LISTAR-->
 	
 	<view-state id="ListadoTerminales" >
-		<var name="terminal" class="com.ayto.proyecto.modelo.Terminales"/>
+		
 		<on-entry>
-			<set name="flowScope.terminal" value="serviceTerminalesImpl.listarTerminales()"></set>
+			<set name="flowScope.terminales" value="serviceTerminalesImpl.listarTerminales()"></set>
 		</on-entry>
 		<transition on="nuevo" to="AltaTerminales"></transition>
 		<transition on="modificar" to="EditarTerminales">

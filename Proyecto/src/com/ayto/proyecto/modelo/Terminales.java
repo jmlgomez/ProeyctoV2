@@ -97,7 +97,7 @@ public class Terminales implements java.io.Serializable {
 		this.idTerminal = idTerminal;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idCompaniaTerminal")
 	public CompaniasTerminales getCompaniasTerminales() {
 		return this.companiasTerminales;
@@ -107,7 +107,7 @@ public class Terminales implements java.io.Serializable {
 		this.companiasTerminales = companiasTerminales;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idEstadoTerminal")
 	public EstadosTerminales getEstadosTerminales() {
 		return this.estadosTerminales;
@@ -117,7 +117,7 @@ public class Terminales implements java.io.Serializable {
 		this.estadosTerminales = estadosTerminales;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idLoteTerminal")
 	public LotesTerminales getLotesTerminales() {
 		return this.lotesTerminales;
@@ -127,7 +127,7 @@ public class Terminales implements java.io.Serializable {
 		this.lotesTerminales = lotesTerminales;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idModeloTerminal")
 	public ModelosTerminales getModelosTerminales() {
 		return this.modelosTerminales;
@@ -137,7 +137,7 @@ public class Terminales implements java.io.Serializable {
 		this.modelosTerminales = modelosTerminales;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTipoTerminal")
 	public TiposTerminales getTiposTerminales() {
 		return this.tiposTerminales;
@@ -239,7 +239,7 @@ public class Terminales implements java.io.Serializable {
 		this.historialAveria = historialAveria;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "terminales")
+	@OneToMany( mappedBy = "terminales")
 	public Set<Entregas> getEntregases() {
 		return this.entregases;
 	}
@@ -248,7 +248,7 @@ public class Terminales implements java.io.Serializable {
 		this.entregases = entregases;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "terminalesByImeiAntiguo")
+	@OneToMany(mappedBy = "terminalesByImeiAntiguo")
 	public Set<AveriasTerminales> getAveriasTerminalesesForImeiAntiguo() {
 		return this.averiasTerminalesesForImeiAntiguo;
 	}
@@ -257,7 +257,7 @@ public class Terminales implements java.io.Serializable {
 		this.averiasTerminalesesForImeiAntiguo = averiasTerminalesesForImeiAntiguo;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "terminales")
+	@OneToMany( mappedBy = "terminales")
 	public Set<HistEstados> getHistEstadoses() {
 		return this.histEstadoses;
 	}
@@ -266,7 +266,7 @@ public class Terminales implements java.io.Serializable {
 		this.histEstadoses = histEstadoses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "terminalesByImeiNuevo")
+	@OneToMany( mappedBy = "terminalesByImeiNuevo")
 	public Set<AveriasTerminales> getAveriasTerminalesesForImeiNuevo() {
 		return this.averiasTerminalesesForImeiNuevo;
 	}
