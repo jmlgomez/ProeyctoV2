@@ -100,7 +100,7 @@ public class Tarjetas implements java.io.Serializable {
 		this.idTarjeta = idTarjeta;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idEstadoTarjeta")
 	public EstadosTarjetas getEstadosTarjetas() {
 		return this.estadosTarjetas;
@@ -110,7 +110,7 @@ public class Tarjetas implements java.io.Serializable {
 		this.estadosTarjetas = estadosTarjetas;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTipoContrato")
 	public TiposContratos getTiposContratos() {
 		return this.tiposContratos;
@@ -120,7 +120,7 @@ public class Tarjetas implements java.io.Serializable {
 		this.tiposContratos = tiposContratos;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTipoTarifa")
 	public TiposTarifas getTiposTarifas() {
 		return this.tiposTarifas;
@@ -130,7 +130,7 @@ public class Tarjetas implements java.io.Serializable {
 		this.tiposTarifas = tiposTarifas;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTipoTarjeta")
 	public TiposTarjetas getTiposTarjetas() {
 		return this.tiposTarjetas;

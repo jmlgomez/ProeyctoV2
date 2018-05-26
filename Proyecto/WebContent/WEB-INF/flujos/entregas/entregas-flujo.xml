@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<view-state id="ListadoEntregas" >
+		<var name="entrega" class="com.ayto.proyecto.modelo.Entregas"/>
+		<on-entry>
+			<set name="flowScope.entrega" value="serviceEntregasImpl.listarEntregas()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+		<transition on="nuevaentrega" to="AltaEntregas"></transition>
+		<transition on="modificar" to="EditarEntregas">
+			<set name="flowScope.entrega" value="entrega" />
+		</transition>
+		<transition on="borrar" to="ListadoEntregas">
+			 <evaluate expression="serviceEntregasImpl.borrarEntregas(entrega)"></evaluate> 
+		</transition>
+	</view-state>
+	
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaEntregas" >
+		<on-entry>
+			<set name="flowScope.entrega" value="new com.ayto.proyecto.modelo.Entregas()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+		<transition on="guardar" to="ListadoEntregas">
+			 <evaluate expression="serviceEntregasImpl.insertarEntregas(entrega)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarUsuarios" >
+		
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+		<transition on="guardar" to="ListadoEntregas">
+		 	<evaluate expression="serviceEntregasImpl.modificarEntregas(entrega)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

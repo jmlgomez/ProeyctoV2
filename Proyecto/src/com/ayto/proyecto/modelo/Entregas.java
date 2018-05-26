@@ -64,7 +64,7 @@ public class Entregas implements java.io.Serializable {
 		this.idEntrega = idEntrega;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idOperador")
 	public Operadores getOperadores() {
 		return this.operadores;
@@ -74,7 +74,7 @@ public class Entregas implements java.io.Serializable {
 		this.operadores = operadores;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTarjeta")
 	public Tarjetas getTarjetas() {
 		return this.tarjetas;
@@ -84,7 +84,7 @@ public class Entregas implements java.io.Serializable {
 		this.tarjetas = tarjetas;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTerminal")
 	public Terminales getTerminales() {
 		return this.terminales;
@@ -94,7 +94,7 @@ public class Entregas implements java.io.Serializable {
 		this.terminales = terminales;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	public Usuarios getUsuarios() {
 		return this.usuarios;

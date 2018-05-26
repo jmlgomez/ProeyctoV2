@@ -55,7 +55,7 @@ public class ModelosDispositivos implements java.io.Serializable {
 		this.idModeloDispositivo = idModeloDispositivo;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idMarca")
 	public Marcas getMarcas() {
 		return this.marcas;

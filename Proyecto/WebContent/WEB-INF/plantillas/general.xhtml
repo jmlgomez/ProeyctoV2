@@ -18,7 +18,8 @@ xmlns:p="http://primefaces.org/ui"
 	 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
 	 	<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
-		
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+        <link rel="stylesheet" href="font-awesome/css/fontawesome-all.css"/>
 		<title><ui:insert name="title" /></title>
 	</h:head>
 	
@@ -29,17 +30,84 @@ xmlns:p="http://primefaces.org/ui"
  			<div id="sesion">Cerrar sesión</div>
 		</div>
 		<p:messages id="messages" showDetail="true" closable="true"></p:messages>
-		<nav class="navegacion-light form-inline-block" id="navegacion">
+		<!-- <nav class="navegacion-light form-inline-block" id="navegacion">
  		<a href="telefonia/usuarios" class="btn btn-outline-success">Usuarios</a>
  	 	<a href="telefonia/terminales" class="btn btn-outline-success">Terminales</a>
   		<a href="telefonia/tarjetas" class="btn btn-outline-success">Tarjetas</a>
   		<a href="telefonia/dispositivos" class="btn btn-outline-success">Dispositivos</a>
+		</nav> -->
+		<!-- Contenedor -->
+		<nav>
+			<ul id="accordion" class="accordion">
+				<li>
+					<div class="link"><i class="fas fa-user-tie"></i>Usuarios<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/usuarios">Listar Usuarios</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="link"><i class="fas fa-mobile-alt"></i>Terminales<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/terminales">Listar Terminales</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="link"><i class="fa fa-mobile"></i>Tarjetas<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/tarjetas">Listar Tarjetas</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fab fa-usb"></i>Dispositivos<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/dispositivos">Listar Dispositivos</a></li>
+
+					</ul>
+				</li>
+				<li><div class="link"><i class="fas fa-people-carry"></i>Entregas<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/entregas">Listar Entregas</a></li>
+					</ul>
+				</li>
+			</ul>
 		</nav>
 	   <div id="cuerpo">
 			<ui:insert name="content" />
 	
 	   </div>
 	   <div id="footer">Web creada por: Jose Manuel López Gómez</div>
+	   <script type="text/javascript">
+	   $(function() {
+			var Accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+
+				// Variables privadas
+				var links = this.el.find('.link');
+				// Evento
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+
+			Accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}	
+
+			var accordion = new Accordion($('#accordion'), false);
+		});
+	   </script>
+	   <script>
+	   function imprimir() {
+		    window.print();
+		}
+	   </script>
 	</h:body>
 
 </f:view>

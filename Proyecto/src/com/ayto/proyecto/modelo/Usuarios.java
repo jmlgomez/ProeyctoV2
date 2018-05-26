@@ -95,7 +95,7 @@ public class Usuarios implements java.io.Serializable {
 		this.idUsuario = idUsuario;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idDepAyto")
 	public DepartamentosAyto getDepartamentosAyto() {
 		return this.departamentosAyto;

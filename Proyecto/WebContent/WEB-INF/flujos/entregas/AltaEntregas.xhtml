@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/plantillas/general.xhtml">
+	<ui:define name="title">
+		<h:outputText value="Alta de usuario" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="AltaEntregas">
+			<h:panelGroup id="AltaEntregas" layout="block"
+				styleClass="AltaEntregas">
+				<ui:fragment id="AltaEntregasfrag">
+					
+					<h2>Alta Entregas</h2>
+					
+
+						<div class="form-group col-md-6">
+						
+						<label>Fecha de Entrega</label>
+  						<p:calendar required="false" value="#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido} #{entrega.usuarios.nombre}"/>
+						<label>Nombre y Apellidos</label>
+						<h:selectOneMenu value="#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido} #{entrega.usuarios.nombre}
+  							 <f:selectItems value="#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido} #{entrega.usuarios.nombre}" var="entrg" 
+  							 		itemLabel="#{entrg.usuarios.primerApellido}" 
+  							 		itemLabel="#{entrg.usuarios.segundoApellido}" 
+  							 		itemLabel="#{entrg.usuarios.nombre}" 
+  							 		itemValue="#{entrg.usuarios.idusuario}" />	
+						
+						</h:selectOneMenu> 
+						
+						<p></p>
+						ID  de empleado
+						<p:inputText required="false"  class="form-control" placeholder="Introduce el ID de Empleado" value="#{entrega.usuarios.idEmpleado}" />
+						<h:selectOneMenu value="#{entrega.lotesTerminales}">
+  							 <f:selectItems value="#{lotesTerminales}" var="lotes" 
+  							 		itemLabel="#{lotes.lote}" 
+  							 		itemValue="#{lotes.idLoteTerminal}" />
+						
+						
+						
+						
+						<p></p>
+						DNI
+						<p:inputText required="false" class="form-control" placeholder="Introduce el DNI" value="#{entrega.usuario.dni}" />
+						<p></p>
+  						<label>IMEI del Terminal </label>
+  						<p:inputText required="false" value="#{entrega.terminales.imei}"/>
+  						<p></p>
+						Lote al que pertenece el terminal 
+  							<h:selectOneMenu value="#{terminal.lotesTerminales}">
+  							 <f:selectItems value="#{lotesTerminales}" var="lotes" 
+  							 		itemLabel="#{lotes.lote}" 
+  							 		itemValue="#{lotes.idLoteTerminal}" />	
+						
+						 Tipo de Terminal
+  							<h:selectOneMenu value="#{terminal.tiposTerminales}">
+  							 <f:selectItems value="#{tiposTerminales}" var="tipoterm" 
+  							 		itemLabel="#{tipoterm.tipoTerminal}" 
+  							 		itemValue="#{tipoterm.idTipoTerminal}" />	
+					        </h:selectOneMenu>
+						
+       					 <p></p>
+						Observaciones
+						<p></p>
+						<p:inputTextarea rows="6" cols="33" />
+						<p></p>
+
+						<h:commandButton value="Guardar" id="guardar" action="guardar"
+							class="btn btn-primary"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"
+							class="btn btn-secondary"></h:commandButton>
+					</div>
+				</ui:fragment>
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>

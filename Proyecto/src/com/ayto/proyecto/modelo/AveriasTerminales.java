@@ -72,7 +72,7 @@ public class AveriasTerminales implements java.io.Serializable {
 		this.idaveriasTerminal = idaveriasTerminal;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idOperador")
 	public Operadores getOperadores() {
 		return this.operadores;
@@ -82,7 +82,7 @@ public class AveriasTerminales implements java.io.Serializable {
 		this.operadores = operadores;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "imeiAntiguo", nullable = false)
 	public Terminales getTerminalesByImeiAntiguo() {
 		return this.terminalesByImeiAntiguo;
@@ -92,7 +92,7 @@ public class AveriasTerminales implements java.io.Serializable {
 		this.terminalesByImeiAntiguo = terminalesByImeiAntiguo;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "imeiNuevo", nullable = false)
 	public Terminales getTerminalesByImeiNuevo() {
 		return this.terminalesByImeiNuevo;

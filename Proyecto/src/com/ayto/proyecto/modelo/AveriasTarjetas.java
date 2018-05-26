@@ -70,7 +70,7 @@ public class AveriasTarjetas implements java.io.Serializable {
 		this.idaveriaTarjeta = idaveriaTarjeta;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idOperador")
 	public Operadores getOperadores() {
 		return this.operadores;
@@ -80,7 +80,7 @@ public class AveriasTarjetas implements java.io.Serializable {
 		this.operadores = operadores;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "tarjetaNueva", nullable = false)
 	public Tarjetas getTarjetasByTarjetaNueva() {
 		return this.tarjetasByTarjetaNueva;
@@ -90,7 +90,7 @@ public class AveriasTarjetas implements java.io.Serializable {
 		this.tarjetasByTarjetaNueva = tarjetasByTarjetaNueva;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "tarjetaAntigua", nullable = false)
 	public Tarjetas getTarjetasByTarjetaAntigua() {
 		return this.tarjetasByTarjetaAntigua;

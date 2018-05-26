@@ -13,11 +13,10 @@
 	<h:form id="ListadoTerminales" >
 			<h:panelGroup id="ListadoTerminalesfrag" layout="block" styleClass="ListadoTerminales">
 				<ui:fragment id="FListadoTerminalesfrag">
-		
-						<table class="ListadoTerminales table table-striped" >
+						<h3>Listado Terminales</h3>
+						<table class="ListadoTerminales table table-striped table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
-									<th></th>
 									<th>Fecha de alta</th>
 									<th>IMEI</th>
 									<th>Lote</th>
@@ -30,11 +29,8 @@
 								</tr>
 							</thead>
 							<TBODY>
-								<h3>Listado Terminales</h3>
 								<ui:repeat value="#{terminales}" var="term">
 									<tr>
-										<td>
-										</td>
 										<td>
 											#{term.fechaAlta}
 										</td>
@@ -67,10 +63,10 @@
 										
 										
 										<td>
-										<p:commandButton id="modificar" class="btn btn-secondary separata" value="Modificar" action="modificar" >
+										<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{term}" target="#{terminal}" />
 										</p:commandButton>
-										<p:commandButton id="borrar" class="separata btn btn-danger" value="Borrar" action="borrar" >
+										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
 											<f:setPropertyActionListener value="#{term}" target="#{terminal}" />
 										</p:commandButton>
 										
@@ -80,7 +76,7 @@
 								</ui:repeat>
 							</TBODY>
 						</table>
-						 <h:commandButton class="btn btn-dark" value="Nuevo Terminal" id="nuevo" action="nuevo"></h:commandButton>
+						 <p:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Terminal" id="nuevo" action="nuevo"></p:commandButton>
 	
 				</ui:fragment>
 			</h:panelGroup>

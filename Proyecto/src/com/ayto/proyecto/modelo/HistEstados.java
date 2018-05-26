@@ -56,7 +56,7 @@ public class HistEstados implements java.io.Serializable {
 		this.idHistEstado = idHistEstado;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idEstadoTerminal")
 	public EstadosTerminales getEstadosTerminales() {
 		return this.estadosTerminales;
@@ -66,7 +66,7 @@ public class HistEstados implements java.io.Serializable {
 		this.estadosTerminales = estadosTerminales;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idTerminal")
 	public Terminales getTerminales() {
 		return this.terminales;

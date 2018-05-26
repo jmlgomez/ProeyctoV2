@@ -60,7 +60,7 @@ public class Users implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "users_roles", joinColumns = {
 			@JoinColumn(name = "username", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "rolename", nullable = false, updatable = false) })

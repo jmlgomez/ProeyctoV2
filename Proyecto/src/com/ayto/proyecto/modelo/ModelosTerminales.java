@@ -55,7 +55,7 @@ public class ModelosTerminales implements java.io.Serializable {
 		this.idModeloTerminal = idModeloTerminal;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "idMarca")
 	public Marcas getMarcas() {
 		return this.marcas;
