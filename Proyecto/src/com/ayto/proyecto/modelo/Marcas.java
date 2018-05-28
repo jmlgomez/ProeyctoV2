@@ -79,5 +79,10 @@ public class Marcas implements java.io.Serializable {
 	public void setModelosDispositivoses(Set<ModelosDispositivos> modelosDispositivoses) {
 		this.modelosDispositivoses = modelosDispositivoses;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdMarca());
+    }
 
 }

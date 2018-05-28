@@ -91,4 +91,8 @@ public class TiposContratos implements java.io.Serializable {
 		this.tarjetases = tarjetases;
 	}
 
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdTipoContrato());
+    }
 }

@@ -69,4 +69,9 @@ public class CompaniasTerminales implements java.io.Serializable {
 		this.terminaleses = terminaleses;
 	}
 
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdCompaniaTerminal());
+    }
+	
 }

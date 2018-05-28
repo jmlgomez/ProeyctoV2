@@ -90,5 +90,9 @@ public class TiposTarifas implements java.io.Serializable {
 	public void setTarjetases(Set<Tarjetas> tarjetases) {
 		this.tarjetases = tarjetases;
 	}
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdTipoTarifa());
+    }
 
 }

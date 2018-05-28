@@ -68,5 +68,10 @@ public class LotesTerminales implements java.io.Serializable {
 	public void setTerminaleses(Set<Terminales> terminaleses) {
 		this.terminaleses = terminaleses;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdLoteTerminal());
+    }
 
 }

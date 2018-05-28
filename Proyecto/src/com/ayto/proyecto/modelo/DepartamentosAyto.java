@@ -90,5 +90,10 @@ public class DepartamentosAyto implements java.io.Serializable {
 	public void setUsuarioses(Set<Usuarios> usuarioses) {
 		this.usuarioses = usuarioses;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdDepAyto());
+    }
 
 }

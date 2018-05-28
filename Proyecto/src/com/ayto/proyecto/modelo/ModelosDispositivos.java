@@ -82,5 +82,10 @@ public class ModelosDispositivos implements java.io.Serializable {
 	public void setDispositivoses(Set<Dispositivos> dispositivoses) {
 		this.dispositivoses = dispositivoses;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdModeloDispositivo());
+    }
 
 }

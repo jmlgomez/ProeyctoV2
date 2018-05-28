@@ -79,5 +79,10 @@ public class EstadosTerminales implements java.io.Serializable {
 	public void setHistEstadoses(Set<HistEstados> histEstadoses) {
 		this.histEstadoses = histEstadoses;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdEstadoTerminal());
+    }
 
 }
