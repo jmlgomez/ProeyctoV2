@@ -4,15 +4,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
 	
 	<view-state id="ListadoTarjetas" >
 		<on-entry>
 			<set name="flowScope.tarjetas" value="serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
-		<transition on="nuevatarjeta" to="AltaTarjetas"></transition>
-		<transition on="editar" to="EditarTarjetas"></transition>
+		<transition on="nuevo" to="AltaTarjetas"></transition>
+		<transition on="modificar" to="EditarTarjetas">
+		<set name="flowScope.tarjeta" value="tarjeta" />
+		</transition>
+		<transition on="borrar" to="ListadoTarjetas">
+			 <evaluate expression="serviceTarjetasImpl.borrarTarjetas(tarjeta)"></evaluate> 
+		</transition>
 	</view-state>
 
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
 	
 	<view-state id="AltaTarjetas" >
 		<on-entry>
@@ -21,19 +30,17 @@
 		
 		<transition on="cancelar" to="ListadoTarjetas"></transition>
 		<transition on="guardar" to="ListadoListadoTarjetas">
-			 <evaluate expression="serviceUsuariosImpl.insertarTarjetas(tarjeta)"></evaluate> 
+			 <evaluate expression="serviceTarjetasImpl.insertarTarjetas(tarjeta)"></evaluate> 
 		</transition>
 	</view-state>
 	
+<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarTarjetas" view="ListadoTarjetas" >
-		<on-entry>
-			<set name="flowScope.tarjeta" value="serviceTarjetasImpl.detalleTarjetas(requestParameters.id)"></set>
-		</on-entry>
+	<view-state id="EditarTarjetas">
 		<transition on="cancelar" to="ListadoTarjetas"></transition>
 		<transition on="guardar" to="ListadoTarjetas">
 			 <evaluate expression="serviceTarjetasImpl.modificarTarjetas(tarjeta)"></evaluate> 
 		</transition>
-	
 	</view-state>
 </flow>

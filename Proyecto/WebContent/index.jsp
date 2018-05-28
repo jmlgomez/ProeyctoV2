@@ -42,7 +42,7 @@
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<img style="float:left" src="css/images/gijon.png" width="150px" />
-                        			<span style="float:left;padding:20px;font-weight:bold;font-style:oblique;letter-spacing: 3px;color:white;font-size:17pt;font-family:Roboto">GESTOR <br/>TELEFÓNIA <br/> 1.0</span>
+                        			<span style="float:left;padding:20px;font-weight:bold;font-style:oblique;letter-spacing: 3px;color:white;font-size:17pt;font-family:Roboto">GESTOR <br/>TELEFONÍCO <br/> v1.0</span>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fas fa-lock"></i>

@@ -12,8 +12,8 @@
 	<h:form id="ListadoDispositivos" >
 			<h:panelGroup id="ListadoDispositivos" layout="block" styleClass="ListadoDispositivos">
 				<ui:fragment id="ListadoDispositivosfrag">
-		
-						<table class="ListadoDispositivos table-striped">
+					<h3>Listado de Dispositivos</h3>
+						<table class="ListadoDispositivos table table-striped table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
 									<th>Tipo de Dispositivo</th>
@@ -24,7 +24,7 @@
 								</tr>
 							</thead>
 							<TBODY>
-								<h3>Listado Dispositivos</h3>
+								
 								<ui:repeat value="#{dispositivos}" var="disp">
 									<tr>
 
@@ -38,24 +38,21 @@
 										
 										<td>
 											#{disp.observaciones}
-											#{disp.modelosDispositivos.modeloDispositivo}
 										</td>
 										<td>
-											<h:commandButton value="Modificar" class="btn btn-secondary" id="modificar" action="modificar">
+											<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />
-											
-											</h:commandButton>
-											<h:commandButton value="Borrar"  class="btn btn-danger" id="borrar" action="borrar">
+											</p:commandButton>
+											<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
 											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />
-											
-											</h:commandButton>
+											</p:commandButton>
 										</td>	
 										
 								    </tr>
 								</ui:repeat>
 							</TBODY>
 						</table>
-						<h:commandButton class="btn btn-dark" value="Nuevo Dispositivo" id="nuevodisp" action="nuevodisp"></h:commandButton>
+						<p:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Dispositivo" id="nuevodisp" action="nuevodisp"></p:commandButton>
 						
 				</ui:fragment>
 			</h:panelGroup>

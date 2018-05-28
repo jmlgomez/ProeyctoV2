@@ -11,34 +11,25 @@
 	<ui:define name="content">
 	<h:form id="ListadoEntregas" >
 			<h:panelGroup id="ListadoEntregas" layout="block" styleClass="ListadoEntregas">
-				<ui:fragment id="ListadoEntregasfrag">
+				<ui:fragment id="FListadoEntregasfrag">
 		
-						<table class="ListadoDispositivos table-striped">
+						<table class="ListadoEntregas table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
 									<th>Fecha de Entrega</th>
 									<th>Apellidos y Nombre</th>
-									<th>Nombre de Usuario </th>
+									<th>Identificación de empleado </th>
 									<th>DNI</th>
 									<th>IMEI del Terminal</th>
-									<th>Lote</th>
-									<th>Modelo del terminal</th>
+									<th>Lote al que pertence el terminal</th>
+									<th>Tipo del terminal</th>
 									<th>ICC Tarjeta</th>
-									<th>PIN</th>
-									<th>PUK</th>
+									<th>PIN tarjeta</th>
+									<th>PUK tarjeta </th>
 									<th>Número Corto</th>
 									<th>Número Largo</th>
-									
-									#{u.nombreUsuario}
-										</td>
-										<td>
-											#{u.idEmpleado}
-										</td>
-										
-									
-									<th></th>
-									
-								</tr>
+									<th>Firma</th>
+								</tr>	
 							</thead>
 							<TBODY>
 								<h3>Listado Entregas</h3>
@@ -51,30 +42,75 @@
 										
 										<td>
 											#{entr.usuarios.nombre} #{entr.usuarios.primerApellido} #{entr.usuarios.segundoApellido}
-										
 										</td>
+										<td>
+											#{entr.usuarios.idEmpleado}
+										</td>
+										
 										<td>
 											#{entr.usuarios.dni}
+										
+										</td>
+										
 										<td>
-											#{disp.observaciones}
-											#{disp.modelosDispositivos.modeloDispositivo}
+											#{entr.terminales.imei}
+										
+										</td>
+										
+										<td>
+											#{entr.terminales.lotesTerminales.lote}
+										
+										</td>
+										
+										<td>
+											#{entr.terminales.tiposTerminales.tipoTerminal}
+										
 										</td>
 										<td>
-											<h:commandButton value="Modificar" class="btn btn-secondary" id="modificar" action="modificar">
-											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />
+											#{entr.tarjetas.icc}
+										
+										</td>
+										<td>
+											#{entr.tarjetas.pin}
+										
+										</td>
+										
+										<td>
+											#{entr.tarjetas.puk}
+										
+										</td>
+										<td>
+											#{entr.tarjetas.numCorto}
+										
+										</td>
+										
+										<td>
+											#{entr.tarjetas.numLargo}
+										
+										</td>
+										
+										<td>
+											#{entr.observaciones}
+										</td>
+									
+										<td>
+											<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
+											<f:setPropertyActionListener value="#{entr}" target="#{entrega}" />
 											
-											</h:commandButton>
-											<h:commandButton value="Borrar"  class="btn btn-danger" id="borrar" action="borrar">
-											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />
+											</p:commandButton>
 											
-											</h:commandButton>
+											<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
+											<f:setPropertyActionListener value="#{entr}" target="#{entrega}" />
+											
+											</p:commandButton>
 										</td>	
 										
-								    </tr>
+									</tr>
 								</ui:repeat>
 							</TBODY>
 						</table>
-						<h:commandButton class="btn btn-dark" value="Nuevo Dispositivo" id="nuevodisp" action="nuevodisp"></h:commandButton>
+						<h:commandButton class="btn btn-success fa" value="&#xf067; Nueva entrega" id="nuevo" action="nuevo"></h:commandButton>
+						<p></p>
 						<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>
 				</ui:fragment>
 			</h:panelGroup>

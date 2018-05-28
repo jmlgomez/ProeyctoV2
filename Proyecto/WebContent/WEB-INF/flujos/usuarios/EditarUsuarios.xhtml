@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	template="/WEB-INF/plantillas/general.xhtml">
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		template="/WEB-INF/plantillas/general.xhtml"
+		>
 	<ui:define name="title">
 		<h:outputText value="Editar Usuarios" />
 	</ui:define>
@@ -16,44 +17,41 @@
 				styleClass="EditarUsuarios">
 				<ui:fragment id="EditarUsuariosfrag">
 					
-					<h2>Alta Usuario</h2>
+					<h2>Modificar Usuario</h2>
 					
 
 						<div class="form-group col-md-6">
 							<label>Primer Apellido: </label>
-							<p:inputText required="true" class="form-control"  value="#{usuario.primerApellido}" />
+							<p:inputText required="false" class="form-control"  value="#{usuario.primerApellido}" />
 						
 						<p></p>
 						Segundo Apellido:
-						<p:inputText required="true" class="form-control"  value="#{usuario.segundoApellido}" />
+						<p:inputText required="false" class="form-control"  value="#{usuario.segundoApellido}" />
 						<p></p>
 						Nombre
-						<p:inputText required="true" class="form-control"  value="#{usuario.nombre}" />
+						<p:inputText required="false" class="form-control"  value="#{usuario.nombre}" />
 						<p></p>
 						Nombre de Usuario
-						<p:inputText required="true" class="form-control" value="#{usuario.nombreUsuario}" />
+						<p:inputText required="false" class="form-control" value="#{usuario.nombreUsuario}" />
 						<p></p>
 						ID Empleado
-						<p:inputText required="true"  class="form-control"  value="#{usuario.idEmpleado}" />
+						<p:inputText required="false"  class="form-control"  value="#{usuario.idEmpleado}" />
 						<p></p>
 						DNI
-						<p:inputText required="true" class="form-control" value="#{usuario.dni}" />
+						<p:inputText required="false" class="form-control" value="#{usuario.dni}" />
 						<p></p>
 						E-Mail
-						<p:inputText required="true" class="form-control" value="#{usuario.correo}" />
+						<p:inputText required="false" class="form-control" value="#{usuario.correo}" />
 						<p></p>
 						Puesto
-						<p:inputText required="true" class="form-control"  value="#{usuario.puesto}" />
+						<p:inputText required="false" class="form-control"  value="#{usuario.puesto}" />
 						<p></p>
-						<div class="form-check">
-      					<label class="form-check-label">
-       					 <p:selectBooleanCheckbox  value="#{usuario.terminalPropio}">Terminal Propio </p:selectBooleanCheckbox>
-       					 </label>
-       					 </div>
+						<input type="checkbox" id="terminpropio" value="#{usuario.terminalPropio}" />
+    					<label>Terminal Propio</label>
        					 <p></p>
 						Observaciones
 						<p></p>
-						<p:inputTextarea rows="6" cols="33" />
+						<p:inputTextarea value="#{usuario.observaciones}" rows="6" cols="33" />
 						<p></p>
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"

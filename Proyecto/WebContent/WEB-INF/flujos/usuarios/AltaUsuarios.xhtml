@@ -21,39 +21,36 @@
 
 						<div class="form-group col-md-6">
 							<label>Primer Apellido: </label>
-							<p:inputText required="true" class="form-control" placeholder="Introduce el primer apellido" value="#{usuario.primerApellido}" />
+							<p:inputText required="false" class="form-control" placeholder="Introduce el primer apellido" value="#{usuario.primerApellido}" />
 						
 						<p></p>
 						Segundo Apellido:
-						<p:inputText required="true" class="form-control" placeholder="Introduce el segundo apellido" value="#{usuario.segundoApellido}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el segundo apellido" value="#{usuario.segundoApellido}" />
 						<p></p>
 						Nombre
-						<p:inputText required="true" class="form-control" placeholder="Introduce el nombre" value="#{usuario.nombre}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el nombre" value="#{usuario.nombre}" />
 						<p></p>
 						Nombre de Usuario
-						<p:inputText required="true" class="form-control" placeholder="Introduce el nombre de usuario" value="#{usuario.nombreUsuario}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el nombre de usuario" value="#{usuario.nombreUsuario}" />
 						<p></p>
 						ID Empleado
-						<p:inputText required="true"  class="form-control" placeholder="Introduce el ID de Empleado" value="#{usuario.idEmpleado}" />
+						<p:inputText required="false"  class="form-control" placeholder="Introduce el ID de Empleado" value="#{usuario.idEmpleado}" />
 						<p></p>
 						DNI
-						<p:inputText required="true" class="form-control" placeholder="Introduce el DNI" value="#{usuario.dni}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el DNI" value="#{usuario.dni}" />
 						<p></p>
 						E-Mail
-						<p:inputText required="true" class="form-control" placeholder="Introduce el correo corporativo" value="#{usuario.correo}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el correo corporativo" value="#{usuario.correo}" />
 						<p></p>
 						Puesto
-						<p:inputText required="true" class="form-control" placeholder="Introduce el puesto" value="#{usuario.puesto}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el puesto" value="#{usuario.puesto}" />
 						<p></p>
-						<div class="form-check">
-      					<label class="form-check-label">
-       					 <p:selectBooleanCheckbox  value="#{usuario.terminalPropio}">Terminal Propio </p:selectBooleanCheckbox>
-       					 </label>
-       					 </div>
+      					<input type="checkbox" id="terminpropio" value="#{usuario.terminalPropio}" />
+    					<label>Terminal Propio</label>
        					 <p></p>
 						Observaciones
 						<p></p>
-						<p:inputTextarea rows="6" cols="33" />
+						<p:inputTextarea value="#{usuario.observaciones}" rows="6" cols="33" />
 						<p></p>
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"

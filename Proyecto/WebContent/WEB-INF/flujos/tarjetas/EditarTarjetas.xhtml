@@ -8,39 +8,45 @@
 
 
 >
-	<h2>Editar Tarjeta</h2>
+	
 	
 	<h:form id="EditarTarjetas" >
 			<h:panelGroup id="EditarTarjetas" layout="block" styleClass="EditarTarjetas">
 				<ui:fragment id="EditarTarjetasfrag">
-					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
-  							
+				<h2>Modificar Tarjeta</h2>
+					
+  							<div class="form-group col-md-6">
   						
-  							ICC <p:inputText required="true" class="form-control" placeholder="Introduce el ICC" value="#{tarjetas.icc}"/>
+  							<LABEL>ICC </LABEL>
+  							<p:inputText required="false" class="form-control" placeholder="Introduce el ICC" value="#{tarjetas.icc}"/>
   							<p></p>
-  							Número Corto <p:inputText required="true" class="form-control" placeholder="Introduce el número corto" value="#{tarjetas.numCorto}"/>
+  							<LABEL>Número Corto</LABEL> 
+  							<p:inputText required="false" class="form-control" placeholder="Introduce el número corto" value="#{tarjetas.numCorto}"/>
   							<p></p>
-  							Número Largo <p:inputText required="true" class="form-control" placeholder="Introduce el número largo" value="#{tarjetas.numlargo}"/>
+  							<LABEL>Número Largo</LABEL> 
+  							<p:inputText required="false" class="form-control" placeholder="Introduce el número largo" value="#{tarjetas.numlargo}"/>
   							<p></p>
-  							PIN <p:inputText  required="true" class="form-control" placeholder="Introduce el PIN" value="#{tarjetas.pin}"/>
+  							<LABEL>PIN</LABEL> 
+  							<p:inputText  required="false" class="form-control" placeholder="Introduce el PIN" value="#{tarjetas.pin}"/>
   							<p></p>
-  							PUK<p:inputText required="true" class="form-control" placeholder="Introduce el PUK" value="#{tarjetas.puk}"/>
+  							<LABEL>PUK</LABEL>
+  							<p:inputText required="false" class="form-control" placeholder="Introduce el PUK" value="#{tarjetas.puk}"/>
   							<p></p> 
-  							Tipo de Tarjeta
+  							<LABEL>Tipo de Tarjeta </LABEL>
   							<h:selectOneMenu value="#{tarjetas.TiposTarjetas}">
   							 <f:selectItems value="#{TiposTarjetas" var="modtar" 
   							 		itemLabel="#{modtar.tipoTarjeta" 
   							 		itemValue="#{modtar.idTipoTarjeta}" />	
 					        </h:selectOneMenu>
 					        
-					        Tipo de Tarifa
+					        <LABEL>Tipo de Tarifa</LABEL>
   							<h:selectOneMenu value="#{tarjetas.TiposTarifas}">
   							 <f:selectItems value="#{TiposTarifas" var="ttarf" 
   							 		itemLabel="#{ttarf.tipoTarifa" 
   							 		itemValue="#{ttarf.idTipoTarifa}" />	
 					        </h:selectOneMenu>
 					        
-					        Tipo de Contrato
+					        <LABEL>Tipo de Contrato</LABEL>
   							<h:selectOneMenu value="#{tarjetas.TiposContratos}">
   							 <f:selectItems value="#{TiposTiposContratos" var="tcontr" 
   							 		itemLabel="#{tcontr.tipoContrato" 
@@ -48,7 +54,7 @@
 					        </h:selectOneMenu>
 					        
 					         
-					        Estado de la tarjeta
+					        <LABEL>Estado de la tarjeta</LABEL>
   							<h:selectOneMenu value="#{tarjetas.EstadosTarjetas}">
   							 <f:selectItems value="#{EstadosTarjetas" var="esttarj" 
   							 		itemLabel="#{esttarj.estadoTarjeta" 
@@ -56,14 +62,14 @@
 					        </h:selectOneMenu>
 					        
 					        
-  							Observaciones
+  							<LABEL>Observaciones</LABEL>
   							<p:inputTextarea rows="6" cols="33" required="false" value="#{tarjetas.observaciones}"/>/>
   							<p></p>
   							
   							
 						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary"></h:commandButton>
 						<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-primary"></h:commandButton>
-			
+					</div>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

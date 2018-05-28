@@ -7,10 +7,10 @@
 <view-state id="ListadoEntregas" >
 		<var name="entrega" class="com.ayto.proyecto.modelo.Entregas"/>
 		<on-entry>
-			<set name="flowScope.entrega" value="serviceEntregasImpl.listarEntregas()"></set>
+			<set name="flowScope.entregas" value="serviceEntregasImpl.listarEntregas()"></set>
 		</on-entry>
 		<transition on="cancelar" to="ListadoEntregas"></transition>
-		<transition on="nuevaentrega" to="AltaEntregas"></transition>
+		<transition on="nuevo" to="AltaEntregas"></transition>
 		<transition on="modificar" to="EditarEntregas">
 			<set name="flowScope.entrega" value="entrega" />
 		</transition>
@@ -36,7 +36,7 @@
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarUsuarios" >
+	<view-state id="EditarEntregas" >
 		
 		<transition on="cancelar" to="ListadoEntregas"></transition>
 		<transition on="guardar" to="ListadoEntregas">

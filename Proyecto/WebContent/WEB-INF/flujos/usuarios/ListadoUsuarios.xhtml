@@ -13,26 +13,23 @@
 	<h:form id="ListadoUsuarios" >
 			<h:panelGroup id="ListadoUsuariosfrag" layout="block" styleClass="ListadoUsuarios">
 				<ui:fragment id="FListadoUsuariosfrag">
-		
-						<table class="ListadoUsuarios table table-striped" >
+						<h3>Listado de Usuarios</h3>
+						<table class="ListadoUsuarios table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
-									<th></th>
 									<th>Nombre y apellidos</th>
 									<th>Nombre de Usuario</th>
 									<th>Id de Empleado </th>
 									<th>DNI</th>
 									<th>Puesto</th>
 									<th>Terminal Propio</th>
-									<th> Opciones </th>
+									<th> Observaciones </th>
 								</tr>
 							</thead>
 							<TBODY>
-								<h3>Listado Usuarios</h3>
+							
 								<ui:repeat value="#{usuarios}" var="u">
 									<tr>
-										<td>			
-										</td>
 										<td>
 											#{u.nombre} #{u.primerApellido} #{u.segundoApellido}
 										</td>
@@ -50,9 +47,12 @@
 											#{u.puesto}
 										</td>
 										<td>
+											#{u.terminalPropio}
 											<img src="img/#{u.terminalPropio?'CheckOK':'CheckBad'}.png" />
 										</td>
-										
+										<td>
+											#{u.observaciones}
+										</td>
 										<td>
 										<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />

@@ -17,10 +17,13 @@
 						<table class="ListadoTerminales table table-striped table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
+									<!-- 
 									<th>Fecha de alta</th>
+									 -->
 									<th>IMEI</th>
 									<th>Lote</th>
 									<th>Tipo de Temrinal</th>
+									<th>Marca</th>
 									<th>Compañia </th>
 									<th>Modelo de Terminal</th>
 									<th>Estado del Terminal</th>
@@ -31,9 +34,11 @@
 							<TBODY>
 								<ui:repeat value="#{terminales}" var="term">
 									<tr>
+									<!-- 
 										<td>
 											#{term.fechaAlta}
 										</td>
+										 -->
 										<td>
 											#{term.imei}
 										</td>
@@ -45,6 +50,11 @@
 										<td>
 											#{term.tiposTerminales.tipoTerminal}
 										</td>
+										
+										<td>
+										   #{term.modelosTerminales.marcas.marca}
+										</td>
+										
 										<td>
 											#{term.companiasTerminales.companiasTerminal}
 										</td>
@@ -71,13 +81,11 @@
 										</p:commandButton>
 										
 										</td>
-										
 								    </tr>
 								</ui:repeat>
 							</TBODY>
 						</table>
-						 <p:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Terminal" id="nuevo" action="nuevo"></p:commandButton>
-	
+						 <p:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Terminal" id="nuevoterminal" action="nuevoterminal"></p:commandButton>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>
