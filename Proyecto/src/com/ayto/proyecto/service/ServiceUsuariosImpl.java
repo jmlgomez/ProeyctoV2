@@ -39,7 +39,7 @@ public class ServiceUsuariosImpl implements ServiceUsuarios {
 		
 try {
 			usuariosDAO.borrarUsuarios(u);
-		        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito"));
+		        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -54,6 +54,7 @@ try {
 	public boolean modificarUsuarios(Usuarios u) {
 try {
 			usuariosDAO.modificarUsuarios(u);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -90,6 +91,27 @@ try {
 		return null;
 	}
 
+	@Override
+	public List<Usuarios> listarUsuarioslibres() {
+		
+		try {
+			
+			return usuariosDAO.listarUsuarioslibres();
+		}catch (Exception e) {
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el usuario!<br/>"+e.getMessage(), "Cont√°cta con administrador."));
+			 
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public boolean insertarDepartamentosAyto(DepartamentosAyto da) {
 try {

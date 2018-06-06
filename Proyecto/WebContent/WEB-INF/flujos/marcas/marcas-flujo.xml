@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoMarcas" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="marca" class="com.ayto.proyecto.modelo.Marcas"/>
+		<on-entry>
+			<set name="flowScope.marcas" value="serviceTerminalesImpl.listadoMarcas()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoMarcas"></transition>
+		<transition on="nuevo" to="AltaMarcas"></transition>
+		<transition on="modificar" to="EditarMarcas">
+			<set name="flowScope.marca" value="marca" />
+		</transition>
+		<transition on="borrar" to="ListadoMarcas">
+			 <evaluate expression="serviceTerminalesImpl.borrarMarca(marca)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaMarcas" >
+		<on-entry>
+			<set name="flowScope.marca" value="new com.ayto.proyecto.modelo.Marcas()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoMarcas"></transition>
+		<transition on="guardar" to="ListadoMarcas">
+			 <evaluate expression="serviceTerminalesImpl.insertarMarca(marca)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarMarcas" >
+		
+		<transition on="cancelar" to="ListadoMarcas"></transition>
+		<transition on="guardar" to="ListadoMarcas">
+		 	<evaluate expression="serviceMarcasImpl.modificarMarca(marca)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

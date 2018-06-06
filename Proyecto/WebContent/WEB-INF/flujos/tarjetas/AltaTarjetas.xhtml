@@ -18,70 +18,68 @@
 				<ui:fragment id="AltaTarjetasfrag">
 					<h2>Alta Tarjeta</h2>
 					<div class="form-group col-md-6">
-
-						<LABEL>ICC</LABEL>
+						<LABEL>ICC de la tarjeta</LABEL>
 						<p:inputText required="false" class="form-control"
 							placeholder="Introduce el ICC de la tarjeta" 
-							value="#{tarjetas.icc}" />
+							value="#{tarjeta.icc}" />
 						<p></p>
 						<LABEL>Número Corto</LABEL>
 						<p:inputText required="false" class="form-control"
 							placeholder="Introduce el número corto"
-							value="#{tarjetas.numCorto}" />
+							value="#{tarjeta.numCorto}" />
 						<p></p>
 						<LABEL>Número Largo</LABEL>
 						<p:inputText required="false" class="form-control"
 							placeholder="Introduce el número largo"
-							value="#{tarjetas.numlargo}" />
+							value="#{tarjeta.numLargo}" />
 						<p></p>
 						<LABEL>PIN</LABEL>
 						<p:inputText required="false" class="form-control"
-							placeholder="Introduce el PIN" value="#{tarjetas.pin}" />
+							placeholder="Introduce el PIN" value="#{tarjeta.pin}" />
 						<p></p>
 						<LABEL>PUK</LABEL>
 						<p:inputText required="false" class="form-control"
-							placeholder="Introduce el PUK" value="#{tarjetas.puk}" />
+							placeholder="Introduce el PUK" value="#{tarjeta.puk}" />
 						<p></p>
 						<LABEL>Tipo de Tarjeta</LABEL>
-						<h:selectOneMenu value="#{tarjetas.TiposTarjetas}">
-							<f:selectItems value="#{TiposTarjetas}" var="modtar"
-								itemLabel="#{modtar.tipoTarjeta}"
-								itemValue="#{modtar.idTipoTarjeta}" />
+						<p></p>
+						<h:selectOneMenu value="#{tarjeta.tiposTarjetas}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{tiposTarjetas}" var="tiptar"
+								itemLabel="#{tiptar.tipoTarjeta}"
+								itemValue="#{tiptar}" />
 						</h:selectOneMenu>
+<p></p>
 
 						<LABEL>Tipo de Tarifa</LABEL>
-						<h:selectOneMenu value="#{tarjetas.TiposTarifas}">
-							<f:selectItems value="#{TiposTarifas}" var="ttarf"
-								itemLabel="#{ttarf.tipoTarifa}" itemValue="#{ttarf.idTipoTarifa}" />
+						<p></p>
+						<h:selectOneMenu value="#{tarjeta.tiposTarifas}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{tiposTarifas}" var="ttarf"
+								itemLabel="#{ttarf.tipoTarifa}" 
+								itemValue="#{ttarf}" />
 						</h:selectOneMenu>
-
-						<LABEL>Tipo de Contrato</LABEL>
-						<h:selectOneMenu value="#{tarjetas.TiposContratos}">
-							<f:selectItems value="#{TiposTiposContratos}" var="tcontr"
-								itemLabel="#{tcontr.tipoContrato}"
-								itemValue="#{tcontr.idTipoContrato}" />
-						</h:selectOneMenu>
-
+<p></p>
 
 						<LABEL>Estado de la tarjeta</LABEL>
-						<h:selectOneMenu value="#{tarjetas.EstadosTarjetas}">
-							<f:selectItems value="#{EstadosTarjetas}" var="esttarj"
+						<p></p>
+						<h:selectOneMenu value="#{tarjeta.estadosTarjetas}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{estadosTarjetas}" var="esttarj"
 								itemLabel="#{esttarj.estadoTarjeta}"
-								itemValue="#{tcontr.idEstadoTarjeta}" />
+								itemValue="#{tcontr}" />
 						</h:selectOneMenu>
 
+<p></p>
 
 						<LABEL>Observaciones</LABEL>
+						<p></p>
 						<p:inputTextarea rows="6" cols="33" required="false"
-							value="#{tarjetas.observaciones}" />
+							value="#{tarjeta.observaciones}" />
 						
 						<p></p>
 
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"
 							class="btn btn-primary"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"
-							class="btn btn-primary"></h:commandButton>
+						<h:commandLink value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandLink>
 					</div>
 				</ui:fragment>
 			</h:panelGroup>

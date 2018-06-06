@@ -6,8 +6,11 @@
         
 <!-- ******************************************************************************************************** -->
 	<!-- PARA LISTAR /BORRAR -->
-	
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
 	<view-state id="ListadoDispositivos" >
+	<secured attributes="ROLE_ADMIN, ROLE_INVITADO" match="any"/>
 		<var name="dispositivo" class="com.ayto.proyecto.modelo.Dispositivos"/>
 		<on-entry>
 			<set name="flowScope.dispositivos" value="serviceDispositivosImpl.listadoDispositivos()"></set>

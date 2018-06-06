@@ -251,4 +251,8 @@ public class Usuarios implements java.io.Serializable {
 		this.entregases = entregases;
 	}
 
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdUsuario());
+    }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoTTarjetas" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="tipotarjeta" class="com.ayto.proyecto.modelo.TiposTarjetas"/>
+		<on-entry>
+			<set name="flowScope.tipostarjetas" value="serviceTarjetasImpl.listadoTiposTarjetas()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoTTarjetas"></transition>
+		<transition on="nuevo" to="AltaTTarjetas"></transition>
+		<transition on="modificar" to="EditarTTarjetas">
+			<set name="flowScope.tipotarjeta" value="tipotarjeta" />
+		</transition>
+		<transition on="borrar" to="ListadoTTarjetas">
+			 <evaluate expression="serviceTarjetasImpl.borrarTipoTarjetas(tipotarjeta)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaTTarjetas" >
+		<on-entry>
+			<set name="flowScope.tipotarjeta" value="new com.ayto.proyecto.modelo.TiposTarjetas()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoTTarjetas"></transition>
+		<transition on="guardar" to="ListadoTTarjetas">
+			 <evaluate expression="serviceTarjetasImpl.insertarTipoTarjetas(tipotarjeta)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarTTarjetas" >
+		
+		<transition on="cancelar" to="ListadoTTarjetas"></transition>
+		<transition on="guardar" to="ListadoTTarjetas">
+		 	<evaluate expression="serviceTarjetasImpl.modificarTipoTarjetas(tipotarjeta)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

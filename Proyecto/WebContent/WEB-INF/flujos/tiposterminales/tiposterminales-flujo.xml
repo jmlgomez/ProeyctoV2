@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoTiposTerminales" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="lote" class="com.ayto.proyecto.modelo.TiposTerminales"/>
+		<on-entry>
+			<set name="flowScope.tiposterminales" value="serviceTerminalesImpl.listadoTiposTerminales()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoTiposTerminales"></transition>
+		<transition on="nuevo" to="AltaTiposTerminales"></transition>
+		<transition on="modificar" to="EditarTiposTerminales">
+			<set name="flowScope.lote" value="tipoterminal" />
+		</transition>
+		<transition on="borrar" to="ListadoTiposTerminales">
+			 <evaluate expression="serviceTerminalesImpl.borrarTiposTerminales(tipoterminal)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaTiposTerminaless" >
+		<on-entry>
+			<set name="flowScope.tipoterminal" value="new com.ayto.proyecto.modelo.TiposTerminales()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoTiposTerminales"></transition>
+		<transition on="guardar" to="ListadoTiposTerminales">
+			 <evaluate expression="serviceTerminalesImpl.insertarTiposTerminales(tipoterminal)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarLotes" >
+		
+		<transition on="cancelar" to="ListadoTiposTerminales"></transition>
+		<transition on="guardar" to="ListadoTiposTerminales">
+		 	<evaluate expression="serviceTerminalesImpl.modificarTiposTerminales(tipoterminal)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

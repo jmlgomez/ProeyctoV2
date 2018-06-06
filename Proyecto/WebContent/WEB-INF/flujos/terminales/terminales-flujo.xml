@@ -10,6 +10,7 @@
 	<!-- PARA LISTAR-->
 	
 	<view-state id="ListadoTerminales" >
+	<secured attributes="ROLE_ADMIN"/>
 		<var name="terminal" class="com.ayto.proyecto.modelo.Terminales"/>
 		<on-entry>
 			<set name="flowScope.terminales" value="serviceTerminalesImpl.listarTerminales()"></set>
@@ -28,11 +29,19 @@
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaTerminales" >
 		<on-entry>
+			<set name="viewScope.titulo" value="'Alta Terminales'"  type="string"></set>
 			<set name="flowScope.terminal" value="new com.ayto.proyecto.modelo.Terminales()"></set>
+			<!-- Configuración para los depleglables -->
+			<set name="viewScope.lotesTerminales" value="serviceTerminalesImpl.listadoLotesTerminales()"></set>
+			<set name="viewScope.tiposTerminales" value="serviceTerminalesImpl.listadoTiposTerminales()"></set>
+			<set name="viewScope.companiasTerminales" value="serviceTerminalesImpl.listadoCompaniasTerminales()"></set>
+			<set name="viewScope.marcas" value="serviceTerminalesImpl.listadoMarcas()"></set>
+			<set name="viewScope.modelosTerminales" value="serviceTerminalesImpl.listadoModelosTerminales()"></set>
+			<set name="viewScope.estadosTerminales" value="serviceTerminalesImpl.listadoEstadosTerminales()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoTerminales"></transition>
-		<transition on="guardar" to="Listadoterminales">
+		<transition on="guardar" to="ListadoTerminales">
 			 <evaluate expression="serviceTerminalesImpl.insertarTerminales(terminal)"></evaluate> 
 		</transition>
 	</view-state>
@@ -40,8 +49,17 @@
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarTerminales" >
-		
+	<view-state id="EditarTerminales" view="AltaTerminales.xhtml">
+		<on-entry>
+		 	<set name="viewScope.titulo" value="'Modificar Terminal'"  type="string"></set>
+			<!-- Configuración para los depleglables -->
+			<set name="viewScope.lotesTerminales" value="serviceTerminalesImpl.listadoLotesTerminales()"></set>
+			<set name="viewScope.tiposTerminales" value="serviceTerminalesImpl.listadoTiposTerminales()"></set>
+			<set name="viewScope.companiasTerminales" value="serviceTerminalesImpl.listadoCompaniasTerminales()"></set>
+			<set name="viewScope.marcas" value="serviceTerminalesImpl.listadoMarcas()"></set>
+			<set name="viewScope.modelosTerminales" value="serviceTerminalesImpl.listadoModelosTerminales()"></set>
+			<set name="viewScope.estadosTerminales" value="serviceTerminalesImpl.listadoEstadosTerminales()"></set>
+		</on-entry>
 		<transition on="cancelar" to="ListadoTerminales"></transition>
 		<transition on="guardar" to="ListadoTerminales">
 		 	<evaluate expression="serviceTerminalesImpl.modificarTerminales(terminal)"></evaluate> 

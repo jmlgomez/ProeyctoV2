@@ -16,15 +16,15 @@
 	<import resource="webflow-config.xml" />
 	
 	<import resource="datasource-config.xml" /> 
-	<!--<import resource="security-config.xml" />
-    <import resource="ldap-config.xml" />-->
+	<import resource="security-config.xml" />
+    <!--<import resource="ldap-config.xml" />-->
     
 	<context:component-scan base-package="com.ayto.proyecto" />
 	<mvc:annotation-driven />
 	
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<!--<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.faces.mvc.JsfView" />
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".xhtml" />
-	</bean>
+	</bean>-->
 </beans>

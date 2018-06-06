@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		template="/WEB-INF/plantillas/general.xhtml"
+		>
+	<ui:define name="title"><h:outputText value="Listado Lotes" /></ui:define>
+	
+	<ui:define name="content">
+	<h:form id="ListadoLotes" >
+			<h:panelGroup id="ListadoLotesfrag" layout="block" styleClass="ListadoLotes">
+				<ui:fragment id="FListadoLotesfrag">
+						<h3>Lotes</h3>
+						<table class="ListadoLotes table-hover table-bordered" id="tablalistado">
+							<thead>
+								<tr>
+									<th>Lotes</th>
+								</tr>
+							</thead>
+							<TBODY>
+							
+								<ui:repeat value="#{lotes}" var="lot">
+									<tr class="m-5">
+										<td>
+											#{lot.lote}
+										</td>
+		
+										<td>
+										<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
+											<f:setPropertyActionListener value="#{lot}" target="#{lote}" />
+										</p:commandButton> 
+										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
+											<f:setPropertyActionListener value="#{lot}" target="#{lote}" />
+										</p:commandButton>
+										
+										</td>
+										
+								    </tr>
+						
+								</ui:repeat>
+								
+							</TBODY>
+						</table>
+						<h:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Lote" id="nuevo" action="nuevo"></h:commandButton>
+						
+				</ui:fragment>
+			</h:panelGroup>
+        </h:form>
+     </ui:define>
+</ui:composition>

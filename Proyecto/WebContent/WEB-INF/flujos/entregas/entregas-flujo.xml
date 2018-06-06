@@ -4,7 +4,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR /BORRAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
 <view-state id="ListadoEntregas" >
+<secured attributes="ROLE_ADMIN"/>
 		<var name="entrega" class="com.ayto.proyecto.modelo.Entregas"/>
 		<on-entry>
 			<set name="flowScope.entregas" value="serviceEntregasImpl.listarEntregas()"></set>
@@ -25,7 +31,13 @@
 	<view-state id="AltaEntregas" >
 		<on-entry>
 			<set name="flowScope.entrega" value="new com.ayto.proyecto.modelo.Entregas()"></set>
+			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarioslibres()"></set>
+			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
+			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
+		<on-render>
+		<set name="flowScope.modelosEntregas" value="serviceEntregasImpl.listarEntregas()"></set>
+		</on-render>
 		
 		<transition on="cancelar" to="ListadoEntregas"></transition>
 		<transition on="guardar" to="ListadoEntregas">
@@ -36,8 +48,13 @@
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarEntregas" >
-		
+	<view-state id="EditarEntregas" view="AltaEntregas.xhtml">
+		<on-entry>
+
+			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarioslibres()"></set>
+			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
+			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
+		</on-entry>
 		<transition on="cancelar" to="ListadoEntregas"></transition>
 		<transition on="guardar" to="ListadoEntregas">
 		 	<evaluate expression="serviceEntregasImpl.modificarEntregas(entrega)"></evaluate> 

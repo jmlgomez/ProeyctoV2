@@ -5,10 +5,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	template="/WEB-INF/plantillas/general.xhtml"
-	>
+	template="/WEB-INF/plantillas/general.xhtml">
 	<ui:define name="title">
-		<h:outputText value="Alta de entregas" />
+		<h:outputText value="Alta entregas" />
 	</ui:define>
 
 	<ui:define name="content">
@@ -16,116 +15,71 @@
 			<h:panelGroup id="AltaEntregas" layout="block"
 				styleClass="AltaEntregas">
 				<ui:fragment id="AltaEntregasfrag">
-					
-					<h2>Alta Entregas</h2>
-					
-
+					<h2>Alta Entrega</h2>
 						<div class="form-group col-md-6">
-						
 						<label>Fecha de Entrega</label>
   						<p:calendar required="false" value="#{entrega.fechaEntrega}" />
-						<label>Nombre y Apellidos</label>
-						<h:selectOneMenu value="#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido} #{entrega.usuarios.nombre}">
-  							 <f:selectItems value="#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido} #{entrega.usuarios.nombre}" var="usr" 
-  							 		itemLabel= "#{usr.usuarios.primerApellido} #{usr.usuarios.segundoApellido} #{usr.usuarios.nombre}" 
-  									itemValue="#{usr.idUsuario}"/>
-						
-						</h:selectOneMenu> 
-						
 						<p></p>
-						<label>Selecciona el identificador de empleado </label>
-						<h:selectOneMenu value="#{entrega.usuarios.idEmpleado}"/>
-  							 <f:selectItems value="#{entrega.usuarios.idEmpleado}" var="idempl" 
-  							 		itemLabel="#{idempl.idEmpleado}" 
-  							 		itemValue="#{idempl.idUsuario}"/>
+						<h3>Datos del Usuario</h3>
+						
+						<label>Nombre y apellidos, DNI</label>
+						<p></p>
+						<h:selectOneMenu value="#{entrega.usuarios}" converter="omnifaces.SelectItemsConverter"><!-- Variable donde se almacena el valor del usuario -->
+						<f:selectItem itemValue="#{null}" itemLabel="seeccine tarjeta"/>
+  							 <f:selectItems value="#{usuarios}" var="usr" 
+  							 		itemLabel= "#{usr.primerApellido} , #{usr.segundoApellido} , #{usr.nombre}- #{usr.dni}" 
+  									itemValue="#{usr}"/><!-- Variable dond estan la lista de los usuarios -->
 						</h:selectOneMenu> 
 						<p></p>
-						
-						<label>Selecciona el DNI del empleado </label>
-						<h:selectOneMenu  value="#{entrega.usuarios.dni}" />
-  							 <f:selectItems value="#{entrega.usuarios.dni}" var="dniempl" 
-  							 		itemLabel="#{dniempl.dni}" 
-  							 		itemValue="#{dniempl.idUsuario}"/>
-						</h:selectOneMenu> 
+						<h3>Datos del Terminal</h3>
 						<p></p>
-  						<label> Selecciona el IMEI del Terminal </label>
-  						<h:selectOneMenu value="#{entrega.terminales.imei}"/>
-  							 <f:selectItems value="#{entrega.terminales.imei}"var="imeiterm" 
-  							 		itemLabel="#{imeiterm.imei}" 
-  							 		itemValue="#{imeiterm.idTerminal}"/>
-						</h:selectOneMenu> 
-  						
-  						
+  						<label>IMEI , Lote, tipo y modelo del terminal</label>
   						<p></p>
-						<label>Lote al que pertenece el terminal </label>
-  							<h:selectOneMenu value="#{entrega.terminales.lotesTerminales}">
-  							 <f:selectItems value="#{entrega.terminales.lotesTerminales}" var="lotes" 
-  							 		itemLabel="#{lotes.lote}" 
-  							 		itemValue="#{lotes.idLoteTerminal}" />	
-  							 </h:selectOneMenu>					 		
-						<p></p>
-						<label>Modelo del terminal </label>
-  							<h:selectOneMenu value="#{entrega.terminales.modelosTerminales}">
-  							 <f:selectItems value="#{entrega.terminales.modelosTerminales}" var="modterm" 
-  							 		itemLabel="#{modterm.modelos}" 
-  							 		itemValue="#{lotes.idModeloTerminal}" />
-  							 </h:selectOneMenu>						 		
-						<p></p>
-						<label> Tipo de Terminal </label>
-  							<h:selectOneMenu value="#{entrega.terminales.tiposTerminales}">
-  							 <f:selectItems value="#{entrega.terminales.tiposTerminales}" var="tipoterm" 
-  							 		itemLabel="#{tipoterm.tipoTerminal}" 
-  							 		itemValue="#{tipoterm.idTipoTerminal}" />	
-					        </h:selectOneMenu>
-					        <p></p>
-					        <label> ICC de la Tarjeta </label>
-  							<h:selectOneMenu value="#{entrega.tarjetas}">
-  							 <f:selectItems value="#{entrega.tarjetas}" var="icctar" 
-  							 		itemLabel="#{icctar.icc}" 
-  							 		itemValue="#{icctar.idTarjeta}" />	
-					        </h:selectOneMenu>
-					        <p></p>
-					         <label> PIN </label>
-  							<h:selectOneMenu value="#{entrega.tarjetas}">
-  							 <f:selectItems value="#{entrega.tarjetas}" var="pintar" 
-  							 		itemLabel="#{pintar.pin}" 
-  							 		itemValue="#{pintar.idTarjeta}" />	
-					        </h:selectOneMenu>
-					        <p></p>
-					         <label> PUK </label>
-  							<h:selectOneMenu value="#{entrega.tarjetas}">
-  							 <f:selectItems value="#{entrega.tarjetas}" var="puktar" 
-  							 		itemLabel="#{puktar.puk}" 
-  							 		itemValue="#{puktar.idTarjeta}" />	
-					        </h:selectOneMenu>
-					        <p></p>
-					         <label> Número Corto </label>
-  							<h:selectOneMenu value="#{entrega.tarjetas}">
-  							 <f:selectItems value="#{entrega.tarjetas}" var="numcort" 
-  							 		itemLabel="#{numcort.numCorto}" 
-  							 		itemValue="#{numcort.idTarjeta}" />	
-					        </h:selectOneMenu>
-					        <p></p>
-					         <label> Número Largo </label>
-  							<h:selectOneMenu value="#{entrega.tarjetas}">
-  							 <f:selectItems value="#{entrega.tarjetas}" var="numlarg" 
-  							 		itemLabel="#{numlarg.numLargo}" 
-  							 		itemValue="#{numlarg.idtarjeta}" />	
-					        </h:selectOneMenu>
-					        
-						
+  						<h:selectOneMenu value="#{entrega.terminales}" converter="omnifaces.SelectItemsConverter" >
+  						<f:selectItem itemValue="#{null}" itemLabel="seeccine tarjeta"/>
+  							 <f:selectItems value="#{terminales}" var="term" 
+  							 		itemLabel="#{term.imei}, #{term.lotesTerminales.lote} , #{term.tiposTerminales.tipoTerminal}, #{term.modelosTerminales.modelos}" 
+  							 		itemValue="#{term}"/>
+						</h:selectOneMenu> 
+  						<p></p>
+  						<h3>Datos de la tarjeta</h3>
+  						<p></p>
+					    <label> ICC, PIN, PUK, número Corto, número Largo </label>
+					    <p></p>
+  								
+  							 <p:selectOneMenu value="#{entrega.tarjetas}" converter="omnifaces.SelectItemsConverter"
+						                          var="tarj" filter="true"  showCheckbox="true" >
+						                         <f:selectItem itemValue="#{null}" itemLabel="seeccine tarjeta"/>
+						            <f:selectItems value="#{tarjetas}" var="tarj" 
+						            itemLabel="#{tarj.icc}, #{tarj.pin}, #{tarj.puk}, #{tarj.numCorto}, #{tarj.numLargo}" 
+						            itemValue="#{tarj}" />
+						 
+						            <p:column>
+						                <h:outputText styleClass="ui-theme ui-theme-#{tarj.icc}" /><!-- Critero de busqueda -->
+						            </p:column>
+						 
+						            <p:column>
+						                <h:outputText value="#{tarj.icc} - Tel: #{tarj.numCorto} " /> <!-- Texto a mostrar -->
+						            </p:column>
+						        </p:selectOneMenu>      
        					 <p></p>
-						<label>Firma</label>
+       					 <!--  
+       					 <h2>Datos del dispositivo</h2>
+					        <label> Número de serie, Tipo, Modelo, Marca </label>
+  							<h:selectOneMenu value="#{entrega.terminales.modelosTerminales.marcas.marca}" converter="omnifaces.SelectItemsConverter" >
+       					 -->
+       					 
+						<label>Observaciones</label>
 						<p></p>
 						<p:inputTextarea  value="#{entrega.observaciones}" rows="6" cols="33" />
 						<p></p>
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"
 							class="btn btn-primary"></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelar" action="cancelar"
-							class="btn btn-secondary"></h:commandButton>
-							<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>
-					<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary"></h:commandButton>
+						<h:commandLink value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandLink>
+						<p></p>
+						<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>
+					
 				</div>
 				</ui:fragment>
 			</h:panelGroup>

@@ -29,7 +29,7 @@
 							<TBODY>
 							
 								<ui:repeat value="#{usuarios}" var="u">
-									<tr>
+									<tr class="m-5">
 										<td>
 											#{u.nombre} #{u.primerApellido} #{u.segundoApellido}
 										</td>
@@ -47,7 +47,7 @@
 											#{u.puesto}
 										</td>
 										<td>
-											#{u.terminalPropio}
+											
 											<img src="img/#{u.terminalPropio?'CheckOK':'CheckBad'}.png" />
 										</td>
 										<td>
@@ -58,6 +58,7 @@
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />
 										</p:commandButton> 
 										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
+										<p:confirm header="Confirmation" message="seguro?" icon="ui-icon-alert" />
 											<f:setPropertyActionListener value="#{u}" target="#{usuario}" />
 										</p:commandButton>
 										
@@ -70,7 +71,10 @@
 							</TBODY>
 						</table>
 						<h:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Usuario" id="nuevousuario" action="nuevousuario"></h:commandButton>
-						
+						 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

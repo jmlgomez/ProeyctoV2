@@ -175,4 +175,21 @@ public class UsuariosDAOImpl implements UsuariosDAO {
 		return null;
 	}
 
+	@Override
+	@Transactional
+	public List<Usuarios> listarUsuarioslibres() {
+		
+		try {
+
+			//Query q = (Query) entityManager.createQuery("from Usuarios u where not exits (from Entregas e where e.usuarios=u.idUsuario)");
+			Query q = (Query) entityManager.createQuery("from Usuarios");
+			return q.getResultList();
+		} catch (RuntimeException ex) {
+			ex.printStackTrace();
+
+		}
+		return null;
+	}
+	
+	
 }

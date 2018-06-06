@@ -276,5 +276,10 @@ public class Tarjetas implements java.io.Serializable {
 	public void setAveriasTarjetasesForTarjetaAntigua(Set<AveriasTarjetas> averiasTarjetasesForTarjetaAntigua) {
 		this.averiasTarjetasesForTarjetaAntigua = averiasTarjetasesForTarjetaAntigua;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdTarjeta());
+    }
 
 }

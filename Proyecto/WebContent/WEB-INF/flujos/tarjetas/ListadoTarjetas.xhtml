@@ -23,7 +23,6 @@
 									<th>PUK</th>
 									<th>Tipo de Tarjeta</th>
 									<th>Tipo de Tarifa</th>
-									<th>Tipo de Contrato</th>
 									<th>Estado de la tarjeta</th>
 									<th>Observaciones</th>
 								</tr>
@@ -31,9 +30,7 @@
 							<TBODY>
 								<ui:repeat value="#{tarjetas}" var="tar">
 									<tr>
-										<td>
 
-										</td>
 										<td>
 											#{tar.icc}
 										</td>
@@ -55,13 +52,11 @@
 											#{tar.tiposTarjetas.tipoTarjeta}
 										</td>
 										<td>
-											#{tar.tiposTarifas}
+											#{tar.tiposTarifas.tipoTarifa}
 										</td>
+										
 										<td>
-											#{tar.tiposContratos}
-										</td>
-										<td>
-											#{tar.estadosTarjetas}
+											#{tar.estadosTarjetas.estadoTarjeta}
 										</td>
 										<td>
 											#{tar.observaciones}

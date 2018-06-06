@@ -18,19 +18,24 @@
 				<ui:fragment id="AltaDispositivosfrag">
 					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
   							
-  							<h2>Alta Dispositivos</h2>
+  							<h2>Alta Dispositivo</h2>
   							<p></p>
   							<div class="form-group col-md-6">
-  							Modelo de Dispositivo: 
-  							<h:selectOneMenu value="#{dispositivo.modelosDispositivos}" >
-  							 <f:selectItems value="#{modelosDispositivos}" var="tipodisp" 
-  							 		itemLabel="#{tipodisp.modeloDispositivo}" 
-  							 		itemValue="#{tipodisp.idModeloDispositivo}" />	
-					        </h:selectOneMenu> 
+  							<LABEL>Número de Serie del dispositivo</LABEL>
+  							 <p:inputText class="form-control" placeholder="Introduce el número de serie del dispositivo" required="true" value="#{dispositivo.numeroserieDispositivo}"/>
   							<p></p>
-  							Número de Serie: <p:inputText class="form-control" placeholder="Introduce el número de serie" required="true" value="#{dispositivo.numeroserieDispositivo}"/>
+  							<label>Tipo de dispositivo </label>
+							<p:inputText required="false" class="form-control" placeholder="Introduce el tipo de dispositivo que es. Ej Tablet..Pincho USB...ect" value="#{dispositivo.tipoDispositivo}" />
   							<p></p>
-  							Observaciones
+  							
+  							<LABEL> Marca y modelo del Dispositivo</LABEL>
+  							<h:selectOneMenu value="#{dispositivo.modelosDispositivos}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{modelosDispositivos}" var="tipodisp"
+							itemLabel=" #{tipodisp.marcas.marca} - #{tipodisp.modeloDispositivo}"
+							itemValue="#{tipodisp}" />
+							</h:selectOneMenu> 
+  							<p></p>
+  							<LABEL>Observaciones</LABEL>
   							<p></p> 
   							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivo.observaciones}"/>
   							<p></p>

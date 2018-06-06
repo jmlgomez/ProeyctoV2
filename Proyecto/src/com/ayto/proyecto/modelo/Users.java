@@ -25,7 +25,7 @@ public class Users implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	private Set<Roles> roleses = new HashSet<Roles>(0);
+	private Set<Roles> roleses = new HashSet<Roles>();
 
 	public Users() {
 	}
@@ -60,7 +60,7 @@ public class Users implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = {
 			@JoinColumn(name = "username", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "rolename", nullable = false, updatable = false) })

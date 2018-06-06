@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoModelos" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="modelo" class="com.ayto.proyecto.modelo.ModelosTerminales"/>
+		<on-entry>
+			<set name="flowScope.modelos" value="serviceTerminalesImpl.listadoModelosTerminales()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoModelos"></transition>
+		<transition on="nuevo" to="AltaModelos"></transition>
+		<transition on="modificar" to="EditarModelos">
+			<set name="flowScope.modelo" value="modelo" />
+		</transition>
+		<transition on="borrar" to="ListadoModelos">
+			 <evaluate expression="serviceTerminalesImpl.borrarModelosTerminales(modelo)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaModelos" >
+		<on-entry>
+			<set name="flowScope.modelo" value="new com.ayto.proyecto.modelo.ModelosTerminales()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoModelos"></transition>
+		<transition on="guardar" to="ListadoModelos">
+			 <evaluate expression="serviceTerminalesImpl.insertarModelosTerminales(modelo)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarModelos" >
+		
+		<transition on="cancelar" to="ListadoModelos"></transition>
+		<transition on="guardar" to="ListadoModelos">
+		 	<evaluate expression="serviceTerminalesImpl.modificarModelosTerminales(modelo)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

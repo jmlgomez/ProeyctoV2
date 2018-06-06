@@ -147,7 +147,7 @@ public class Terminales implements java.io.Serializable {
 		this.tiposTerminales = tiposTerminales;
 	}
 
-	@Column(name = "numSerie", unique = true, nullable = false, length = 90)
+	@Column(name = "numSerie",  length = 90)
 	public String getNumSerie() {
 		return this.numSerie;
 	}
@@ -274,5 +274,10 @@ public class Terminales implements java.io.Serializable {
 	public void setAveriasTerminalesesForImeiNuevo(Set<AveriasTerminales> averiasTerminalesesForImeiNuevo) {
 		this.averiasTerminalesesForImeiNuevo = averiasTerminalesesForImeiNuevo;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getIdTerminal());
+    }
 
 }

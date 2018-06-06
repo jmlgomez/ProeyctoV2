@@ -4,7 +4,7 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       >
       
 <f:view contentType="text/html">
@@ -26,10 +26,11 @@ xmlns:p="http://primefaces.org/ui"
 	<h:body>
  		<div id="cabecera">
  			<h1>Gestión de Telefonía</h1>
- 			<div id="usuario">Hola, (aqui vendria el usuario)</div>	
- 			<div id="sesion">Cerrar sesión</div>
+ 			<div id="usuario">Hola, #{user==null?"Anónimo":user.username}</div>	
+ 			<div id="sesion"><a href="telefonia/logout">Cerrar sesión</a></div>
 		</div>
-		<p:messages id="messages" showDetail="true" closable="true"></p:messages>
+		
+		 <p:growl id="growl" life="2000" />
 		<!-- <nav class="navegacion-light form-inline-block" id="navegacion">
  		<a href="telefonia/usuarios" class="btn btn-outline-success">Usuarios</a>
  	 	<a href="telefonia/terminales" class="btn btn-outline-success">Terminales</a>
@@ -45,12 +46,14 @@ xmlns:p="http://primefaces.org/ui"
 						<li><a href="telefonia/usuarios">Listar Usuarios</a></li>
 					</ul>
 				</li>
+				<!--<c:if test="user.username.equals('b') or true">-->
 				<li>
 					<div class="link"><i class="fas fa-mobile-alt"></i>Terminales<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><a href="telefonia/terminales">Listar Terminales</a></li>
 					</ul>
 				</li>
+				<!--</c:if>-->
 				<li>
 					<div class="link"><i class="fa fa-mobile"></i>Tarjetas<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
@@ -66,9 +69,31 @@ xmlns:p="http://primefaces.org/ui"
 				<li><div class="link"><i class="fas fa-people-carry"></i>Entregas<i class="fa fa-chevron-down"></i></div>
 					<ul class="submenu">
 						<li><a href="telefonia/entregas">Listar Entregas</a></li>
+						
 					</ul>
 				</li>
+				
+				<li><div class="link"><i class="fas fa-thumbtack"></i>Gestión<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="">Lotes</a></li>
+						<li><a href="">Compañía</a></li>
+						<li><a href="">Marcas</a></li>
+						<li><a href="">Modelo del terminal</a></li>
+						<li><a href="">Estado del terminal</a></li>
+						<li><a href="">Tipo de tarjeta</a></li>
+						<li><a href="">Tipo de tarifa</a></li>
+						<li><a href="">Estado de la tarjeta</a></li>
+						<li><a href="">Modelo del dispositivo</a></li>
+						
+					</ul>
+				</li>
+				
+				
+				
+				
 			</ul>
+			
+			
 		</nav>
 	   <div id="cuerpo">
 			<ui:insert name="content" />

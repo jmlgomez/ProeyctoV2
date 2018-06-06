@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es"  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<meta name="content-language" content="es" />
+		<base href="/Proyecto/"/>
+	 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+	 	<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+        <link rel="stylesheet" href="font-awesome/css/fontawesome-all.css"/>
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+		<title>gggg</title>
+	</head>
+	
+	<body>
+ 		<div id="cabecera">
+ 			<h1>Gestión de Telefonía</h1>
+ 			<div id="usuario">Hola, #{user==null?"Anónimo":user.username}</div>	
+ 			<div id="sesion"><a href="telefonia/logout">Cerrar sesión</a></div>
+		</div>
+		
+		<!-- <nav class="navegacion-light form-inline-block" id="navegacion">
+ 		<a href="telefonia/usuarios" class="btn btn-outline-success">Usuarios</a>
+ 	 	<a href="telefonia/terminales" class="btn btn-outline-success">Terminales</a>
+  		<a href="telefonia/tarjetas" class="btn btn-outline-success">Tarjetas</a>
+  		<a href="telefonia/dispositivos" class="btn btn-outline-success">Dispositivos</a>
+		</nav> -->
+		<!-- Contenedor -->
+		<nav>
+			<ul id="accordion" class="accordion">
+				<li>
+					<div class="link"><i class="fas fa-user-tie"></i>Usuarios<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/usuarios">Listar Usuarios</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="link"><i class="fas fa-mobile-alt"></i>Terminales<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/terminales">Listar Terminales</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="link"><i class="fa fa-mobile"></i>Tarjetas<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/tarjetas">Listar Tarjetas</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fab fa-usb"></i>Dispositivos<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/dispositivos">Listar Dispositivos</a></li>
+
+					</ul>
+				</li>
+				<li><div class="link"><i class="fas fa-people-carry"></i>Entregas<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu">
+						<li><a href="telefonia/entregas">Listar Entregas</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	   <div id="cuerpo">
+			<h1>Sin Permisos</h1>
+	
+	   </div>
+	   <div id="footer">Web creada por: Jose Manuel López Gómez</div>
+	   <script type="text/javascript">
+	   $(function() {
+			var Accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+
+				// Variables privadas
+				var links = this.el.find('.link');
+				// Evento
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+
+			Accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}	
+
+			var accordion = new Accordion($('#accordion'), false);
+		});
+	   </script>
+	   <script>
+	   function imprimir() {
+		    window.print();
+		}
+	   </script>
+	</body>
+
+</html>

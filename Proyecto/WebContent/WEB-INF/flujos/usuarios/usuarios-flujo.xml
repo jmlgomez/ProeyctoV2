@@ -7,8 +7,11 @@
 
 <!-- ******************************************************************************************************** -->
 	<!-- PARA LISTAR-->
-	
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
 	<view-state id="ListadoUsuarios" >
+	 <secured attributes="ROLE_ADMIN"/>
 		<var name="usuario" class="com.ayto.proyecto.modelo.Usuarios"/>
 		<on-entry>
 			<set name="flowScope.usuarios" value="serviceUsuariosImpl.listarUsuarios()"></set>

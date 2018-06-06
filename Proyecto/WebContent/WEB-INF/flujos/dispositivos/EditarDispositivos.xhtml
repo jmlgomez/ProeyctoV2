@@ -17,25 +17,30 @@
 				<ui:fragment id="EditarDispositivosfrag">
 					<p:messages id="messages" showDetail="true" closable="true"></p:messages>
   							
-  							<h2>Editar Dispositivos </h2>
+  							<h2>Editar Dispositivo </h2>
   							<p></p>
-  							 <div class="form-group col-md-6">
-  							Modelo de Dispositivo: 
-  							<h:selectOneMenu value="#{dispositivo.modelosDispositivos}" >
-  							 <f:selectItems value="#{modelosDispositivos}" var="tipodisp" 
-  							 		itemLabel="#{tipodisp.modeloDispositivo}" 
-  							 		itemValue="#{tipodisp.idModeloDispositivo}" />	
-					        </h:selectOneMenu> 
+  							<div class="form-group col-md-6">
+  							<LABEL>Número de Serie del dispositivo</LABEL>
+  							 <p:inputText class="form-control" placeholder="Introduce el número de serie del dispositivo" required="true" value="#{dispositivo.numeroserieDispositivo}"/>
   							<p></p>
-  							Número de Serie: <p:inputText class="form-control" placeholder="Introduce el número de serie" required="true" value="#{dispositivo.numeroserieDispositivo}"/>
+  							<label>Tipo de dispositivo </label>
+							<p:inputText required="false" class="form-control" placeholder="Introduce el tipo de dispositivo que es. Ej Tablet..Pincho USB...ect" value="#{dispositivo.tipoDispositivo}" />
   							<p></p>
-  							Observaciones
+  							
+  							<LABEL>Modelo de Dispositivo</LABEL>
+  							<h:selectOneMenu value="#{dispositivo.modelosDispositivos}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItems value="#{modelosDispositivos}" var="tipodisp"
+							itemLabel="#{tipodisp.modeloDispositivo} - #{tipodisp.marcas.marca}"
+							itemValue="#{tipodisp}" />
+							</h:selectOneMenu> 
+  							<p></p>
+  							<LABEL>Observaciones</LABEL>
   							<p></p> 
   							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivo.observaciones}"/>
   							<p></p>
   							
-						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary "></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandButton>
+						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary"></h:commandButton>
+						<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary"></h:commandButton>
 				</div>
 				</ui:fragment>
 			</h:panelGroup>

@@ -12,14 +12,14 @@
 	<h:form id="ListadoDispositivos" >
 			<h:panelGroup id="ListadoDispositivos" layout="block" styleClass="ListadoDispositivos">
 				<ui:fragment id="ListadoDispositivosfrag">
-					<h3>Listado de Dispositivos</h3>
+					<h3>Listado de dispositivos</h3>
 						<table class="ListadoDispositivos table table-striped table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
-									<th>Tipo de Dispositivo</th>
-									<th>Numero de Serie</th>
+									<th>Número de Serie</th>
+									<th>Tipo</th>
+									<th>Marca y Modelo</th>
 									<th>Observaciones</th>
-									<th></th>
 									
 								</tr>
 							</thead>
@@ -27,18 +27,21 @@
 								
 								<ui:repeat value="#{dispositivos}" var="disp">
 									<tr>
-
+										<td>
+											#{disp.numeroserieDispositivo}
+										</td>
 										<td>
 											#{disp.tipoDispositivo}
 										</td>
 										
 										<td>
-											#{disp.numeroserieDispositivo}
+											 #{disp.modelosDispositivos.marcas.marca} #{disp.modelosDispositivos.modeloDispositivo} 
 										</td>
 										
 										<td>
 											#{disp.observaciones}
 										</td>
+										
 										<td>
 											<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
 											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />

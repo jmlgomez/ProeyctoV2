@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoCompanias" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="compania" class="com.ayto.proyecto.modelo.CompaniasTerminales"/>
+		<on-entry>
+			<set name="flowScope.companias" value="serviceTerminalesImpl.listadoCompaniasTerminales()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoCompanias"></transition>
+		<transition on="nuevo" to="AltaCompanias"></transition>
+		<transition on="modificar" to="EditarCompanias">
+			<set name="flowScope.compania" value="compania" />
+		</transition>
+		<transition on="borrar" to="ListadoCompanias">
+			 <evaluate expression="serviceTerminalesImpl.borrarCompaniasTerminales(compania)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaCompanias" >
+		<on-entry>
+			<set name="flowScope.compania" value="new com.ayto.proyecto.modelo.CompaniasTerminales()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoCompanias"></transition>
+		<transition on="guardar" to="ListadoCompanias">
+			 <evaluate expression="serviceTerminalesImpl.insertarCompaniasTerminales(compania)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarLotes" >
+		
+		<transition on="cancelar" to="ListadoCompanias"></transition>
+		<transition on="guardar" to="ListadoCompanias">
+		 	<evaluate expression="serviceTerminalesImpl.modificarCompaniasTerminales(compania)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

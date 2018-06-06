@@ -31,7 +31,7 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 		try {
 			terminalesDAO.insertarTerminales(t);
 			
-			
+			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 			 
@@ -47,7 +47,7 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 		try {
 			terminalesDAO.borrarTerminales(t);
 			
-			
+			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 			 
@@ -60,7 +60,7 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 	public boolean modificarTerminales(Terminales t) {
 		try {
 			terminalesDAO.modificarTerminales(t);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -165,6 +165,7 @@ try {
 		try {
 			terminalesDAO.insertarModelosTerminales(mt);
 			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -179,7 +180,7 @@ try {
 		try {
 			terminalesDAO.modificarModelosTerminales(mt);
 			
-			
+			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 			 
@@ -192,7 +193,7 @@ try {
 	public boolean borrarModelosTerminales(ModelosTerminales mt) {
 		try {
 			terminalesDAO.borrarModelosTerminales(mt);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -230,7 +231,7 @@ try {
 	public boolean insertarEstados(EstadosTerminales et) {
 		try {
 			terminalesDAO.insertarEstados(et);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -245,7 +246,7 @@ try {
 		try {
 			terminalesDAO.modificarEstados(et);
 			
-			
+			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 			 
@@ -259,7 +260,7 @@ try {
 		try {
 			terminalesDAO.borrarEstados(et);
 			
-			
+			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 			 
@@ -310,7 +311,7 @@ try {
 	public boolean modificarHistEstados(HistEstados he) {
 		try {
 			terminalesDAO.modificarHistEstados(he);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar historico estados!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -324,7 +325,7 @@ try {
 	public boolean borrarHistEstados(HistEstados he) {
 		try {
 			terminalesDAO.borrarHistEstados(he);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar historico estadosl!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -362,7 +363,7 @@ try {
 	public boolean insertarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.insertarLotesTerminales(lotterm);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar lotes terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -376,7 +377,7 @@ try {
 	public boolean modificarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.modificarLotesTerminales(lotterm);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar lotes Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -390,7 +391,7 @@ try {
 	public boolean borrarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.borrarLotesTerminales(lotterm);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar lotes Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -428,7 +429,7 @@ try {
 	public boolean insertarTiposTerminales(TiposTerminales tt) {
 		try {
 			terminalesDAO.insertarTiposTerminales(tt);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar tipos Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -442,7 +443,7 @@ try {
 	public boolean modificarTiposTerminales(TiposTerminales tt) {
 		try {
 			terminalesDAO.modificarTiposTerminales(tt);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tipos Terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -456,7 +457,7 @@ try {
 	public boolean borrarTiposTerminales(TiposTerminales tt) {
 		try {
 			terminalesDAO.borrarTiposTerminales(tt);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar tipo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -494,7 +495,7 @@ try {
 	public boolean insertarCompaniasTerminales(CompaniasTerminales comterm) {
 		try {
 			terminalesDAO.modificarCompaniasTerminales(comterm);;
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar  compañias terminales !<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -508,7 +509,7 @@ try {
 	public boolean modificarCompaniasTerminales(CompaniasTerminales comterm) {
 		try {
 			terminalesDAO.modificarCompaniasTerminales(comterm);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar compañias terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
@@ -522,7 +523,7 @@ try {
 	public boolean borrarCompaniasTerminales(CompaniasTerminales comterm) {
 		try {
 			terminalesDAO.borrarCompaniasTerminales(comterm);
-			
+			return true;
 			
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar  compañias terminales!<br/>"+e.getMessage(), "Contácta con administrador."));

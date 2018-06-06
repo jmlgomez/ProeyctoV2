@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoLotes" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="lote" class="com.ayto.proyecto.modelo.LotesTerminales"/>
+		<on-entry>
+			<set name="flowScope.lotes" value="serviceTerminalesImpl.listadoLotesTerminales()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoLotes"></transition>
+		<transition on="nuevo" to="AltaLotes"></transition>
+		<transition on="modificar" to="EditarLotes">
+			<set name="flowScope.lote" value="lote" />
+		</transition>
+		<transition on="borrar" to="ListadoLotes">
+			 <evaluate expression="serviceTerminalesImpl.borrarLotesTerminales(lote)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaLotes" >
+		<on-entry>
+			<set name="flowScope.lote" value="new com.ayto.proyecto.modelo.LotesTerminales()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoLotes"></transition>
+		<transition on="guardar" to="ListadoLotes">
+			 <evaluate expression="serviceTerminalesImpl.insertarLotesTerminales(lote)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarLotes" >
+		
+		<transition on="cancelar" to="ListadoLotes"></transition>
+		<transition on="guardar" to="ListadoLotes">
+		 	<evaluate expression="serviceTerminalesImpl.modificarLotesTerminales(lote)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

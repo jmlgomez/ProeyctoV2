@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -22,7 +21,8 @@ public class Roles implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String rolename;
-	private Set<Users> userses = new HashSet<Users>(0);
+	
+	private Set<Users> userses = new HashSet<>();
 
 	public Roles() {
 	}
@@ -47,7 +47,7 @@ public class Roles implements java.io.Serializable {
 		this.rolename = rolename;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleses")
+	@ManyToMany( mappedBy = "roleses")
 	public Set<Users> getUserses() {
 		return this.userses;
 	}

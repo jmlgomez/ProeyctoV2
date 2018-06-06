@@ -4,51 +4,33 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="
            http://www.springframework.org/schema/beans
-           	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           	http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/security
-           	http://www.springframework.org/schema/security/spring-security-3.2.xsd
+           	http://www.springframework.org/schema/security/spring-security.xsd
            ">
 
 	<!-- 
 		Configuración de Spring Security 
 	-->
-	<security:http pattern="/resources/**" security="none"/>
-	<security:http pattern="/fwg/javax.faces.resource/**" security="none"/>
-	<security:http pattern="/css/**" security="none"/>
-	<security:http pattern="/fwg/login" security="none"/>
-	<security:http use-expressions="true" access-decision-manager-ref="httpAccessDecisionManager">
 	
-  		<security:intercept-url pattern="/**" access="aytoValidar()" />
-  		<security:form-login login-page='/fwg/login' default-target-url="/"/>
-  		<security:logout logout-url="/logout" logout-success-url="/fwg/login"/>
-<!--   		<security:remember-me key="aytoFWG"/> --> 
-  		<security:access-denied-handler/>
+	<security:http pattern="/telefonia/login" security="none"/>
+	<!--<security:http pattern="/telefonia/usuarios" security="none"/>-->
+	<security:http pattern="/**/javax.faces.resource/**" security="none"/>
+	<security:http use-expressions="true" auto-config="true">
+		<!--<security:intercept-url pattern="/telefonia/usuarios*" access="permitAll"/>-->
+		<security:csrf disabled="true"/>
+	  	<security:form-login login-page='/telefonia/login' default-target-url="/"/>
+	  	
+		<security:access-denied-handler/>
 	</security:http>
-	<security:authentication-manager alias="authenticationManager">
-<!-- 	  <security:authentication-provider> -->
-<!-- 	    <security:user-service> -->
-<!-- 	      <security:user name="ad" password="ad" authorities="ROLE_USER, ROLE_ADMIN" /> -->
-<!-- 	      <security:user name="us" password="us" authorities="ROLE_USER" /> -->
-<!-- 	    </security:user-service> -->
-<!-- 	  </security:authentication-provider> -->
-		<security:authentication-provider ref="aytoAuthenticationProvider" />
-<!-- 	  	<security:authentication-provider user-service-ref="usuarioService"> -->
-<!-- 			<security:password-encoder hash="md5" /> -->
-<!-- 		</security:authentication-provider> -->
-	</security:authentication-manager>
-	<bean id="aytoAuthenticationProvider" class="com.aytogijon.fwg.seguridad.AytoAuthenticationProvider"/>
-
-
-
-<!-- 	<security:global-method-security pre-post-annotations="enabled"> -->
-<!-- 	  <security:expression-handler ref="expressionHandler"/> -->
-<!-- 	</security:global-method-security> -->
-
-<!-- 	<bean id="expressionHandler" class= -->
-<!-- 	  "org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler"> -->
-<!-- 	     <property name="permissionEvaluator" ref="aytoEvaluarPermiso"/> -->
-<!-- 	</bean> -->
-	<bean id="httpAccessDecisionManager"
+	<!--<security:http use-expressions="true" access-decision-manager-ref="httpAccessDecisionManager" auto-config="true">
+		<security:csrf disabled="true"/>
+	  	<security:intercept-url pattern="/**" access="aytoValidar()" />
+	  	<security:form-login login-page='/telefonia/login' default-target-url="/"/>
+	  	
+		<security:access-denied-handler/>
+	</security:http>-->
+	<!-- <bean id="httpAccessDecisionManager"
 	      class="org.springframework.security.access.vote.AffirmativeBased">
 	    <constructor-arg name="decisionVoters">
 	            <list>
@@ -56,30 +38,19 @@
 	            </list>
 	    </constructor-arg>
 	</bean>
-	
 	<bean id="webExpressionVoter"
 	      class="org.springframework.security.web.access.expression.WebExpressionVoter">
 	    <property name="expressionHandler"
 	              ref="aytoEvaluarPermiso" />
-	</bean>
+	</bean>-->
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider ref="aytoAuthenticationProvider" />
+	</security:authentication-manager>
+	<bean id="aytoAuthenticationProvider" class="com.ayto.proyecto.seguridad.AytoAuthenticationProvider"/>
 
+	
+	
+	
 
-<!-- 	<bean id="aytoEvaluarPermiso" class="com.aytogijon.fwg.seguridad.AytoEvaluarPermiso"/> -->
-    
-    <!--  	<bean id="rememberMeAuthenticationProvider" class="com.aytogijon.fwg.seguridad.autenticacion.RememberMeAuthenticationProvider"/> -->
-
-<!-- 	<bean id="jcrAutenticacionProvider" class="com.aytogijon.fwg.seguridad.autenticacion.JcrAutenticacionProvider"/> -->
-
-<!-- 	<security:authentication-manager alias="authenticationManager"> -->
-
-<!--  		<security:authentication-provider ref="rememberMeAuthenticationProvider" />  -->
-
-<!-- 		<security:authentication-provider ref="jcrAutenticacionProvider"/> -->
-
-<!-- 	</security:authentication-manager> -->
-
-	<bean id="auditoria" class="com.aytogijon.fwg.seguridad.Auditoria"/>
-	<bean id="activeDirectory" class="com.aytogijon.fwg.seguridad.ActiveDirectory"/>
-	<bean id="aplicacion" class="com.aytogijon.fwg.utils.Application"/>
 
 </beans>

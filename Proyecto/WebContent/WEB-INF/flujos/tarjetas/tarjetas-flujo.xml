@@ -8,6 +8,8 @@
 	<!-- PARA LISTAR-->
 	
 	<view-state id="ListadoTarjetas" >
+	<secured attributes="ROLE_ADMIN"/>
+	<var name="tarjeta" class="com.ayto.proyecto.modelo.Tarjetas"/>
 		<on-entry>
 			<set name="flowScope.tarjetas" value="serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
@@ -26,10 +28,15 @@
 	<view-state id="AltaTarjetas" >
 		<on-entry>
 			<set name="flowScope.tarjeta" value="new com.ayto.proyecto.modelo.Tarjetas()"></set>
+		<!-- Configuración para los depleglables -->
+			<set name="viewScope.tiposTarjetas" value="serviceTarjetasImpl.listadoTiposTarjetas()"></set>
+			<set name="viewScope.estadosTarjetas" value="serviceTarjetasImpl.listadoEstadosTarjetas()"></set>
+			<set name="viewScope.tiposTarifas" value="serviceTarjetasImpl.listadoTipoTarifa()"></set>	
 		</on-entry>
 		
+		
 		<transition on="cancelar" to="ListadoTarjetas"></transition>
-		<transition on="guardar" to="ListadoListadoTarjetas">
+		<transition on="guardar" to="ListadoTarjetas">
 			 <evaluate expression="serviceTarjetasImpl.insertarTarjetas(tarjeta)"></evaluate> 
 		</transition>
 	</view-state>
@@ -37,7 +44,16 @@
 <!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarTarjetas">
+	<view-state id="EditarTarjetas" view="AltaTarjetas.xhtml">
+	<on-entry>
+		<set name="viewScope.titulo" value="'Modificar Tarjetas'"  type="string"></set>
+		<!-- Configuración para los depleglables -->
+			
+			<set name="viewScope.tiposTarjetas" value="serviceTarjetasImpl.listadoTiposTarjetas()"></set>
+			<set name="viewScope.estadosTarjetas" value="serviceTarjetasImpl.listadoEstadosTarjetas()"></set>
+			<set name="viewScope.tiposTarifas" value="serviceTarjetasImpl.listadoTipoTarifa()"></set>	
+		</on-entry>
+		
 		<transition on="cancelar" to="ListadoTarjetas"></transition>
 		<transition on="guardar" to="ListadoTarjetas">
 			 <evaluate expression="serviceTarjetasImpl.modificarTarjetas(tarjeta)"></evaluate> 

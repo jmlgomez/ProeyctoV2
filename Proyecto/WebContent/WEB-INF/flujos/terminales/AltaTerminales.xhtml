@@ -15,51 +15,65 @@
 	<h:form id="AltaTerminales" >
 			<h:panelGroup id="AltaTerminales" layout="block" styleClass="AltaTerminales">
 				<ui:fragment id="AltaTerminalesfrag">
-					<h2>Alta Terminales</h2>
+					<h2>#{titulo}</h2>
   				<div class="form-group col-md-6">
-  							<!--  
+  							
   							<label>Fecha de alta </label>
   							<p:calendar required="false"  value="#{terminal.fechaAlta}"/>
   							<p></p>
-  							-->
+  							
   							<label>IMEI: </label>
   							<p:inputText required="false" class="form-control" placeholder="Introduce IMEI del Teléfono" value="#{terminal.imei}"/>
   							<p></p>
-  							Lote
-  							<h:selectOneMenu value="#{terminal.lotesTerminales}">
+  							<LABEL>Lote</LABEL>
+  							<h:selectOneMenu value="#{terminal.lotesTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{lotesTerminales}" var="lotes" 
   							 		itemLabel="#{lotes.lote}" 
-  							 		itemValue="#{lotes.idLoteTerminal}" />	
+  							 		itemValue="#{lotes}" />	
 					        </h:selectOneMenu>
 					        <p></p>
-					        Tipo de Terminal
-  							<h:selectOneMenu value="#{terminal.tiposTerminales}">
+					       <LABEL> Tipo de Terminal</LABEL>
+  							<h:selectOneMenu value="#{terminal.tiposTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{tiposTerminales}" var="tipoterm" 
   							 		itemLabel="#{tipoterm.tipoTerminal}" 
-  							 		itemValue="#{tipoterm.idTipoTerminal}" />	
+  							 		itemValue="#{tipoterm}" />	
 					        </h:selectOneMenu>
 					        <p></p>
-					         Compañia
-  							<h:selectOneMenu value="#{terminal.companiasTerminales}">
+					         <LABEL>Compañia</LABEL>
+  							<h:selectOneMenu value="#{terminal.companiasTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{companiasTerminales}" var="compter" 
   							 		itemLabel="#{compter.companiasTerminal}" 
-  							 		itemValue="#{compter.idCompaniaTerminal}" />	
+  							 		itemValue="#{compter}" />	
 					        </h:selectOneMenu>
+					       <p></p>
+					        <LABEL>Marca del terminal</LABEL>
+  							<h:selectOneMenu value="#{terminal.modelosTerminales.marcas}" converter="omnifaces.SelectItemsConverter">
+  							 <f:selectItems value="#{marcas}" var="marc" 
+  							 		itemLabel="#{marc.marca}" 
+  							 		itemValue="#{marc}" />	
+					        </h:selectOneMenu>
+					       <p></p>
+					       <LABEL>Modelo del terminal</LABEL>
+  							<h:selectOneMenu value="#{terminal.modelosTerminales}" converter="omnifaces.SelectItemsConverter">
+  							 <f:selectItems value="#{modelosTerminales}" var="modter" 
+  							 		itemLabel="#{modter.modelos}" 
+  							 		itemValue="#{modter}" />	
+					        </h:selectOneMenu>   
 					        <p></p>
-					         Estado del terminal
-  							<h:selectOneMenu value="#{terminal}">
+					         <LABEL>Estado del terminal</LABEL>
+  							<h:selectOneMenu value="#{terminal.estadosTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{estadosTerminales}" var="ester" 
   							 		itemLabel="#{ester.estado}" 
-  							 		itemValue="#{ester.idEstadoTerminal}" />	
+  							 		itemValue="#{ester}" />	
 					        </h:selectOneMenu>
 					        <p></p>
-  							Observaciones
+  							<LABEL>Observaciones</LABEL>
   							<p></p> 
   							<p:inputTextarea value="#{terminal.observaciones}"  rows="6" cols="33" />
   							<p></p>
   							
 						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary "></h:commandButton>
-						<h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandButton>
+						<h:commandLink value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandLink>
 			</div>
 				</ui:fragment>
 			</h:panelGroup>

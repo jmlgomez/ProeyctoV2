@@ -11,6 +11,7 @@ public interface ServiceUsuarios {
 	public boolean modificarUsuarios(Usuarios u);
 	public Usuarios detalleUsuarios(int idUsuario);
 	public List<Usuarios> listarUsuarios();
+	public List<Usuarios> listarUsuarioslibres();
 
 
 	// Manejo DEPARTAMENTOS_AYTO
