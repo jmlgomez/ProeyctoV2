@@ -51,6 +51,7 @@ public class ServiceAveriasTarjetasImpl implements ServiceAveriasTarjetas{
 	public boolean modificarAveriasTarjetas(AveriasTarjetas avt) {
 		try {
 			averiasTarjetasDAO.modificarAveriasTarjetas(avt);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Averias Tarjetas!<br/>"+e.getMessage(), "Contacta con el administrador."));

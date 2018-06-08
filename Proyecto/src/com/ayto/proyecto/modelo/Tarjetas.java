@@ -281,5 +281,12 @@ public class Tarjetas implements java.io.Serializable {
     public String toString() {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdTarjeta());
     }
+	
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return idTarjeta.equals(((Tarjetas)obj).idTarjeta);
+    }
 
 }

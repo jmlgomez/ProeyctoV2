@@ -27,7 +27,8 @@
 							<p:inputText required="false" class="form-control" placeholder="Introduce el tipo de dispositivo que es. Ej Tablet..Pincho USB...ect" value="#{dispositivo.tipoDispositivo}" />
   							<p></p>
   							
-  							<LABEL>Modelo de Dispositivo</LABEL>
+  							<LABEL>Marca y modelo del dispositivo</LABEL>
+  							<p></p>
   							<h:selectOneMenu value="#{dispositivo.modelosDispositivos}" converter="omnifaces.SelectItemsConverter">
 							<f:selectItems value="#{modelosDispositivos}" var="tipodisp"
 							itemLabel="#{tipodisp.modeloDispositivo} - #{tipodisp.marcas.marca}"

@@ -36,6 +36,7 @@ public class ServiceDispositivosImpl implements ServiceDispositivos{
 	public boolean modificarDispositivos(Dispositivos disp) {
 try {
 			dispositivosDAO.modificarDispositivos(disp);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar dispositivos!<br/>"+e.getMessage(), "Contacta con el administrador."));
@@ -107,6 +108,7 @@ try {
 	public boolean modificarModelosDisositivos(ModelosDispositivos mdisp) {
 try {
 			dispositivosDAO.modificarModelosDisositivos(mdisp);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Modelos_Dispositivos!<br/>"+e.getMessage(), "Contacta con el administrador."));

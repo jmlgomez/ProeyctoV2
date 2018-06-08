@@ -73,5 +73,12 @@ public class LotesTerminales implements java.io.Serializable {
     public String toString() {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdLoteTerminal());
     }
+	
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return idLoteTerminal.equals(((LotesTerminales)obj).idLoteTerminal);
+    }
 
 }

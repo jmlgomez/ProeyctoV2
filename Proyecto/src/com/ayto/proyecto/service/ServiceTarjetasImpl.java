@@ -53,6 +53,7 @@ try {
 		
 			try {
 						tarjetasDAO.modificarTarjetas(tarj);
+						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 						return true;
 					}catch (Exception ecxp) {
 						 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tarjetas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
@@ -103,6 +104,7 @@ try {
 	public boolean modificaEstadosTarjetas(EstadosTarjetas esttarj) {
 		try {
 			tarjetasDAO.modificaEstadosTarjetas(esttarj);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar estados tarjetas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
@@ -166,6 +168,7 @@ try {
 	public boolean modificarTipoTarjetas(TiposTarjetas ttarj) {
 		try {
 			tarjetasDAO.modificarTipoTarjetas(ttarj);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tipos tarjetas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
@@ -229,6 +232,7 @@ try {
 	public boolean modificarTiposContratos(TiposContratos tcontrato) {
 		try {
 			tarjetasDAO.modificarTiposContratos(tcontrato);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tipos contrato!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
@@ -292,6 +296,7 @@ try {
 	public boolean modificarTipoTarifas(TiposTarifas ttarf) {
 		try {
 			tarjetasDAO.modificarTipoTarifas(ttarf);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tipos tarifa!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));

@@ -96,4 +96,11 @@ public class TiposTarjetas implements java.io.Serializable {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdTipoTarjeta());
     }
 
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return idTipoTarjeta.equals(((TiposTarjetas)obj).idTipoTarjeta);
+	
+}
 }

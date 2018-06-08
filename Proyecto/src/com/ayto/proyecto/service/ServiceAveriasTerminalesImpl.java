@@ -46,6 +46,7 @@ try {
 	public boolean modificarAveriasTerminales(AveriasTerminales at) {
 try {
 			averiasterminalesDAO.modificarAveriasTerminales(at);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Averias Terminales!<br/>"+e.getMessage(), "Contacta con el administrador."));

@@ -25,7 +25,7 @@ public class ServiceUsuariosImpl implements ServiceUsuarios {
 			usuariosDAO.insertarUsuarios(u);
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar el usuario!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar el usuario!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return false;
@@ -43,7 +43,7 @@ try {
 			return true;
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar el usuario! >"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar el usuario! >"+e.getMessage(), "Contacta con el administrador."));
 			 
 		}
 		return false;
@@ -58,7 +58,7 @@ try {
 			return true;
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar el usuario!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar el usuario!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return false;
@@ -72,7 +72,7 @@ try {
 			return usuariosDAO.detalleUsuarios(idUsuario);
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al mostrar  el detalle del usuario!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al mostrar  el detalle del usuario!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 			return null;		
@@ -85,7 +85,7 @@ try {
 			
 			return usuariosDAO.listarUsuarios();
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el usuario!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el usuario!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return null;
@@ -98,7 +98,7 @@ try {
 			
 			return usuariosDAO.listarUsuarioslibres();
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el usuario!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el usuario!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return null;
@@ -119,7 +119,7 @@ try {
 			return true;
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar el departamentoAyto!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar el departamentoAyto!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return false;
@@ -133,7 +133,7 @@ try {
 			return true;
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar el departamentoAyto!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar el departamentoAyto!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return false;
@@ -143,10 +143,11 @@ try {
 	public boolean modificarDepartamentosAyto(DepartamentosAyto da) {
 try {
 		usuariosDAO.modificarDepartamentosAyto(da);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
 			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar el departamentoAyto!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar el departamentoAyto!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return false;
@@ -159,7 +160,7 @@ try {
 			
 			return usuariosDAO.detalleDepartamentosAyto(idDepAyto);
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al mostrar el detalle departamentoAyto!<br/>"+e.getMessage(), "Contácta con administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al mostrar el detalle departamentoAyto!<br/>"+e.getMessage(), "Contacta con administrador."));
 			 
 		}
 		return null;
@@ -171,7 +172,7 @@ try {
 			
 			return usuariosDAO.listarDepartamentosAyto();
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el departamentoAyto!<br/>"+e.getMessage(), "Contácta con el administrador."));
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar el departamentoAyto!<br/>"+e.getMessage(), "Contacta con el administrador."));
 			 
 		}
 		return null;

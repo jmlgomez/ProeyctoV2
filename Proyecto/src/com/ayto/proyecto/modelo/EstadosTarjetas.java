@@ -95,4 +95,12 @@ public class EstadosTarjetas implements java.io.Serializable {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdEstadoTarjeta());
     }
 
+	//Necesario para que guarde los cambios cuando se modifican valores en los despleglable.
+		@Override
+	    public boolean equals(Object obj) {
+	          if (getClass() != obj.getClass()) 
+	              return false;
+	          return idEstadoTarjeta.equals(((EstadosTarjetas)obj).idEstadoTarjeta);
+	    }
+	
 }

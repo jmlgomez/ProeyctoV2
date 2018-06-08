@@ -47,6 +47,7 @@
 											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />
 											</p:commandButton>
 											<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
+											<p:confirm header="Confirmation" message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?" icon="ui-icon-alert" />
 											<f:setPropertyActionListener value="#{disp}" target="#{dispositivo}" />
 											</p:commandButton>
 										</td>	
@@ -56,7 +57,10 @@
 							</TBODY>
 						</table>
 						<p:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Dispositivo" id="nuevodisp" action="nuevodisp"></p:commandButton>
-						
+						 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        				<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+       					 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+   							 </p:confirmDialog>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

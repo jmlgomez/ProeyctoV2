@@ -74,4 +74,12 @@ public class CompaniasTerminales implements java.io.Serializable {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdCompaniaTerminal());
     }
 	
+	//Necesario para que guarde los cambios cuando se modifican valores en los despleglable.
+			@Override
+		    public boolean equals(Object obj) {
+		          if (getClass() != obj.getClass()) 
+		              return false;
+		          return idCompaniaTerminal.equals(((CompaniasTerminales)obj).idCompaniaTerminal);
+		    }
+		
 }

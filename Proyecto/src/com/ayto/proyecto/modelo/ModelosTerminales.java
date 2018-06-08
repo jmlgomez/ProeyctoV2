@@ -87,4 +87,11 @@ public class ModelosTerminales implements java.io.Serializable {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdModeloTerminal());
     }
 
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return idModeloTerminal.equals(((ModelosTerminales)obj).idModeloTerminal);
+    }
+	
 }

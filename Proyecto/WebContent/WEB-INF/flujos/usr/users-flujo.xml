@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoUsrs" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="usr" class="com.ayto.proyecto.modelo.Users"/>
+		<on-entry>
+			<set name="flowScope.usrs" value="ServiceUsersImpl.listarUsuarios()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoUsrs"></transition>
+		<transition on="nuevousuario" to="AltaUsrs"></transition>
+		<transition on="modificar" to="EditarUsrs">
+			<set name="flowScope.usr" value="usr" />
+		</transition>
+		<transition on="borrar" to="ListadoUsrs">
+			 <evaluate expression="ServiceUsersImpl.borrarUsuarios(usr)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaUsrs" >
+		<on-entry>
+			<set name="flowScope.usr" value="new com.ayto.proyecto.modelo.Users()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoUsrs"></transition>
+		<transition on="guardar" to="AltaUsrs">
+			 <evaluate expression="ServiceUsersImpl.insertarUsuarios(usr)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarUsuarios" >
+		
+		<transition on="cancelar" to="ListadoUsrs"></transition>
+		<transition on="guardar" to="AltaUsrs">
+		 	<evaluate expression="ServiceUsersImpl.modificarUsuarios(usr)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

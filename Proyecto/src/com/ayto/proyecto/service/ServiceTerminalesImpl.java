@@ -60,6 +60,7 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 	public boolean modificarTerminales(Terminales t) {
 		try {
 			terminalesDAO.modificarTerminales(t);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -112,8 +113,8 @@ try {
 	public boolean modificarMarca(Marcas m) {
 		try {
 			terminalesDAO.modificarMarca(m);
-			
-			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
+			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Marca!<br/>"+e.getMessage(), "Cont√°cta con administrador."));
 			 
@@ -126,6 +127,7 @@ try {
 	public boolean borrarMarca(Marcas m) {
 		try {
 			terminalesDAO.borrarMarca(m);
+			return true;
 			
 			
 		}catch (Exception e) {
@@ -179,6 +181,7 @@ try {
 	public boolean modificarModelosTerminales(ModelosTerminales mt) {
 		try {
 			terminalesDAO.modificarModelosTerminales(mt);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			
 			return true;
 		}catch (Exception e) {
@@ -245,6 +248,8 @@ try {
 	public boolean modificarEstados(EstadosTerminales et) {
 		try {
 			terminalesDAO.modificarEstados(et);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
+			
 			
 			return true;
 		}catch (Exception e) {
@@ -311,6 +316,7 @@ try {
 	public boolean modificarHistEstados(HistEstados he) {
 		try {
 			terminalesDAO.modificarHistEstados(he);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -377,6 +383,7 @@ try {
 	public boolean modificarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.modificarLotesTerminales(lotterm);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -443,6 +450,7 @@ try {
 	public boolean modificarTiposTerminales(TiposTerminales tt) {
 		try {
 			terminalesDAO.modificarTiposTerminales(tt);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -509,6 +517,7 @@ try {
 	public boolean modificarCompaniasTerminales(CompaniasTerminales comterm) {
 		try {
 			terminalesDAO.modificarCompaniasTerminales(comterm);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {

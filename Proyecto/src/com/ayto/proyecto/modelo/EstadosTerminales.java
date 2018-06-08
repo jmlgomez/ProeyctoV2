@@ -85,4 +85,11 @@ public class EstadosTerminales implements java.io.Serializable {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdEstadoTerminal());
     }
 
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return idEstadoTerminal.equals(((EstadosTerminales)obj).idEstadoTerminal);
+    }
+	
 }

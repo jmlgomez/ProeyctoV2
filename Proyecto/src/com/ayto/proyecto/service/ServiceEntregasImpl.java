@@ -48,6 +48,7 @@ public class ServiceEntregasImpl implements ServiceEntregas{
 	public boolean modificarEntregas(Entregas e) {
 		try {
 			entregasDAO.modificarEntregas(e);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar entregas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
@@ -85,6 +86,7 @@ try {
 	public boolean insertarOperadores(Operadores o) {
 		try {
 			entregasDAO.insertarOperadores(o);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar Operadores!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
@@ -98,6 +100,7 @@ try {
 	public boolean modificarOperadores(Operadores o) {
 		try {
 			entregasDAO.modificarOperadores(o);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Operadores!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
