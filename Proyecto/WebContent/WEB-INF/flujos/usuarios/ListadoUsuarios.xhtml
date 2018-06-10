@@ -17,13 +17,14 @@
 						<table class="ListadoUsuarios table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
-									<th>Nombre y apellidos</th>
-									<th>Nombre de Usuario</th>
-									<th>Id de Empleado </th>
+									<th>Apellidos y nombre</th>
+									<th>Nombre de usuario</th>
+									<th>Identificación de Empleado </th>
+									<th>Correo electrónico</th>
 									<th>DNI</th>
 									<th>Puesto</th>
 									<th>Terminal Propio</th>
-									<th> Observaciones </th>
+									<th>Observaciones </th>
 								</tr>
 							</thead>
 							<TBODY>
@@ -31,14 +32,16 @@
 								<ui:repeat value="#{usuarios}" var="u">
 									<tr class="m-5">
 										<td>
-											#{u.nombre} #{u.primerApellido} #{u.segundoApellido}
+											 #{u.primerApellido} #{u.segundoApellido}, #{u.nombre}
 										</td>
-					
 										<td>
 											#{u.nombreUsuario}
 										</td>
 										<td>
 											#{u.idEmpleado}
+										</td>
+										<td>
+											#{u.correo}
 										</td>
 										<td>
 											#{u.dni}
@@ -47,7 +50,6 @@
 											#{u.puesto}
 										</td>
 										<td>
-											
 											<img src="img/#{u.terminalPropio?'CheckOK':'CheckBad'}.png" />
 										</td>
 										<td>
