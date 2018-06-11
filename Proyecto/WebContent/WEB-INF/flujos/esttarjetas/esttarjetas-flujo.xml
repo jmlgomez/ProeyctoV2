@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA LISTAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+	<view-state id="ListadoEsttarjetas" >
+	 <secured attributes="ROLE_ADMIN"/>
+		<var name="esttarj" class="com.ayto.proyecto.modelo.EstadosTarjetas"/>
+		<on-entry>
+			<set name="flowScope.esttarjts" value="serviceTarjetasImpl.listadoEstadosTarjetas()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoEsttarjetas"></transition>
+		<transition on="nuevo" to="AltaEsttarjetas"></transition>
+		<transition on="modificar" to="EditarEsttarjetas">
+			<set name="flowScope.esttarj" value="esttarj" />
+		</transition>
+		<transition on="borrar" to="ListadoEsttarjetas">
+			 <evaluate expression="serviceTarjetasImpl.borrarEstadosTarjetas(esttarj)"></evaluate> 
+		</transition>
+	</view-state>
+
+<!-- ******************************************************************************************************** -->
+	<!-- PARA DAR DE ALTA -->
+	<view-state id="AltaEsttarjetas" >
+		<on-entry>
+			<set name="flowScope.esttarj" value="new com.ayto.proyecto.modelo.EstadosTarjetas()"></set>
+		</on-entry>
+		
+		<transition on="cancelar" to="ListadoEsttarjetas"></transition>
+		<transition on="guardar" to="ListadoEsttarjetas">
+			 <evaluate expression="serviceTarjetasImpl.insertarEstadosTarjeta(esttarj)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA EDITAR-->
+	
+	<view-state id="EditarEsttarjetas" >
+		
+		<transition on="cancelar" to="ListadoEsttarjetas"></transition>
+		<transition on="guardar" to="ListadoEsttarjetas">
+		 	<evaluate expression="serviceTarjetasImpl.modificaEstadosTarjetas(esttarj)"></evaluate> 
+		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+</flow>

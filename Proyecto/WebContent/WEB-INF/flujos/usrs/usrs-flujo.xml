@@ -12,17 +12,17 @@
 	</on-start>
 	<view-state id="ListadoUsrs" >
 	 <secured attributes="ROLE_ADMIN"/>
-		<var name="usr" class="com.ayto.proyecto.modelo.Users"/>
+		<var name="Usr" class="com.ayto.proyecto.modelo.Users"/>
 		<on-entry>
-			<set name="flowScope.usrs" value="ServiceUsersImpl.listarUsuarios()"></set>
+			<set name="flowScope.Usrs" value="ServiceUsersImpl.getUsers()"></set>
 		</on-entry>
 		<transition on="cancelar" to="ListadoUsrs"></transition>
 		<transition on="nuevousuario" to="AltaUsrs"></transition>
 		<transition on="modificar" to="EditarUsrs">
-			<set name="flowScope.usr" value="usr" />
+			<set name="flowScope.Usr" value="Usr" />
 		</transition>
 		<transition on="borrar" to="ListadoUsrs">
-			 <evaluate expression="ServiceUsersImpl.borrarUsuarios(usr)"></evaluate> 
+			 <evaluate expression="ServiceUsersImpl.borrarUsuarios(Usr)"></evaluate> 
 		</transition>
 	</view-state>
 
@@ -30,23 +30,31 @@
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaUsrs" >
 		<on-entry>
-			<set name="flowScope.usr" value="new com.ayto.proyecto.modelo.Users()"></set>
+			<set name="flowScope.Usr" value="new com.ayto.proyecto.modelo.Users()"></set>
+			<!-- Configuración para los depleglables -->
+			<set name="viewScope.Usrs" value="serviceUsersImpl.getUser()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoUsrs"></transition>
 		<transition on="guardar" to="AltaUsrs">
-			 <evaluate expression="ServiceUsersImpl.insertarUsuarios(usr)"></evaluate> 
+			 <evaluate expression="ServiceUsersImpl.insertarUsuarios(Usr)"></evaluate> 
 		</transition>
 	</view-state>
 	
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarUsuarios" >
+	<view-state id="EditarUsrs"  view="AltaUsrs.xhtml">
+	
+	<on-entry>
+		<set name="viewScope.titulo" value="'Modificar Usuarios del sistema'"  type="string"></set>
+		<!-- Configuración para los depleglables -->
+			<set name="viewScope.Usrs" value="serviceUsersImpl.getUser()"></set>
+		</on-entry>
 		
 		<transition on="cancelar" to="ListadoUsrs"></transition>
 		<transition on="guardar" to="AltaUsrs">
-		 	<evaluate expression="ServiceUsersImpl.modificarUsuarios(usr)"></evaluate> 
+		 	<evaluate expression="ServiceUsersImpl.modificarUsuarios(Usr)"></evaluate> 
 		</transition>
 	</view-state>
 	

@@ -27,13 +27,13 @@
 										 var="usr" filter="true"  showCheckbox="true" ><!-- Variable donde se almacena el valor del usuario -->
 										<f:selectItem itemValue="#{null}" itemLabel="Selecciona primer apellido"/>
   							 <f:selectItems value="#{usuarios}" var="usr" 
-  							 		itemLabel= "#{usr.primerApellido}" 
+  							 		itemLabel= "#{usr.primerApellido} #{usr.segundoApellido}, #{usr.nombre}" 
   									itemValue="#{usr}"/><!-- Variable donde estan la lista de los usuarios -->
 									 <p:column>
 						                <h:outputText styleClass="ui-theme ui-theme-#{usr.primerApellido}" /><!-- Critero de busqueda -->
 						            </p:column>
 						            <p:column>
-						                <h:outputText value="#{usr.primerApellido}" /> <!-- Texto a mostrar -->
+						                <h:outputText value="#{usr.primerApellido} #{usr.segundoApellido}  #{usr.nombre}.  " /> <!-- Texto a mostrar -->
 						            </p:column>
 						</p:selectOneMenu> 
 						<p></p>
@@ -44,31 +44,30 @@
   										<f:selectItem itemValue="#{null}" itemLabel="Selecciona IMEI del terminal"/>
   							 		<f:selectItems value="#{terminales}" var="term" 
   							 		itemLabel="#{term.imei}" 
-  							 		itemValue="#{term}"/><!-- Variable donde estan la lista de los terminales -->
+  							 		itemValue="#{term}. "/><!-- Variable donde estan la lista de los terminales -->
   							 		 <p:column>
 						                <h:outputText styleClass="ui-theme ui-theme-#{term.imei}" /><!-- Critero de busqueda -->
 						            </p:column>
 						            <p:column>
-						                <h:outputText value="#{term.imei}" /> <!-- Texto a mostrar -->
+						                <h:outputText value="#{term.imei}.  " /> <!-- Texto a mostrar -->
 						            </p:column>
 						        </p:selectOneMenu>   				
   						<p></p>
   						<h2>Tarjeta</h2>
   						<p></p>
-					  
   							 <p:selectOneMenu value="#{entrega.tarjetas}" converter="omnifaces.SelectItemsConverter"
 						                          var="tarj" filter="true"  showCheckbox="true" ><!-- Variable donde se almacena el valor del usuario -->
 						                         <f:selectItem itemValue="#{null}" itemLabel="Selecciona ICC de la tarjeta"/>
 						            <f:selectItems value="#{tarjetas}" var="tarj" 
 						            itemLabel="#{tarj.icc}" 
-						            itemValue="#{tarj}" /> <!-- Variable donde estan la lista de las tarjetas -->
+						            itemValue="#{tarj}  " /> <!-- Variable donde estan la lista de las tarjetas -->
 						 
 						            <p:column>
 						                <h:outputText styleClass="ui-theme ui-theme-#{tarj.icc}" /><!-- Critero de busqueda -->
 						            </p:column>
 						 
 						            <p:column>
-						                <h:outputText value="#{tarj.icc}" /> <!-- Texto a mostrar -->
+						                <h:outputText value="#{tarj.icc}. " /> <!-- Texto a mostrar -->
 						            </p:column>
 						        </p:selectOneMenu>  
 						        						    
@@ -88,7 +87,7 @@
 							class="btn btn-primary"></h:commandButton>
 						<h:commandLink value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandLink>
 						<p></p>
-						<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>
+						<!--<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>  -->
 					
 				</div>
 				</ui:fragment>

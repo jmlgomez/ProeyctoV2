@@ -22,18 +22,19 @@
 							</thead>
 							<TBODY>
 							
-								<ui:repeat value="#{tipostarjetas}" var="ttarjeta">
+								<ui:repeat value="#{Tipostarjetas}" var="ttarj">
 									<tr class="m-5">
 										<td>
-											#{ttarjeta.tipoTarjeta}
+											#{ttarj.tipoTarjeta}
 										</td>
 		
 										<td>
 										<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
-											<f:setPropertyActionListener value="#{ttarjeta}" target="#{tipoTarjeta}" />
+											<f:setPropertyActionListener value="#{ttarj}" target="#{TipoTarjeta}" />
 										</p:commandButton> 
 										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
-											<f:setPropertyActionListener value="#{ttarjeta}" target="#{tipoTarjeta}" />
+											<p:confirm header="¡Atención!" message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?" icon="ui-icon-alert" />
+											<f:setPropertyActionListener value="#{ttarj}" target="#{TipoTarjeta}" />
 										</p:commandButton>
 										
 										</td>
@@ -45,7 +46,10 @@
 							</TBODY>
 						</table>
 						<h:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Lote" id="nuevo" action="nuevo"></h:commandButton>
-						
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        				<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        				<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				  		</p:confirmDialog>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

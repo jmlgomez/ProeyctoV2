@@ -46,7 +46,7 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 	public boolean borrarTerminales(Terminales t) {
 		try {
 			terminalesDAO.borrarTerminales(t);
-			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar Terminal!<br/>"+e.getMessage(), "Cont√°cta con administrador."));
@@ -127,6 +127,7 @@ try {
 	public boolean borrarMarca(Marcas m) {
 		try {
 			terminalesDAO.borrarMarca(m);
+			  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 			
@@ -196,6 +197,7 @@ try {
 	public boolean borrarModelosTerminales(ModelosTerminales mt) {
 		try {
 			terminalesDAO.borrarModelosTerminales(mt);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -264,7 +266,7 @@ try {
 	public boolean borrarEstados(EstadosTerminales et) {
 		try {
 			terminalesDAO.borrarEstados(et);
-			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 		}catch (Exception e) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar estados Terminal!<br/>"+e.getMessage(), "Cont√°cta con administrador."));
@@ -331,6 +333,7 @@ try {
 	public boolean borrarHistEstados(HistEstados he) {
 		try {
 			terminalesDAO.borrarHistEstados(he);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -369,6 +372,7 @@ try {
 	public boolean insertarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.insertarLotesTerminales(lotterm);
+			
 			return true;
 			
 		}catch (Exception e) {
@@ -398,6 +402,7 @@ try {
 	public boolean borrarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.borrarLotesTerminales(lotterm);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -465,6 +470,7 @@ try {
 	public boolean borrarTiposTerminales(TiposTerminales tt) {
 		try {
 			terminalesDAO.borrarTiposTerminales(tt);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {
@@ -532,6 +538,7 @@ try {
 	public boolean borrarCompaniasTerminales(CompaniasTerminales comterm) {
 		try {
 			terminalesDAO.borrarCompaniasTerminales(comterm);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con Èxito",""));
 			return true;
 			
 		}catch (Exception e) {

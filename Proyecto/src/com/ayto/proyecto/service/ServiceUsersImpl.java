@@ -1,6 +1,8 @@
 package com.ayto.proyecto.service;
 
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.ayto.proyecto.dao.UsersDAO;
+import com.ayto.proyecto.modelo.Roles;
 import com.ayto.proyecto.modelo.Users;
 
 
@@ -43,9 +46,9 @@ public class ServiceUsersImpl implements ServiceUsers {
 				System.out.println("Validado?");
 				return true;
 			}else {
-				System.out.println("No tengo");
+				System.out.println("No hay usuario");
 				FacesContext.getCurrentInstance().addMessage(null, 
-						new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existe método de autenticación", "No se ha podido autenticar al usuario"));
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "No existe metodo para poder autenticar", "No se ha podido autenticar al usuario"));
 				return false;
 			}
 		}catch(AuthenticationException e) {
@@ -78,9 +81,80 @@ public class ServiceUsersImpl implements ServiceUsers {
 
 	@Override
 	public boolean validarBD(String nombre, String password) {
-		// TODO Auto-generated method stub
 		usersDAO.validar(nombre,password);
 		return false;
+	}
+
+	@Override
+	public void insertarUsers(Users usr) {
+		usersDAO.insertarUsers(usr);
+		
+	}
+
+	@Override
+	public void modificarUsers(Users usr) {
+		usersDAO.modificarUsers(usr);
+		
+	}
+
+	@Override
+	public void borrarUsers(Users usr) {
+		usersDAO.borrarUsers(usr);
+		
+	}
+
+	@Override
+	public List<Users> getUsers() {
+try {
+			
+		return usersDAO.getUsers();
+		}catch (Exception ecxp) {
+			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar los usuarios del sistema!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
+			 
+		}
+		return null;
+	}
+
+	@Override
+	public Users detalleUsers(String Username) {
+	try {
+		return usersDAO.detalleUsers(Username);
+		
+	}catch (Exception ecxp) {
+		 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar Usuarios del sistema!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
+		 
+	}
+	return null;
+	}
+
+	@Override
+	public void insertarRoles(Roles rol) {
+		usersDAO.insertarRoles(rol);
+		
+	}
+
+	@Override
+	public void modificarRoles(Roles rol) {
+		usersDAO.modificarRoles(rol);
+		
+	}
+
+	@Override
+	public void borrarRoles(Roles rol) {
+		usersDAO.borrarRoles(rol);
+		
+	}
+
+	@Override
+	public List<Roles> getRolename() {
+		
+		return usersDAO.getRolename();
+	}
+
+	@Override
+	public Roles detalleRoles(String Rolename) {
+		
+		return usersDAO.detalleRoles(Rolename);
 	}
     
     

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+	<ui:define name="title"><h:outputText value="Hoja entregas" /></ui:define>
+	<ui:define name="content">
+	<h:form id="Ficha" >
+	<h:panelGroup id="Ficha" layout="block" styleClass="ficha">
+	<ui:fragment id="FFichafrag">
+
+		<h2>Hoja de entregas</h2>
+		<p>
+		Se hace entrega a:  #{entr.usuarios.primerApellido} #{entr.usuarios.segundoApellido}, #{entr.usuarios.nombre}, con NIF: #{entr.usuarios.dni}, 
+		 del siguiente material:
+		</p>
+		<table>
+			<tr>
+				<td>Terminal:</td>
+				<td>MARCA Y MODELO: #{entr.terminales.modelosTerminales.marcas}, #{entr.terminales.modelosTerminales.modelos}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>IMEI: #{entr.terminales.imei}I</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Número corto: #{entr.tarjetas.numCorto}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Número largo: #{entr.tarjetas.numLargo}</td>
+			</tr>
+		</table>
+		<td>En Gijón a:  #{entr.fechaEntrega}</td>
+		<p><br/><br/>Firma:</p>
+		<p:inputTextarea rows="6" cols="33" />
+
+<p></p>
+			<h:commandLink value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandLink>
+			<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>
+	</ui:fragment>
+	</h:panelGroup>
+	</h:form>
+	</ui:define>
+</ui:composition>

@@ -55,5 +55,17 @@ public class Roles implements java.io.Serializable {
 	public void setUserses(Set<Users> userses) {
 		this.userses = userses;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format("%s[id=%d]", getClass().getSimpleName(), getRolename());
+    }
+	
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return rolename.equals(((Roles)obj).rolename);
+    }
 
 }

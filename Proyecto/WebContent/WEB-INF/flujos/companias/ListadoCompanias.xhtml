@@ -13,7 +13,7 @@
 	<h:form id="ListadoCompanias" >
 			<h:panelGroup id="ListadoCompaniasfrag" layout="block" styleClass="ListadoLotes">
 				<ui:fragment id="FListadoCompaniasfrag">
-						<h3>Lotes</h3>
+						
 						<table class="ListadoCompanias table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
@@ -22,18 +22,19 @@
 							</thead>
 							<TBODY>
 							
-								<ui:repeat value="#{companias}" var="comp">
+								<ui:repeat value="#{Companias}" var="c">
 									<tr class="m-5">
 										<td>
-											#{comp.companiasTerminal}
+											#{c.companiasTerminal}
 										</td>
 		
 										<td>
 										<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
-											<f:setPropertyActionListener value="#{comp}" target="#{compania}" />
+											<f:setPropertyActionListener value="#{c}" target="#{Compania}" />
 										</p:commandButton> 
 										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
-											<f:setPropertyActionListener value="#{comp}" target="#{compania}" />
+											<p:confirm header="¡Atención!" message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?" icon="ui-icon-alert" />
+											<f:setPropertyActionListener value="#{c}" target="#{Compania}" />
 										</p:commandButton>
 										
 										</td>
@@ -44,8 +45,11 @@
 								
 							</TBODY>
 						</table>
-						<h:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Lote" id="nuevo" action="nuevo"></h:commandButton>
-						
+						<h:commandButton class="btn btn-success fa" value="&#xf067; Nueva compañía" id="nuevo" action="nuevo"></h:commandButton>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        				<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        				<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				  		</p:confirmDialog>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

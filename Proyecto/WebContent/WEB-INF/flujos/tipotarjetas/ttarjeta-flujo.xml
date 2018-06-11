@@ -12,17 +12,17 @@
 	</on-start>
 	<view-state id="ListadoTTarjetas" >
 	 <secured attributes="ROLE_ADMIN"/>
-		<var name="tipotarjeta" class="com.ayto.proyecto.modelo.TiposTarjetas"/>
+		<var name="Tipotarjeta" class="com.ayto.proyecto.modelo.TiposTarjetas"/>
 		<on-entry>
-			<set name="flowScope.tipostarjetas" value="serviceTarjetasImpl.listadoTiposTarjetas()"></set>
+			<set name="flowScope.Tipotarjetas" value="serviceTarjetasImpl.listadoTiposTarjetas()"></set>
 		</on-entry>
 		<transition on="cancelar" to="ListadoTTarjetas"></transition>
 		<transition on="nuevo" to="AltaTTarjetas"></transition>
 		<transition on="modificar" to="EditarTTarjetas">
-			<set name="flowScope.tipotarjeta" value="tipotarjeta" />
+			<set name="flowScope.Tipotarjeta" value="Tipotarjeta" />
 		</transition>
 		<transition on="borrar" to="ListadoTTarjetas">
-			 <evaluate expression="serviceTarjetasImpl.borrarTipoTarjetas(tipotarjeta)"></evaluate> 
+			 <evaluate expression="serviceTarjetasImpl.borrarTipoTarjetas(Tipotarjeta)"></evaluate> 
 		</transition>
 	</view-state>
 
@@ -30,12 +30,12 @@
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaTTarjetas" >
 		<on-entry>
-			<set name="flowScope.tipotarjeta" value="new com.ayto.proyecto.modelo.TiposTarjetas()"></set>
+			<set name="flowScope.Tipotarjeta" value="new com.ayto.proyecto.modelo.TiposTarjetas()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoTTarjetas"></transition>
 		<transition on="guardar" to="ListadoTTarjetas">
-			 <evaluate expression="serviceTarjetasImpl.insertarTipoTarjetas(tipotarjeta)"></evaluate> 
+			 <evaluate expression="serviceTarjetasImpl.insertarTipoTarjetas(Tipotarjeta)"></evaluate> 
 		</transition>
 	</view-state>
 	
@@ -46,7 +46,7 @@
 		
 		<transition on="cancelar" to="ListadoTTarjetas"></transition>
 		<transition on="guardar" to="ListadoTTarjetas">
-		 	<evaluate expression="serviceTarjetasImpl.modificarTipoTarjetas(tipotarjeta)"></evaluate> 
+		 	<evaluate expression="serviceTarjetasImpl.modificarTipoTarjetas(Tipotarjeta)"></evaluate> 
 		</transition>
 	</view-state>
 	

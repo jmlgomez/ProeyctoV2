@@ -12,17 +12,17 @@
 	</on-start>
 	<view-state id="ListadoCompanias" >
 	 <secured attributes="ROLE_ADMIN"/>
-		<var name="compania" class="com.ayto.proyecto.modelo.CompaniasTerminales"/>
+		<var name="Compania" class="com.ayto.proyecto.modelo.CompaniasTerminales"/>
 		<on-entry>
-			<set name="flowScope.companias" value="serviceTerminalesImpl.listadoCompaniasTerminales()"></set>
+			<set name="flowScope.Companias" value="serviceTerminalesImpl.listadoCompaniasTerminales()"></set>
 		</on-entry>
 		<transition on="cancelar" to="ListadoCompanias"></transition>
 		<transition on="nuevo" to="AltaCompanias"></transition>
 		<transition on="modificar" to="EditarCompanias">
-			<set name="flowScope.compania" value="compania" />
+			<set name="flowScope.Compania" value="Compania" /> <!-- Variable de la implementacion -->
 		</transition>
 		<transition on="borrar" to="ListadoCompanias">
-			 <evaluate expression="serviceTerminalesImpl.borrarCompaniasTerminales(compania)"></evaluate> 
+			 <evaluate expression="serviceTerminalesImpl.borrarCompaniasTerminales(Compania)"></evaluate> 
 		</transition>
 	</view-state>
 
@@ -30,23 +30,23 @@
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaCompanias" >
 		<on-entry>
-			<set name="flowScope.compania" value="new com.ayto.proyecto.modelo.CompaniasTerminales()"></set>
+			<set name="flowScope.Compania" value="new com.ayto.proyecto.modelo.CompaniasTerminales()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoCompanias"></transition>
 		<transition on="guardar" to="ListadoCompanias">
-			 <evaluate expression="serviceTerminalesImpl.insertarCompaniasTerminales(compania)"></evaluate> 
+			 <evaluate expression="serviceTerminalesImpl.insertarCompaniasTerminales(Compania)"></evaluate> 
 		</transition>
 	</view-state>
 	
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarLotes" >
+	<view-state id="EditarCompanias" >
 		
 		<transition on="cancelar" to="ListadoCompanias"></transition>
 		<transition on="guardar" to="ListadoCompanias">
-		 	<evaluate expression="serviceTerminalesImpl.modificarCompaniasTerminales(compania)"></evaluate> 
+		 	<evaluate expression="serviceTerminalesImpl.modificarCompaniasTerminales(Compania)"></evaluate> 
 		</transition>
 	</view-state>
 	

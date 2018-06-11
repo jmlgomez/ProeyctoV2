@@ -12,9 +12,9 @@
 	</on-start>
 	<view-state id="ListadoModelos" >
 	 <secured attributes="ROLE_ADMIN"/>
-		<var name="modelo" class="com.ayto.proyecto.modelo.ModelosTerminales"/>
+		<var name="Modelo" class="com.ayto.proyecto.modelo.ModelosTerminales"/>
 		<on-entry>
-			<set name="flowScope.modelos" value="serviceTerminalesImpl.listadoModelosTerminales()"></set>
+			<set name="flowScope.Modelos" value="serviceTerminalesImpl.listadoModelosTerminales()"></set>
 		</on-entry>
 		<transition on="cancelar" to="ListadoModelos"></transition>
 		<transition on="nuevo" to="AltaModelos"></transition>
@@ -22,7 +22,7 @@
 			<set name="flowScope.modelo" value="modelo" />
 		</transition>
 		<transition on="borrar" to="ListadoModelos">
-			 <evaluate expression="serviceTerminalesImpl.borrarModelosTerminales(modelo)"></evaluate> 
+			 <evaluate expression="serviceTerminalesImpl.borrarModelosTerminales(Modelo)"></evaluate> 
 		</transition>
 	</view-state>
 
@@ -30,12 +30,12 @@
 	<!-- PARA DAR DE ALTA -->
 	<view-state id="AltaModelos" >
 		<on-entry>
-			<set name="flowScope.modelo" value="new com.ayto.proyecto.modelo.ModelosTerminales()"></set>
+			<set name="flowScope.Modelo" value="new com.ayto.proyecto.modelo.ModelosTerminales()"></set>
 		</on-entry>
 		
 		<transition on="cancelar" to="ListadoModelos"></transition>
 		<transition on="guardar" to="ListadoModelos">
-			 <evaluate expression="serviceTerminalesImpl.insertarModelosTerminales(modelo)"></evaluate> 
+			 <evaluate expression="serviceTerminalesImpl.insertarModelosTerminales(Modelo)"></evaluate> 
 		</transition>
 	</view-state>
 	
@@ -46,7 +46,7 @@
 		
 		<transition on="cancelar" to="ListadoModelos"></transition>
 		<transition on="guardar" to="ListadoModelos">
-		 	<evaluate expression="serviceTerminalesImpl.modificarModelosTerminales(modelo)"></evaluate> 
+		 	<evaluate expression="serviceTerminalesImpl.modificarModelosTerminales(Modelo)"></evaluate> 
 		</transition>
 	</view-state>
 	

@@ -13,7 +13,7 @@
 	<h:form id="ListadoLotes" >
 			<h:panelGroup id="ListadoLotesfrag" layout="block" styleClass="ListadoLotes">
 				<ui:fragment id="FListadoLotesfrag">
-						<h3>Lotes</h3>
+						
 						<table class="ListadoLotes table-hover table-bordered" id="tablalistado">
 							<thead>
 								<tr>
@@ -33,6 +33,7 @@
 											<f:setPropertyActionListener value="#{lot}" target="#{lote}" />
 										</p:commandButton> 
 										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
+											<p:confirm header="¡Atención!" message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?" icon="ui-icon-alert" />
 											<f:setPropertyActionListener value="#{lot}" target="#{lote}" />
 										</p:commandButton>
 										
@@ -45,7 +46,10 @@
 							</TBODY>
 						</table>
 						<h:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Lote" id="nuevo" action="nuevo"></h:commandButton>
-						
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        				<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        				<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
 				</ui:fragment>
 			</h:panelGroup>
         </h:form>

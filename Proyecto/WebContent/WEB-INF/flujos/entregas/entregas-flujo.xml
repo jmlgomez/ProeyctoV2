@@ -23,6 +23,8 @@
 		<transition on="borrar" to="ListadoEntregas">
 			 <evaluate expression="serviceEntregasImpl.borrarEntregas(entrega)"></evaluate> 
 		</transition>
+		<transition on="Imprimir" to="Ficha"></transition>
+		
 	</view-state>
 	
 
@@ -31,7 +33,7 @@
 	<view-state id="AltaEntregas" >
 		<on-entry>
 			<set name="flowScope.entrega" value="new com.ayto.proyecto.modelo.Entregas()"></set>
-			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarioslibres()"></set>
+			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarios()"></set>
 			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
 			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
@@ -48,10 +50,10 @@
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarEntregas" view="AltaEntregas.xhtml">
+	<view-state id="EditarEntregas" view="AltaEntregas.xhtml"> <!-- Con view se carga la vista automaticamente de alta entregas y no hace falta volver a hacerla -->
 		<on-entry>
 
-			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarioslibres()"></set>
+			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarios()"></set>
 			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
 			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
@@ -62,5 +64,15 @@
 	</view-state>
 	
 	<!-- ******************************************************************************************************** -->
+	<!-- PARA IMPRIMIR-->
+	
+	<view-state id="Ficha">
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	
+	
+	
 	
 </flow>

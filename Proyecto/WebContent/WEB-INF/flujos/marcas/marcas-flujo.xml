@@ -46,7 +46,7 @@
 		
 		<transition on="cancelar" to="ListadoMarcas"></transition>
 		<transition on="guardar" to="ListadoMarcas">
-		 	<evaluate expression="serviceMarcasImpl.modificarMarca(marca)"></evaluate> 
+		 	<evaluate expression="serviceTerminalesImpl.modificarMarca(marca)"></evaluate> 
 		</transition>
 	</view-state>
 	

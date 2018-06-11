@@ -16,11 +16,8 @@
 			<h:panelGroup id="EditarCompanias" layout="block"
 				styleClass="EditarCompanias">
 				<ui:fragment id="EditarCompaniasfrag">
-					
-					<h2>Editar compañias terminal</h2>
 						<div class="form-group col-md-6">
-							<label>Lote</label>
-							<p:inputText required="false" class="form-control" placeholder="Introduce la compañia al que pertenezca el terminal" value="#{compania.companiasTerminal}" />
+							<p:inputText required="false" class="form-control" placeholder="Introduce la compañia al que pertenezca el terminal" value="#{Compania.companiasTerminal}" />
 						
 						<h:commandButton value="Guardar" id="guardar" action="guardar"
 							class="btn btn-primary"></h:commandButton>

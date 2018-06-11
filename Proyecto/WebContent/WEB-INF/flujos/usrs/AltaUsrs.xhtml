@@ -21,18 +21,18 @@
 
 						<div class="form-group col-md-6">
 							<label>Nombre de Usuario </label>
-							<p:inputText required="false" class="form-control" placeholder="Introduce el  nombre del usuario" value="#{usuario.primerApellido}" />
+							<p:inputText required="false" class="form-control" placeholder="Introduce el  nombre del usuario" value="#{Usr.username}" />
 						<p></p>
 						 <h:outputText value="Introduce la contraseña " />
-       					<p:password id="passwrd" value="#{passwordView.password3}" feedback="true"
+       					<p:password id="passwrd" value="#{Usr.password}" feedback="true"
                     		promptLabel="Contraseña no  cumple el mínimo establecido" weakLabel="Contraseña debil"
                     		goodLabel="Contraseña cumple minímamente los estándares" strongLabel="Contraseña Fuerte" />
 						
 						<label>Selecciona el rol al que pernece el usuario</label>
-  							<h:selectOneMenu value="#{terminal.lotesTerminales}" converter="omnifaces.SelectItemsConverter">
-  							 <f:selectItems value="#{lotesTerminales}" var="lotes" 
-  							 		itemLabel="#{lotes.lote}" 
-  							 		itemValue="#{lotes}" />	
+  							<h:selectOneMenu value="#{Usr.users_roles.roles.rolename}" converter="omnifaces.SelectItemsConverter">
+  							 <f:selectItems value="#{rolename}" var="rol" 
+  							 		itemLabel="#{rol.rolename}" 
+  							 		itemValue="#{rolename}" />	
 					        </h:selectOneMenu>
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"
