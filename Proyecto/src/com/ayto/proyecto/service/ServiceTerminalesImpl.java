@@ -19,28 +19,23 @@ import com.ayto.proyecto.modelo.Terminales;
 import com.ayto.proyecto.modelo.TiposTerminales;
 @Service
 public class ServiceTerminalesImpl implements ServiceTerminales{
-	
-	
+
+
 	@Autowired
 	TerminalesDAO terminalesDAO;
-	
+
 
 	@Override
 	public boolean insertarTerminales(Terminales t) {
-		
 		try {
 			terminalesDAO.insertarTerminales(t);
-			
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
-		
-	
+
 
 	@Override
 	public boolean borrarTerminales(Terminales t) {
@@ -49,11 +44,9 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -62,35 +55,38 @@ public class ServiceTerminalesImpl implements ServiceTerminales{
 			terminalesDAO.modificarTerminales(t);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public Terminales detalleTerminales(int idTerminal) {
-try {
-			
+		try {
 			return terminalesDAO.detalleTerminales(idTerminal);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public List<Terminales> listarTerminales() {
-try {
-			
+		try {
 			return terminalesDAO.listarTerminales();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Terminales> listarTerminalesDisponibles() {
+		try {
+			return terminalesDAO.listarTerminalesDisponibles();
+		}catch (Exception ecxp) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -99,14 +95,10 @@ try {
 	public boolean insertarMarca(Marcas m) {
 		try {
 			terminalesDAO.insertarMarca(m);
-			
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar Marca!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar Marca!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -116,49 +108,39 @@ try {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Marca!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar Marca!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public boolean borrarMarca(Marcas m) {
 		try {
 			terminalesDAO.borrarMarca(m);
-			  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
-			
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar marca!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar marca!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<Marcas> listadoMarcas() {
-try {
-			
+		try {
 			return terminalesDAO.listadoMarcas();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public Marcas detalleMarca(int idMarca) {
-try {
-			
+		try {
 			return terminalesDAO.detalleMarca(idMarca);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar marcas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar marcas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -167,15 +149,11 @@ try {
 	public boolean insertarModelosTerminales(ModelosTerminales mt) {
 		try {
 			terminalesDAO.insertarModelosTerminales(mt);
-			
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -183,14 +161,11 @@ try {
 		try {
 			terminalesDAO.modificarModelosTerminales(mt);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
-			
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -199,35 +174,28 @@ try {
 			terminalesDAO.borrarModelosTerminales(mt);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar modelo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<ModelosTerminales> listadoModelosTerminales() {
-try {
-			
+		try {
 			return terminalesDAO.listadoModelosTerminales();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar modelos terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar modelos terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public ModelosTerminales detalleModelosTerminales(int idModeloTerminal) {
-try {
-			
+		try {
 			return terminalesDAO.detalleModelosTerminales(idModeloTerminal);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar modelo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar modelo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -237,13 +205,10 @@ try {
 		try {
 			terminalesDAO.insertarEstados(et);
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -251,15 +216,11 @@ try {
 		try {
 			terminalesDAO.modificarEstados(et);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
-			
-			
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -269,33 +230,27 @@ try {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar estados Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<EstadosTerminales> listadoEstadosTerminales() {
-try {
-			
+		try {
 			return terminalesDAO.listadoEstadosTerminales();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar estados terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar estados terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public EstadosTerminales detalleEstados(int idEstadoTerminal) {
-try {
-			
+		try {
 			return terminalesDAO.detalleEstados(idEstadoTerminal);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar estados terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar estados terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -304,14 +259,10 @@ try {
 	public boolean insertarHistEstados(HistEstados he) {
 		try {
 			terminalesDAO.insertarHistEstados(he);
-			
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar historico estados!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar historico estados!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -320,13 +271,10 @@ try {
 			terminalesDAO.modificarHistEstados(he);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar historico estados!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar historico estados!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -335,35 +283,28 @@ try {
 			terminalesDAO.borrarHistEstados(he);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar historico estadosl!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar historico estadosl!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<HistEstados> listadoHistEstados() {
-try {
-			
+		try {
 			return terminalesDAO.listadoHistEstados();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar historico estados!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar historico estados!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public HistEstados detalleHistEstados(int idHistEstado) {
-try {
-			
+		try {
 			return terminalesDAO.detalleHistEstados(idHistEstado);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar hsitorico estado !<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar hsitorico estado !<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -372,15 +313,11 @@ try {
 	public boolean insertarLotesTerminales(LotesTerminales lotterm) {
 		try {
 			terminalesDAO.insertarLotesTerminales(lotterm);
-			
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar lotes terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar lotes terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -389,13 +326,10 @@ try {
 			terminalesDAO.modificarLotesTerminales(lotterm);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar lotes Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar lotes Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -404,35 +338,28 @@ try {
 			terminalesDAO.borrarLotesTerminales(lotterm);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar lotes Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar lotes Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<LotesTerminales> listadoLotesTerminales() {
-try {
-			
+		try {
 			return terminalesDAO.listadoLotesTerminales();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar lotes terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar lotes terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public LotesTerminales detalleLotesTerminales(int idLoteTerminal) {
-try {
-			
+		try {
 			return terminalesDAO.detalleLotesTerminales(idLoteTerminal);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar lotes terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar lotes terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -442,13 +369,10 @@ try {
 		try {
 			terminalesDAO.insertarTiposTerminales(tt);
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar tipos Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar tipos Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -457,13 +381,10 @@ try {
 			terminalesDAO.modificarTiposTerminales(tt);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tipos Terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar tipos Terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -472,35 +393,28 @@ try {
 			terminalesDAO.borrarTiposTerminales(tt);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar tipo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar tipo Terminal!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<TiposTerminales> listadoTiposTerminales() {
-try {
-			
+		try {
 			return terminalesDAO.listadoTiposTerminales();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listado tipo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listado tipo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public TiposTerminales detalleTiposTerminales(int idTipoTerminal) {
-try {
-			
+		try {
 			return terminalesDAO.detalleTiposTerminales(idTipoTerminal);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar tipo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar tipo terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
@@ -510,13 +424,10 @@ try {
 		try {
 			terminalesDAO.modificarCompaniasTerminales(comterm);;
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar  compañias terminales !<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al insertar  compañias terminales !<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -525,13 +436,10 @@ try {
 			terminalesDAO.modificarCompaniasTerminales(comterm);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha modificado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar compañias terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al modificar compañias terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
@@ -540,37 +448,29 @@ try {
 			terminalesDAO.borrarCompaniasTerminales(comterm);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con �xito",""));
 			return true;
-			
 		}catch (Exception e) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar  compañias terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar  compañias terminales!<br/>"+e.getMessage(), "Contácta con administrador."));
 		}
 		return false;
-		
 	}
 
 	@Override
 	public List<CompaniasTerminales> listadoCompaniasTerminales() {
-try {
-			
+		try {
 			return terminalesDAO.listadoCompaniasTerminales();
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar compañias terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al listar compañias terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
 	}
 
 	@Override
 	public CompaniasTerminales detalleCompaniasTerminales(int idCompaniaTerminal) {
-try {
-			
+		try {
 			return terminalesDAO.detalleCompaniasTerminales(idCompaniaTerminal);
 		}catch (Exception ecxp) {
-			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar compañias terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
-			 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al detallar compañias terminales!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));
 		}
 		return null;
-
-}
+	}
 }

@@ -16,18 +16,20 @@ xmlns:p="http://primefaces.org/ui"
 		<meta name="content-language" content="es" />
 		<base href="/Proyecto/"/>
 	 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
-	 	<link rel="stylesheet" type="text/css" href="css/base.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous" />
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
         <link rel="stylesheet" href="font-awesome/css/fontawesome-all.css"/>
+        <link rel="stylesheet" type="text/css" href="css/base.css"/>
+        <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
 		<title><ui:insert name="title" /></title>
 	</h:head>
 	
 	<h:body>
  		<div id="cabecera">
  			<h1>Gestión de Telefonía</h1>
- 			<div id="usuario">Hola, #{user==null?"Anónimo":user.username}</div>	
- 			<div id="sesion"><a href="telefonia/logout">Cerrar sesión</a></div>
+ 			<div id="usuario">
+ 				<div><i class="fas fa-user-circle"></i> Bienvenido, #{user==null?"Anónimo":user.username}<span class="separador">|</span><a href="telefonia/logout"><i class="fas fa-user-alt-slash"><span class="tooltiptext">Cerrar Sesión</span></i></a></div>
+ 			</div>
 		</div>
 		
 		 <p:growl id="growl" life="2000" />

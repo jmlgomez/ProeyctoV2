@@ -7,7 +7,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/WEB-INF/plantillas/general.xhtml">
 	<ui:define name="title">
-		<h:outputText value="Alta entregas" />
+		<h:outputText value="Asignación" />
 	</ui:define>
 
 	<ui:define name="content">
@@ -15,13 +15,13 @@
 			<h:panelGroup id="AltaEntregas" layout="block"
 				styleClass="AltaEntregas">
 				<ui:fragment id="AltaEntregasfrag">
-					<h2>Alta Entrega</h2>
+					
 						<div class="form-group col-md-6">
-						<h2>Fecha de Entrega</h2>
+						<label>Fecha de asignación</label>
 						<p></p>	
-  						<p:calendar required="false" value="#{entrega.fechaEntrega}" />
+  						<p:calendar required="false" value="#{entrega.fechaEntrega}" autocomplete="off"/>
 						<p></p>
-						<h2>Usuario</h2>
+						<label>Usuario</label>
 						<p></p>	
 						<p:selectOneMenu value="#{entrega.usuarios}" converter="omnifaces.SelectItemsConverter"
 										 var="usr" filter="true"  showCheckbox="true" ><!-- Variable donde se almacena el valor del usuario -->
@@ -37,7 +37,7 @@
 						            </p:column>
 						</p:selectOneMenu> 
 						<p></p>
-						<h2>Terminal</h2>
+						<label>Terminal</label>
 						<p></p>
   						<p:selectOneMenu value="#{entrega.terminales}" converter="omnifaces.SelectItemsConverter" 
   										 var="term" filter="true"  showCheckbox="true" ><!-- Variable donde se almacena el valor del usuario -->
@@ -53,7 +53,7 @@
 						            </p:column>
 						        </p:selectOneMenu>   				
   						<p></p>
-  						<h2>Tarjeta</h2>
+  						<label>Tarjeta</label>
   						<p></p>
   							 <p:selectOneMenu value="#{entrega.tarjetas}" converter="omnifaces.SelectItemsConverter"
 						                          var="tarj" filter="true"  showCheckbox="true" ><!-- Variable donde se almacena el valor del usuario -->
@@ -78,7 +78,7 @@
   							<h:selectOneMenu value="#{entrega.terminales.modelosTerminales.marcas.marca}" converter="omnifaces.SelectItemsConverter" >
        					 -->
        					 
-						<h2>Observaciones</h2>
+						<label>Observaciones</label>
 						<p></p>
 						<p:inputTextarea  value="#{entrega.observaciones}" rows="6" cols="33" />
 						<p></p>

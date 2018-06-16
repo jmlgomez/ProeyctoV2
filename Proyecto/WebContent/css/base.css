@@ -18,6 +18,37 @@ h3 {
 	background: #fff url("images/gotas.jpg") scroll no-repeat 0 0;
 	padding:30px;
 	color:white;
+	font-family: Roboto;
+}
+#cabecera a,a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+#cabecera a:hover {
+	color: #b63b4d;
+	text-decoration: none;
+}
+#cabecera .separador {
+	padding:20px;
+}
+i .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-family: Roboto;
+
+    /* Position the tooltip */
+    position: absolute;
+    right:10px;
+    top:20px;
+    z-index: 1;
+}
+i:hover .tooltiptext {
+    visibility: visible;
 }
 #cuerpo{
 	margin-top:20px;
@@ -25,31 +56,21 @@ h3 {
 	
 }
 
-/*#navegacion{
-	margin-top:20px;
-	width: 140px;
-	position: static;
-	left:0;
-	display:inline-block;
-	float:left;
-	text-align: center;
-}
-#navegacion a{
-	margin: 7px;
-	display:inline-block;
-	width: 115px;
-}*/
 #usuario
 {
 	color: white;
 	position:absolute;
 	top: 30px;
 	right: 10px;
+	background-color: #394668;
+	border:white 1px solid;
+	padding:15px;
+	-webkit-border-radius: 10px;
+ 	-moz-border-radius: 10px;
+ 	border-radius: 10px;
 }
 #sesion {
 	text-decoration:underline;
-	position: absolute;
-	right: 10px;
 }
 #footer {
 	position: fixed;
@@ -82,6 +103,20 @@ a {
 	color: #b63b4d;
 	text-decoration: none;
 }
+
+td {
+	padding-left: 10px !important;
+	min-width: 100px;
+}
+th {
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+table {
+	font-size: 80%;
+}
+
 
 /** =======================
  * Contenedor Principal
@@ -175,3 +210,9 @@ a {
  	color: #FFF;
  }
 
+/* IMPRESIÓN */
+
+.impresion {
+	padding: 50px;
+	
+}

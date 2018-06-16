@@ -14,6 +14,7 @@ public interface ServiceTarjetas {
 	public boolean modificarTarjetas (Tarjetas tarj);
 	public Tarjetas detalleTarjetas ( int idTarjeta);
 	public List<Tarjetas> listarTarjetas();
+	public List<Tarjetas> listarTarjetasDisponibles();
 	
 	//Manejo ESTADOS_TARJETA
 	public boolean insertarEstadosTarjetas (EstadosTarjetas esttarj);

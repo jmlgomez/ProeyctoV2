@@ -1,0 +1,32 @@
+body{
+	margin: 0 auto;
+	font-family:"Open Sans";
+}
+
+h3 {
+	font-weight: bold;
+}
+
+a {
+	color: #b63b4d;
+	text-decoration: none;
+}
+table {
+	font-size: 80%;
+	border: 1px solid black;
+	width:100%;
+}
+tr,td,th {
+	padding:20px;
+	text-align:left;
+}
+.cliente {
+	padding:20px;
+	border:1px solid black;
+}
+
+/* IMPRESIÓN */
+
+.impresion {
+	padding: 50px;
+}

@@ -255,4 +255,11 @@ public class Usuarios implements java.io.Serializable {
     public String toString() {
         return String.format("%s[id=%d]", getClass().getSimpleName(), getIdUsuario());
     }
+	@Override
+    public boolean equals(Object obj) {
+          if (getClass() != obj.getClass()) 
+              return false;
+          return idUsuario.equals(((Usuarios)obj).idUsuario);
+    }
+	
 }

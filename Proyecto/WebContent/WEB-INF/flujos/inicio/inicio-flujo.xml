@@ -6,44 +6,71 @@
 
 
 <!-- ******************************************************************************************************** -->
-	<!-- PARA LISTAR-->
-	
-	<view-state id="ListadoUsuarios" >
-		<var name="usuario" class="com.ayto.proyecto.modelo.Usuarios"/>
+	<!-- PARA LISTAR /BORRAR-->
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
+<view-state id="ListadoEntregas" >
+<secured attributes="ROLE_ADMIN"/>
+		<var name="entrega" class="com.ayto.proyecto.modelo.Entregas"/>
 		<on-entry>
-			<set name="flowScope.usuarios" value="serviceUsuariosImpl.listarUsuarios()"></set>
+			<set name="flowScope.entregas" value="serviceEntregasImpl.listarEntregas()"></set>
 		</on-entry>
-		<transition on="nuevousuario" to="AltaUsuarios"></transition>
-		<transition on="modificar" to="EditarUsuarios">
-			<set name="flowScope.usuario" value="usuario" />
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+		<transition on="nuevo" to="AltaEntregas"></transition>
+		<transition on="modificar" to="EditarEntregas">
+			<set name="flowScope.entrega" value="entrega" />
 		</transition>
-		<transition on="borrar" to="ListadoUsuarios">
-			 <evaluate expression="serviceUsuariosImpl.borrarUsuarios(usuario)"></evaluate> 
+		<transition on="borrar" to="ListadoEntregas">
+			 <evaluate expression="serviceEntregasImpl.borrarEntregas(entrega)"></evaluate> 
 		</transition>
+		<transition on="Imprimir" to="Ficha">
+			<set name="flowScope.entrega" value="entrega" />
+		</transition>
+		
 	</view-state>
+	
 
 <!-- ******************************************************************************************************** -->
 	<!-- PARA DAR DE ALTA -->
-	<view-state id="AltaUsuarios" >
+	<view-state id="AltaEntregas" >
 		<on-entry>
-			<set name="flowScope.usuario" value="new com.ayto.proyecto.modelo.Usuarios()"></set>
+			<set name="flowScope.entrega" value="new com.ayto.proyecto.modelo.Entregas()"></set>
+			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarios()"></set>
+			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
+			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
 		</on-entry>
+		<on-render>
+		<set name="flowScope.modelosEntregas" value="serviceEntregasImpl.listarEntregas()"></set>
+		</on-render>
 		
-		<transition on="cancelar" to="ListadoUsuarios"></transition>
-		<transition on="guardar" to="ListadoUsuarios">
-			 <evaluate expression="serviceUsuariosImpl.insertarUsuarios(usuario)"></evaluate> 
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+		<transition on="guardar" to="ListadoEntregas">
+			 <evaluate expression="serviceEntregasImpl.insertarEntregas(entrega)"></evaluate> 
 		</transition>
 	</view-state>
 	
 	<!-- ******************************************************************************************************** -->
 	<!-- PARA EDITAR-->
 	
-	<view-state id="EditarUsuarios" >
-		
-		<transition on="cancelar" to="ListadoUsuarios"></transition>
-		<transition on="guardar" to="ListadoUsuarios">
-		 	<evaluate expression="serviceUsuariosImpl.modificarUsuarios(usuario)"></evaluate> 
+	<view-state id="EditarEntregas" view="AltaEntregas.xhtml"> <!-- Con view se carga la vista automaticamente de alta entregas y no hace falta volver a hacerla -->
+		<on-entry>
+
+			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarios()"></set>
+			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
+			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
+		</on-entry>
+		<transition on="cancelar" to="ListadoEntregas"></transition>
+		<transition on="guardar" to="ListadoEntregas">
+		 	<evaluate expression="serviceEntregasImpl.modificarEntregas(entrega)"></evaluate> 
 		</transition>
+	</view-state>
+	
+	<!-- ******************************************************************************************************** -->
+	<!-- PARA IMPRIMIR-->
+	
+	<view-state id="Ficha">
+		<transition on="cancelar" to="ListadoEntregas"></transition>
 	</view-state>
 	
 	<!-- ******************************************************************************************************** -->

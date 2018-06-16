@@ -23,12 +23,12 @@
 							placeholder="Introduce el ICC de la tarjeta" 
 							value="#{tarjeta.icc}" />
 						<p></p>
-						<LABEL>Número Corto</LABEL>
+						<LABEL>Núm Corto</LABEL>
 						<p:inputText required="false" class="form-control"
 							placeholder="Introduce el número corto"
 							value="#{tarjeta.numCorto}" />
 						<p></p>
-						<LABEL>Número Largo</LABEL>
+						<LABEL>Núm Largo</LABEL>
 						<p:inputText required="false" class="form-control"
 							placeholder="Introduce el número largo"
 							value="#{tarjeta.numLargo}" />
@@ -41,7 +41,7 @@
 						<p:inputText required="false" class="form-control"
 							placeholder="Introduce el PUK" value="#{tarjeta.puk}" />
 						<p></p>
-						<LABEL>Tipo de Tarjeta</LABEL>
+						<LABEL>Tipo Tarjeta</LABEL>
 						<p></p>
 						<h:selectOneMenu value="#{tarjeta.tiposTarjetas}" converter="omnifaces.SelectItemsConverter">
 							<f:selectItems value="#{tiposTarjetas}" var="tiptar"
@@ -50,7 +50,7 @@
 						</h:selectOneMenu>
 <p></p>
 
-						<LABEL>Tipo de Tarifa</LABEL>
+						<LABEL>Tipo Tarifa</LABEL>
 						<p></p>
 						<h:selectOneMenu value="#{tarjeta.tiposTarifas}" converter="omnifaces.SelectItemsConverter">
 							<f:selectItems value="#{tiposTarifas}" var="ttarf"

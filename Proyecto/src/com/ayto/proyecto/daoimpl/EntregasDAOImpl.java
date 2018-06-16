@@ -33,138 +33,118 @@ public class EntregasDAOImpl  implements EntregasDAO {
 	@Override
 	@Transactional
 	public void insertarEntregas(Entregas e) {
-		
-			try {
-				
-				enti.persist(e);
-				
-			} catch (HibernateException ex) {
-				System.out.println("Error al realizar la inserccion Entregas "+ex.getMessage());
-				
-			}
-		
+		try {
+			e.getTerminales().setDisponible(false);
+			e.getTarjetas().setDisponible(false);
+			enti.persist(e);
+		} catch (HibernateException ex) {
+			System.out.println("Error al realizar la inserccion Entregas "+ex.getMessage());
+		}
 	}
+	
 	@Override
 	@Transactional
 	public void borrarEntregas(Entregas e) {
-		
-			try {
-				
-				Entregas entrega=enti.find(Entregas.class, e.getIdEntrega());
-			    enti.remove(entrega);	
-				
-			} catch (HibernateException ex) {
-				System.out.println("Error al realizar el borrado Entregas"+ex.getMessage());
-				
-			}
-		
+		try {
+			Entregas entrega=enti.find(Entregas.class, e.getIdEntrega());
+			entrega.getTerminales().setDisponible(true);
+			entrega.getTarjetas().setDisponible(true);
+			enti.remove(entrega);	
+		} catch (HibernateException ex) {
+			System.out.println("Error al realizar el borrado Entregas"+ex.getMessage());
+		}
 	}
+	
 	@Override
 	@Transactional
 	public void modificarEntregas(Entregas e) {
-try {
-			
+		try {
 			enti.merge(e);
-			
 		} catch (HibernateException ex) {
-			System.out.println("Error al realizar la actualizaciÃ³n Entregas"+ex.getMessage());
-			
+			System.out.println("Error al realizar la actualizaci�n Entregas"+ex.getMessage());
 		}
-		
 	}
+	
 	@Override
 	@Transactional
 	public Entregas detalleEntregas(int idEntrega) {
-try {
-			
+		try {
 			Query q = (Query)enti.createQuery("from Entregas where idEntrega=:idEntrega");
 			q.setParameter("idEntrega", idEntrega);
 			Entregas e = (Entregas) q.getSingleResult();
 			return e;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			
 		}
 		return null;
 	}
+	
 	@Override
 	@Transactional
 	public List<Entregas> listarEntregas() {
-try {
-			
+		try {
 			Query q = (Query)enti.createQuery("from Entregas");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			
 		}
 		return null;
 	}
+	
 	@Override
 	@Transactional
 	public void insertarOperadores(Operadores o) {
-try {
-			
+		try {
 			enti.persist(o);
-			
+
 		} catch (HibernateException ex) {
-			System.out.println("Error al realizar la insercion Operadores "+ex.getMessage());
-			
-		}
-		
+			System.out.println("Error al realizar la insercion Operadores "+ex.getMessage());			
+		}		
 	}
+	
 	@Override
 	@Transactional
 	public void modificarOperadores(Operadores o) {
-try {
-			
+		try {
 			enti.merge(o);
-			
 		} catch (HibernateException ex) {
-			System.out.println("Error al realizar la actualizaciÃ³n Operadores "+ex.getMessage());
-			
-		}
-		
+			System.out.println("Error al realizar la actualizaciÃ³n Operadores "+ex.getMessage());	
+		}	
 	}
+	
 	@Override
 	@Transactional
 	public void borrarOperadores(Operadores o) {
-try {
-			
-		Operadores operador=enti.find(Operadores.class, o.getIdOperador());
-		enti.remove(operador);
-	
+		try {	
+			Operadores operador=enti.find(Operadores.class, o.getIdOperador());
+			enti.remove(operador);	
 		} catch (HibernateException ex) {
-			System.out.println("Error al realizar el borrado Operadores "+ex.getMessage());
-			
-		}
-		
+			System.out.println("Error al realizar el borrado Operadores "+ex.getMessage());			
+		}		
 	}
+	
 	@Override
 	@Transactional
 	public List<Operadores> listadoOperadores() {
-try {
-			
+		try {			
 			Query q = (Query)enti.createQuery("from Operadores");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
-			ex.printStackTrace();
-			
+			ex.printStackTrace();			
 		}
 		return null;
 	}
+	
 	@Override
 	@Transactional
 	public Operadores detalleOperadores(int idOperador) {
-try {
-			
+		try {
 			Query q = (Query)enti.createQuery("from Operadores where idOperador=:idOperador");
 			q.setParameter("idOperador", idOperador);
 			Operadores o = (Operadores) q.getSingleResult();
 			return o;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			
 		}
 		return null;
 	}	

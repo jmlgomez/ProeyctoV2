@@ -14,6 +14,7 @@ public interface TarjetasDAO {
 	public void modificarTarjetas (Tarjetas tarj);
 	public Tarjetas detalleTarjetas ( int idTarjeta);
 	public List<Tarjetas> listarTarjetas();
+	public List<Tarjetas> listarTarjetasDisponibles();
 	
 	//Manejo ESTADOS_TARJETA
 	public void insertarEstadosTarjetas (EstadosTarjetas esttarj);

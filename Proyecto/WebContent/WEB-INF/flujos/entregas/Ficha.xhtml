@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es" itemscope="" itemtype="http://schema.org/WebPage"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+      
+<f:view contentType="text/html">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<meta name="content-language" content="es" />
+		<base href="/Proyecto/"/>
+	 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+        <link rel="stylesheet" href="font-awesome/css/fontawesome-all.css"/>
+        <link rel="stylesheet" type="text/css" href="css/impresion.css"/>
+        <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+		<title><ui:insert name="title" /></title>
+	</h:head>
+	
+	<h:body>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -6,45 +31,51 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	>
-	<ui:define name="title"><h:outputText value="Hoja entregas" /></ui:define>
-	<ui:define name="content">
+
 	<h:form id="Ficha" >
 	<h:panelGroup id="Ficha" layout="block" styleClass="ficha">
 	<ui:fragment id="FFichafrag">
-
+	<div class="impresion">
 		<h2>Hoja de entregas</h2>
-		<p>
-		Se hace entrega a:  #{entr.usuarios.primerApellido} #{entr.usuarios.segundoApellido}, #{entr.usuarios.nombre}, con NIF: #{entr.usuarios.dni}, 
-		 del siguiente material:
-		</p>
-		<table>
+		<div>
+			<p>Se hace entrega a:</p>
+			<div class="cliente">
+				<p>#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido}, #{entrega.usuarios.nombre}</p>
+				<p>con NIF: #{entrega.usuarios.dni}</p>
+			</div>
+			<p></p>
+			<p>el siguiente material:</p>
+		</div>
+		<table id="terminal">
+			<caption>TERMINAL</caption>
 			<tr>
-				<td>Terminal:</td>
-				<td>MARCA Y MODELO: #{entr.terminales.modelosTerminales.marcas}, #{entr.terminales.modelosTerminales.modelos}</td>
-				<td></td>
+				<th>MARCA Y MODELO:</th><td>#{entrega.terminales.modelosTerminales.marcas}, #{entrega.terminales.modelosTerminales.modelos}</td>
 			</tr>
 			<tr>
-				<td></td>
-				<td>IMEI: #{entr.terminales.imei}I</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Número corto: #{entr.tarjetas.numCorto}</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Número largo: #{entr.tarjetas.numLargo}</td>
+				<th>IMEI:</th><td>#{entrega.terminales.imei}I</td>
 			</tr>
 		</table>
-		<td>En Gijón a:  #{entr.fechaEntrega}</td>
-		<p><br/><br/>Firma:</p>
+		<table id="tarjeta">
+			<caption>TARJETA</caption>
+			<tr>
+				<th>NÚMERO CORTO:</th><td>#{entrega.tarjetas.numCorto}</td>
+			</tr>
+			<tr>
+				<th>NÚMERO LARGO:</th><td>#{entrega.tarjetas.numLargo}</td>
+			</tr>
+		</table>
+		<p>En Gijón a: <span>#{entrega.fechaEntrega}</span></p>
+		<br/>
+		<p>Firma:</p>
 		<p:inputTextarea rows="6" cols="33" />
-
-<p></p>
-			<h:commandLink value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandLink>
-			<h:commandButton class="btn btn-dark" value="Imprimir" id="imprimir" action="imprimir()"></h:commandButton>
+		<p><h:commandButton value="Cancelar" id="cancelar" action="cancelar" class="btn btn-secondary" ></h:commandButton>
+			<button class="btn btn-dark" onclick="window.print();return false;" id="imprimir" >Imprimir</button></p>
+			</div>
 	</ui:fragment>
 	</h:panelGroup>
 	</h:form>
-	</ui:define>
 </ui:composition>
+	</h:body>
+
+</f:view>
+</html>

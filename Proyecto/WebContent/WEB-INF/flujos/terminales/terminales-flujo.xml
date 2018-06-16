@@ -8,7 +8,9 @@
 	
 <!-- ******************************************************************************************************** -->
 	<!-- PARA LISTAR-->
-	
+	<on-start>
+	   <set name="flowScope.user" value="serviceUsersImpl.getUser()"></set>
+	</on-start>
 	<view-state id="ListadoTerminales" >
 	<secured attributes="ROLE_ADMIN"/>
 		<var name="terminal" class="com.ayto.proyecto.modelo.Terminales"/>

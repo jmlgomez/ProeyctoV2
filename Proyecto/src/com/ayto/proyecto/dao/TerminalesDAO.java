@@ -17,6 +17,7 @@ public interface TerminalesDAO {
 	public void modificarTerminales (Terminales t);
 	public Terminales detalleTerminales ( int idTerminal);
 	public List<Terminales> listarTerminales();
+	public List<Terminales> listarTerminalesDisponibles();
 	
 	//Manejo TABLA_MARCAS
 	public void insertarMarca (Marcas m);

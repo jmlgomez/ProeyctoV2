@@ -14,7 +14,7 @@
 	 <secured attributes="ROLE_ADMIN"/>
 		<var name="Usr" class="com.ayto.proyecto.modelo.Users"/>
 		<on-entry>
-			<set name="flowScope.Usrs" value="ServiceUsersImpl.getUsers()"></set>
+			<set name="flowScope.Usrs" value="serviceUsersImpl.getUsers()"></set>
 		</on-entry>
 		<transition on="cancelar" to="ListadoUsrs"></transition>
 		<transition on="nuevousuario" to="AltaUsrs"></transition>
@@ -22,7 +22,7 @@
 			<set name="flowScope.Usr" value="Usr" />
 		</transition>
 		<transition on="borrar" to="ListadoUsrs">
-			 <evaluate expression="ServiceUsersImpl.borrarUsuarios(Usr)"></evaluate> 
+			 <evaluate expression="serviceUsersImpl.borrarUsuarios(Usr)"></evaluate> 
 		</transition>
 	</view-state>
 

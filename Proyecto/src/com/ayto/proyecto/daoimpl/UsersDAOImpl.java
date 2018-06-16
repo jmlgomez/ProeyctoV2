@@ -33,7 +33,6 @@ public class UsersDAOImpl implements UsersDAO {
 	@Override
 	public Users validar(String nombre, String password) {
 		try {
-			
 			Query q = (Query) entityManager.createQuery("from Users where username=:nombre and password=:password");
 			q.setParameter("nombre", nombre);
 			q.setParameter("password", password);
@@ -42,7 +41,6 @@ public class UsersDAOImpl implements UsersDAO {
 		}catch(RuntimeException ex) {
 			return null;
 		}
-		
 	}
 
 	@Override
@@ -52,10 +50,7 @@ public class UsersDAOImpl implements UsersDAO {
 			entityManager.persist(usr);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion del usuario del sistema" + ex.getMessage());
-
 		}
-
-		
 	}
 
 	@Override
@@ -65,36 +60,28 @@ public class UsersDAOImpl implements UsersDAO {
 			entityManager.merge(usr);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion del usuario del sistema" + ex.getMessage());
-
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public void borrarUsers(Users usr) {
-try {
-			
+		try {
 			Users user=entityManager.find(Users.class, usr.getUsername());
 			entityManager.remove(user);
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado del usuario del sistema" + ex.getMessage());
-
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public List<Users> getUsers() {
 		try {
-
 			Query q = (Query) entityManager.createQuery("from Users");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -107,10 +94,8 @@ try {
 			q.setParameter("username", Username);
 			Users usr= (Users) q.getSingleResult();
 			return usr;
-
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -122,10 +107,7 @@ try {
 			entityManager.persist(rol);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion del rol del usuario del sistema" + ex.getMessage());
-
 		}
-
-		
 	}
 
 	@Override
@@ -135,59 +117,45 @@ try {
 			entityManager.merge(rol);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificación del rol del usuario del sistema" + ex.getMessage());
-
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public void borrarRoles(Roles rol) {
-try {
-			
+		try {
 			Users user=entityManager.find(Users.class, rol.getRolename());
 			entityManager.remove(rol);
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado del rol del usuario del sistema" + ex.getMessage());
-
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public List<Roles> getRolename() {
 		try {
-
 			Query q = (Query) entityManager.createQuery("from Roles");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
-	
+
 
 	@Override
 	@Transactional
 	public Roles detalleRoles(String Rolename) {
-
-			
-	try {
-		Query q = (Query) entityManager.createQuery("from Roles where rolename=:rolename");
-		q.setParameter("rolename", Rolename);
-		Roles rol= (Roles) q.getSingleResult();
-		return rol;
-
-	} catch (RuntimeException ex) {
-		ex.printStackTrace();
-
+		try {
+			Query q = (Query) entityManager.createQuery("from Roles where rolename=:rolename");
+			q.setParameter("rolename", Rolename);
+			Roles rol= (Roles) q.getSingleResult();
+			return rol;
+		} catch (RuntimeException ex) {
+			ex.printStackTrace();
+		}
+		return null;
 	}
-	return null;
-}
-	
-	
-}
 
+}

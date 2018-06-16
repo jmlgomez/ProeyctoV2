@@ -37,27 +37,22 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public void insertarTarjetas(Tarjetas tarj) {
 		try {
+			tarj.setDisponible(true);
 			enti.persist(tarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion Tarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
 	@Transactional
 	public void borrarTarjetas(Tarjetas tarj) {
 		try {
-			
 			Tarjetas tarjeta=enti.find(Tarjetas.class, tarj.getIdTarjeta());
-		    enti.remove(tarjeta);
-			
+		    enti.remove(tarjeta);			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Tarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -67,9 +62,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.merge(tarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacioon Tarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -80,10 +73,8 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			q.setParameter("idTarjeta", idTarjeta);
 			Tarjetas tarj = (Tarjetas) q.getSingleResult();
 			return tarj;
-
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -92,12 +83,22 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public List<Tarjetas> listarTarjetas() {
 		try {
-
 			Query q = (Query) enti.createQuery("from Tarjetas");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
+		}
+		return null;
+	}
+	
+	@Override
+	@Transactional
+	public List<Tarjetas> listarTarjetasDisponibles() {
+		try {
+			Query q = (Query) enti.createQuery("from Tarjetas where disponible=true");
+			return q.getResultList();
+		} catch (RuntimeException ex) {
+			ex.printStackTrace();
 		}
 		return null;
 	}
@@ -109,9 +110,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.persist(esttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion EsatdosTarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -121,26 +120,19 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.merge(esttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion EsatdosTarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
 	@Transactional
 	public void borrarEstadosTarjetas(EstadosTarjetas esttarj) {
-		try {
-			
-			
+		try {		
 			EstadosTarjetas estadotarjeta=enti.find(EstadosTarjetas.class, esttarj.getIdEstadoTarjeta());
-		    enti.remove(estadotarjeta);
-			
+		    enti.remove(estadotarjeta);		
 			enti.remove(esttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado EsatdosTarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -151,7 +143,6 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -160,14 +151,12 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public EstadosTarjetas detalleEstadosTarjetas(int idEstadoTarjeta) {
 		try {
-
 			Query q = (Query) enti.createQuery("from EstadosTarjetas where idEstadoTarjeta=:idEstadoTarjeta");
 			q.setParameter("idEstadoTarjeta", idEstadoTarjeta);
 			EstadosTarjetas esttarj = (EstadosTarjetas) q.getSingleResult();
 			return esttarj;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -179,9 +168,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.persist(ttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion Tipo_Tarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -191,23 +178,18 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.merge(ttarj);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificación Tipo_Tarjeta" + ex.getMessage());
-
 		}
 	}
 
 	@Override
 	@Transactional
 	public void borrarTipoTarjetas(TiposTarjetas ttarj) {
-		try {
-			
+		try {		
 			TiposTarjetas tipotarjeta=enti.find(TiposTarjetas.class, ttarj.getIdTipoTarjeta());
 		    enti.remove(tipotarjeta);   
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Tipo_Tarjeta" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -218,7 +200,6 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -233,7 +214,6 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			return ttarj;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -245,9 +225,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.persist(tcontrato);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion TiposContratos" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -257,24 +235,18 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.merge(tcontrato);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion TiposContratos" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
 	@Transactional
 	public void borrarTiposContratos(TiposContratos tcontrato) {
-		try {
-			
+		try {			
 			TiposContratos tipocontrato=enti.find(TiposContratos.class, tcontrato.getIdTipoContrato());
-		    enti.remove(tipocontrato);   
-			
+		    enti.remove(tipocontrato);   		
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado TiposContratos" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -285,7 +257,6 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -294,14 +265,12 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public TiposContratos detalleTiposContratos(int idTipoContrato) {
 		try {
-
 			Query q = (Query) enti.createQuery("from TiposContratos where idTipoContrato=:idTipoContrato");
 			q.setParameter("idTipoContrato", idTipoContrato);
 			TiposContratos tcontrato = (TiposContratos) q.getSingleResult();
 			return tcontrato;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -313,9 +282,7 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.persist(ttarf);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la inserccion TiposTarifas" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -325,25 +292,18 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			enti.merge(ttarf);
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion TiposTarifas" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
 	@Transactional
 	public void borrarTipoTarifa(TiposTarifas ttarf) {
-		try {
-			
+		try {		
 			TiposTarifas tipotarifa=enti.find(TiposTarifas.class, ttarf.getIdTipoTarifa());
 		    enti.remove(tipotarifa);
-			
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado TiposTarifas" + ex.getMessage());
-
 		}
-
 	}
 
 	@Override
@@ -354,7 +314,6 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 		}
 		return null;
 	}
@@ -363,16 +322,13 @@ public class TarjetasDAOImpl implements TarjetasDAO {
 	@Transactional
 	public TiposTarifas detalletipotarifa(int idTipoTarifa) {
 		try {
-
 			Query q = (Query) enti.createQuery("from TiposTarifas  where idTipoTarifa=:idTipoTarifa");
 			q.setParameter("idTipoTarifa", idTipoTarifa);
 			TiposTarifas ttarf = (TiposTarifas) q.getSingleResult();
 			return ttarf;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-
 			return null;
 		}
-
 	}
 }

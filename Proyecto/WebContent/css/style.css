@@ -31,6 +31,9 @@ h3 {
     color: #555;
     line-height: 30px;
 }
+td {
+	padding-left: 50px;
+}
 
 img { max-width: 100%; }
 
@@ -168,6 +171,8 @@ img { max-width: 100%; }
 .social-login-buttons {
 	margin-top: 25px;
 }
+
+
 
 
 /***** Media queries *****/

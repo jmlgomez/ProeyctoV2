@@ -23,9 +23,11 @@
   							<p></p>
   							
   							<label>IMEI: </label>
+  							<p></p>
   							<p:inputText required="false" class="form-control" placeholder="Introduce IMEI del Teléfono" value="#{terminal.imei}"/>
   							<p></p>
   							<LABEL>Lote</LABEL>
+  							<p></p>
   							<h:selectOneMenu value="#{terminal.lotesTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{lotesTerminales}" var="lotes" 
   							 		itemLabel="#{lotes.lote}" 
@@ -33,6 +35,7 @@
 					        </h:selectOneMenu>
 					        <p></p>
 					       <LABEL> Tipo de Terminal</LABEL>
+					       <p></p>
   							<h:selectOneMenu value="#{terminal.tiposTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{tiposTerminales}" var="tipoterm" 
   							 		itemLabel="#{tipoterm.tipoTerminal}" 
@@ -40,20 +43,22 @@
 					        </h:selectOneMenu>
 					        <p></p>
 					         <LABEL>Compañia</LABEL>
+					         <p></p>
   							<h:selectOneMenu value="#{terminal.companiasTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{companiasTerminales}" var="compter" 
   							 		itemLabel="#{compter.companiasTerminal}" 
   							 		itemValue="#{compter}" />	
 					        </h:selectOneMenu>
 					       <p></p>
-					        <LABEL>Marca del terminal</LABEL>
+					       <!--  <LABEL>Marca del terminal</LABEL>
   							<h:selectOneMenu value="#{terminal.modelosTerminales.marcas}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{marcas}" var="marc" 
   							 		itemLabel="#{marc.marca}" 
   							 		itemValue="#{marc}" />	
-					        </h:selectOneMenu>
+					        </h:selectOneMenu> -->
 					       <p></p>
-					       <LABEL>Modelo del terminal</LABEL>
+					       <LABEL>Modelo del terminal  </LABEL>
+					       <p></p>
   							<h:selectOneMenu value="#{terminal.modelosTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{modelosTerminales}" var="modter" 
   							 		itemLabel="#{modter.modelos}" 
@@ -61,6 +66,7 @@
 					        </h:selectOneMenu>   
 					        <p></p>
 					         <LABEL>Estado del terminal</LABEL>
+					         <p></p>
   							<h:selectOneMenu value="#{terminal.estadosTerminales}" converter="omnifaces.SelectItemsConverter">
   							 <f:selectItems value="#{estadosTerminales}" var="ester" 
   							 		itemLabel="#{ester.estado}" 

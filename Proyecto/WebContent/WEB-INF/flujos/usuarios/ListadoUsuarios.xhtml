@@ -28,7 +28,6 @@
 								</tr>
 							</thead>
 							<TBODY>
-							
 								<ui:repeat value="#{usuarios}" var="u">
 									<tr class="m-5">
 										<td>
@@ -50,7 +49,7 @@
 											#{u.puesto}
 										</td>
 										<td>
-											<img src="img/#{u.terminalPropio?'CheckOK':'CheckBad'}.png" />
+											<img src="img/#{u.terminalPropio?'CheckOK':'CheckBad'}.png" width="20px" />
 										</td>
 										<td>
 											#{u.observaciones}

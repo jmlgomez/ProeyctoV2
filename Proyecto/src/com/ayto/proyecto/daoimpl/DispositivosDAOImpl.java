@@ -28,59 +28,46 @@ public class DispositivosDAOImpl implements DispositivosDAO {
 		this.enti = entityManager;
 	}
 	
-
 	@Override
 	@Transactional
 	public void insertarDispositivos(Dispositivos disp) {
-		
-	try{	
-		enti.persist(disp);
-		
-	} catch (HibernateException ex) {
-		System.out.println("Error al realizar la insercción Dispositivos "+ex.getMessage());
-		
+		try{	
+			disp.setActivo(true);
+			enti.persist(disp);
+		} catch (HibernateException ex) {
+			System.out.println("Error al realizar la insercción Dispositivos "+ex.getMessage());
+		}
 	}
-}
 
 	@Override
 	@Transactional
 	public void modificarDispositivos(Dispositivos disp) {
 		try{	
 			enti.merge(disp);
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la modificacion Dispositivos "+ex.getMessage());
-			
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public void borrarDispositivos(Dispositivos disp) {
 		try{
-			
 			Dispositivos dispositivo=enti.find(Dispositivos.class, disp.getIdDispositivo());
 		    enti.remove(dispositivo);
-
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Dispositivos "+ex.getMessage());
-			
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public List<Dispositivos> listadoDispositivos() {
-try {
-			
+		try {
 			Query q = (Query)enti.createQuery("from Dispositivos");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			
 		}
 		return null;
 	}
@@ -88,15 +75,14 @@ try {
 	@Override
 	@Transactional
 	public Dispositivos detalleDispositivos(int idDispositivo) {
-try {	
-		Query q = (Query)enti.createQuery("from Dispositivos where idDispositivo=:idDispositivo");
-		q.setParameter("idDispositivo", idDispositivo);
-		Dispositivos disp = (Dispositivos) q.getSingleResult();
-		return disp;
-	} catch (RuntimeException ex) {
-		ex.printStackTrace();
-		
-	}
+		try {	
+			Query q = (Query)enti.createQuery("from Dispositivos where idDispositivo=:idDispositivo");
+			q.setParameter("idDispositivo", idDispositivo);
+			Dispositivos disp = (Dispositivos) q.getSingleResult();
+			return disp;
+		} catch (RuntimeException ex) {
+			ex.printStackTrace();
+		}
 		return null;
 	}
 
@@ -105,12 +91,9 @@ try {
 	public void insertarModelosDisositivos(ModelosDispositivos mdisp) {
 		try{	
 			enti.persist(mdisp);
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar la insercción Modelos Dispositivos "+ex.getMessage());
-			
 		}
-		
 	}
 
 	@Override
@@ -118,40 +101,31 @@ try {
 	public void modificarModelosDisositivos(ModelosDispositivos mdisp) {
 		try{	
 			enti.merge(mdisp);
-			
 		} catch (HibernateException ex) {
-			System.out.println("Error al realizar la modificacion Modelos Dispositivos "+ex.getMessage());
-			
+			System.out.println("Error al realizar la modificacion Modelos Dispositivos "+ex.getMessage());	
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public void borrarModelosDisositivos(ModelosDispositivos mdisp) {
 		try{
-			
 			ModelosDispositivos modelodispositivo=enti.find(ModelosDispositivos.class, mdisp.getIdModeloDispositivo());
 		    enti.remove(modelodispositivo);
-			
 			enti.remove(mdisp);
-			
 		} catch (HibernateException ex) {
 			System.out.println("Error al realizar el borrado Modelos Dispositivos "+ex.getMessage());
-			
 		}
-		
 	}
 
 	@Override
 	@Transactional
 	public List<ModelosDispositivos> listadoModelosDispositivos() {
-try {
+		try {
 			Query q = (Query)enti.createQuery("from ModelosDispositivos");
 			return q.getResultList();
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			
 		}
 		return null;
 	}
@@ -166,10 +140,8 @@ try {
 			return mdisp;
 		} catch (RuntimeException ex) {
 			ex.printStackTrace();
-			
 		}
-	return null;
-	
+		return null;
 	}
 
 }

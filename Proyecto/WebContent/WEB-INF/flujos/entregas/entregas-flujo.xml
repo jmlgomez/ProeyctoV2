@@ -23,7 +23,9 @@
 		<transition on="borrar" to="ListadoEntregas">
 			 <evaluate expression="serviceEntregasImpl.borrarEntregas(entrega)"></evaluate> 
 		</transition>
-		<transition on="Imprimir" to="Ficha"></transition>
+		<transition on="Imprimir" to="Ficha">
+			<set name="flowScope.entrega" value="entrega" />
+		</transition>
 		
 	</view-state>
 	
@@ -34,8 +36,8 @@
 		<on-entry>
 			<set name="flowScope.entrega" value="new com.ayto.proyecto.modelo.Entregas()"></set>
 			<set name="viewScope.usuarios" value=" serviceUsuariosImpl.listarUsuarios()"></set>
-			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminales()"></set>
-			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetas()"></set>
+			<set name="viewScope.terminales" value=" serviceTerminalesImpl.listarTerminalesDisponibles()"></set>
+			<set name="viewScope.tarjetas" value=" serviceTarjetasImpl.listarTarjetasDisponibles()"></set>
 		</on-entry>
 		<on-render>
 		<set name="flowScope.modelosEntregas" value="serviceEntregasImpl.listarEntregas()"></set>

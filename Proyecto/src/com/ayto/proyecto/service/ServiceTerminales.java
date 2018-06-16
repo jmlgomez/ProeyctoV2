@@ -17,6 +17,7 @@ public interface ServiceTerminales {
 	public boolean modificarTerminales (Terminales t);
 	public Terminales detalleTerminales ( int idTerminal);
 	public List<Terminales> listarTerminales();
+	public List<Terminales> listarTerminalesDisponibles();
 	
 	//Manejo TABLA_MARCAS
 	public boolean insertarMarca (Marcas m);
