@@ -22,10 +22,10 @@
   							<p></p>
   							<div class="form-group col-md-6">
   							<LABEL>Número de Serie del dispositivo</LABEL>
-  							 <p:inputText class="form-control" placeholder="Introduce el número de serie del dispositivo" required="true" value="#{dispositivo.numeroserieDispositivo}"/>
+  							 <p:inputText class="form-control" placeholder="Introduce el número de serie del dispositivo" required="true" value="#{dispositivo.numeroserieDispositivo}" autocomplete="off"/>
   							<p></p>
   							<label>Tipo de dispositivo </label>
-							<p:inputText required="false" class="form-control" placeholder="Introduce el tipo de dispositivo que es. Ej Tablet..Pincho USB...ect" value="#{dispositivo.tipoDispositivo}" />
+							<p:inputText required="false" class="form-control" placeholder="Introduce el tipo de dispositivo que es. Ej Tablet..Pincho USB...ect" value="#{dispositivo.tipoDispositivo}"  autocomplete="off"/>
   							<p></p>
   							
   							<LABEL> Marca y modelo del Dispositivo</LABEL>
@@ -37,7 +37,7 @@
   							<p></p>
   							<LABEL>Observaciones</LABEL>
   							<p></p> 
-  							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivo.observaciones}"/>
+  							<p:inputTextarea rows="6" cols="33" required="false" value="#{dispositivo.observaciones}" autocomplete="off"/>
   							<p></p>
   							
 						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary"></h:commandButton>

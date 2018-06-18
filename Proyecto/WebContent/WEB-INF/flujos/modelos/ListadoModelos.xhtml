@@ -1,58 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:p="http://primefaces.org/ui"
-		xmlns:c="http://java.sun.com/jsp/jstl/core"
-		template="/WEB-INF/plantillas/general.xhtml"
-		>
-	<ui:define name="title"><h:outputText value="Listado modelos terminales" /></ui:define>
-	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/plantillas/general.xhtml">
+	<ui:define name="title">
+		<h:outputText value="Listado modelos terminales" />
+	</ui:define>
+
 	<ui:define name="content">
-	<h:form id="ListadoModelos" >
-			<h:panelGroup id="ListadoModelosfrag" layout="block" styleClass="ListadoModelos">
+		<h:form id="ListadoModelos">
+			<h:panelGroup id="ListadoModelosfrag" layout="block"
+				styleClass="ListadoModelos">
 				<ui:fragment id="FListadoModelosfrag">
-						
-						<table class="ListadoModelos table-hover table-bordered" id="tablalistado">
-							<thead>
-								<tr>
-									<th>Modelos</th>
+
+					<table class="ListadoModelos table-hover table-bordered"
+						id="tablalistado">
+						<thead>
+							<tr>
+								<th>Modelos</th>
+							</tr>
+						</thead>
+						<TBODY>
+
+							<ui:repeat value="#{Modelos}" var="md">
+								<tr class="m-5">
+									<td>#{md.modelos}</td>
+
+									<td><p:commandButton id="modificar"
+											class="btn btn-secondary btn-sm fa"
+											value="&#xf044; Modificar" action="modificar">
+											<f:setPropertyActionListener value="#{md}" target="#{Modelo}" />
+										</p:commandButton> <p:commandButton id="borrar" class="btn btn-danger btn-sm fa"
+											value="&#xf12d; Borrar" action="borrar">
+											<p:confirm header="¡Atención!"
+												message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?"
+												icon="ui-icon-alert" />
+											<f:setPropertyActionListener value="#{md}" target="#{Modelo}" />
+										</p:commandButton></td>
+
 								</tr>
-							</thead>
-							<TBODY>
-							
-								<ui:repeat value="#{Modelos}" var="md">
-									<tr class="m-5">
-										<td>
-											#{md.modelos}
-											
-										</td>
-		
-										<td>
-										<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
-											<f:setPropertyActionListener value="#{md}" target="#{Modelo}" />
-										</p:commandButton> 
-										<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
-											<p:confirm header="¡Atención!" message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?" icon="ui-icon-alert" />
-											<f:setPropertyActionListener value="#{md}" target="#{Modelo}" />
-										</p:commandButton>
-								
-										</td>
-										
-								    </tr>
-						
-								</ui:repeat>
-								
-							</TBODY>
-						</table>
-						<h:commandButton class="btn btn-success fa" value="&#xf067; Nuevo Modelo de terminal" id="nuevo" action="nuevo"></h:commandButton>
-						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-        				<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-        				<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-				  		</p:confirmDialog>
+
+							</ui:repeat>
+
+						</TBODY>
+					</table>
+					<p:commandButton class="btn btn-success fa"
+						value="&#xf067; Nuevo Modelo de terminal" id="nuevo"
+						action="nuevo"></p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Si" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
 				</ui:fragment>
 			</h:panelGroup>
-        </h:form>
-     </ui:define>
+		</h:form>
+	</ui:define>
 </ui:composition>

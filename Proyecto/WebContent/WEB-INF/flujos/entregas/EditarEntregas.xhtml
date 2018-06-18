@@ -19,7 +19,7 @@
 					<h2>Editar entrega</h2>
 						<div class="form-group col-md-6">
 						<label>Fecha de Entrega</label>
-  						<p:calendar required="false" value="#{entrega.fechaEntrega}" />
+  						<p:calendar required="false" value="#{entrega.fechaEntrega}" autocomplete="off" />
 						<p></p>
 						<h2>Datos del Usuario</h2>
 						
@@ -56,7 +56,7 @@
        					 
 						<label>Observaciones</label>
 						<p></p>
-						<p:inputTextarea  value="#{entrega.observaciones}" rows="6" cols="33" />
+						<p:inputTextarea  value="#{entrega.observaciones}" rows="6" cols="33"  autocomplete="off"/>
 						<p></p>
 						<h:commandButton value="Guardar" id="guardar" action="guardar"
 							class="btn btn-primary"></h:commandButton>

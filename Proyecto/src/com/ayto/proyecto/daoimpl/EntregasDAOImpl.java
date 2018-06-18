@@ -34,11 +34,15 @@ public class EntregasDAOImpl  implements EntregasDAO {
 	@Transactional
 	public void insertarEntregas(Entregas e) {
 		try {
-			e.getTerminales().setDisponible(false);
-			e.getTarjetas().setDisponible(false);
+			if (e.getTerminales().getIdTerminal() != null)
+				e.getTerminales().setDisponible(false);
+			if (e.getTarjetas().getIdTarjeta() != null)
+				e.getTarjetas().setDisponible(false);
 			enti.persist(e);
+			
 		} catch (HibernateException ex) {
-			System.out.println("Error al realizar la inserccion Entregas "+ex.getMessage());
+			System.out.println("Error al realizar la inserción Entregas "+ex.getMessage());
+			ex.printStackTrace();
 		}
 	}
 	

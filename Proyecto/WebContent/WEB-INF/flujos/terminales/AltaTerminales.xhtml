@@ -19,12 +19,12 @@
   				<div class="form-group col-md-6">
   							
   							<label>Fecha de alta </label>
-  							<p:calendar required="false"  value="#{terminal.fechaAlta}"/>
+  							<p:calendar required="false"  value="#{terminal.fechaAlta}" autocomplete="off"/>
   							<p></p>
   							
   							<label>IMEI: </label>
   							<p></p>
-  							<p:inputText required="false" class="form-control" placeholder="Introduce IMEI del Teléfono" value="#{terminal.imei}"/>
+  							<p:inputText required="false" class="form-control" placeholder="Introduce IMEI del Teléfono" value="#{terminal.imei}" autocomplete="off"/>
   							<p></p>
   							<LABEL>Lote</LABEL>
   							<p></p>
@@ -75,7 +75,7 @@
 					        <p></p>
   							<LABEL>Observaciones</LABEL>
   							<p></p> 
-  							<p:inputTextarea value="#{terminal.observaciones}"  rows="6" cols="33" />
+  							<p:inputTextarea value="#{terminal.observaciones}"  rows="6" cols="33" autocomplete="off" />
   							<p></p>
   							
 						<h:commandButton value="Guardar" id="guardar" action="guardar" class="btn btn-primary "></h:commandButton>

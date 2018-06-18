@@ -40,8 +40,8 @@ xmlns:p="http://primefaces.org/ui"
 		<div>
 			<p>Se hace entrega a:</p>
 			<div class="cliente">
-				<p>#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido}, #{entrega.usuarios.nombre}</p>
-				<p>con NIF: #{entrega.usuarios.dni}</p>
+				<p>#{entrega.usuarios.primerApellido} #{entrega.usuarios.segundoApellido}, #{entrega.usuarios.nombre}
+				, con NIF: #{entrega.usuarios.dni}</p>
 			</div>
 			<p></p>
 			<p>el siguiente material:</p>
@@ -49,21 +49,25 @@ xmlns:p="http://primefaces.org/ui"
 		<table id="terminal">
 			<caption>TERMINAL</caption>
 			<tr>
-				<th>MARCA Y MODELO:</th><td>#{entrega.terminales.modelosTerminales.marcas}, #{entrega.terminales.modelosTerminales.modelos}</td>
+				<th width="100px">MODELO:</th><td>#{entrega.terminales.modelosTerminales.modelos}</td>
 			</tr>
 			<tr>
-				<th>IMEI:</th><td>#{entrega.terminales.imei}I</td>
+				<th>IMEI:</th><td>#{entrega.terminales.imei}</td>
 			</tr>
 		</table>
 		<table id="tarjeta">
 			<caption>TARJETA</caption>
 			<tr>
-				<th>NÚMERO CORTO:</th><td>#{entrega.tarjetas.numCorto}</td>
+				<th>ICC:</th><td>#{entrega.tarjetas.icc}</td>
+			</tr>
+			<tr>
+				<th width="100px">NÚMERO CORTO:</th><td>#{entrega.tarjetas.numCorto}</td>
 			</tr>
 			<tr>
 				<th>NÚMERO LARGO:</th><td>#{entrega.tarjetas.numLargo}</td>
 			</tr>
 		</table>
+		
 		<p>En Gijón a: <span>#{entrega.fechaEntrega}</span></p>
 		<br/>
 		<p>Firma:</p>

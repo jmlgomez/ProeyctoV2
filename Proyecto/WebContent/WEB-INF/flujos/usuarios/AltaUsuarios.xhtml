@@ -20,29 +20,29 @@
 					
 						<div class="form-group col-md-6">
 							<label>Primer Apellido: </label>
-							<p:inputText required="false" class="form-control" placeholder="Introduce el primer apellido" value="#{usuario.primerApellido}" />
+							<p:inputText required="false" class="form-control" placeholder="Introduce el primer apellido" value="#{usuario.primerApellido}" autocomplete="off" />
 						
 						<p></p>
 						Segundo Apellido:
-						<p:inputText required="false" class="form-control" placeholder="Introduce el segundo apellido" value="#{usuario.segundoApellido}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el segundo apellido" value="#{usuario.segundoApellido}" autocomplete="off" />
 						<p></p>
 						Nombre
-						<p:inputText required="false" class="form-control" placeholder="Introduce el nombre" value="#{usuario.nombre}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el nombre" value="#{usuario.nombre}"  autocomplete="off"/>
 						<p></p>
 						Nombre de Usuario
-						<p:inputText required="false" class="form-control" placeholder="Introduce el nombre de usuario" value="#{usuario.nombreUsuario}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el nombre de usuario" value="#{usuario.nombreUsuario}" autocomplete="off" />
 						<p></p>
 						ID Empleado
-						<p:inputText required="false"  class="form-control" placeholder="Introduce el ID de Empleado" value="#{usuario.idEmpleado}" />
+						<p:inputText required="false"  class="form-control" placeholder="Introduce el ID de Empleado" value="#{usuario.idEmpleado}" autocomplete="off"/>
 						<p></p>
 						DNI
-						<p:inputText required="false" class="form-control" placeholder="Introduce el DNI" value="#{usuario.dni}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el DNI" value="#{usuario.dni}" autocomplete="off"/>
 						<p></p>
 						E-Mail
-						<input type="email"  required="false" class="form-control" placeholder="usuario@gijon.es" value="#{usuario.correo}" />
+						<input type="email"  required="false" class="form-control" placeholder="Ej: usuario@gijon.es" value="#{usuario.correo}" autocomplete="off" />
 						<p></p>
 						Puesto
-						<p:inputText required="false" class="form-control" placeholder="Introduce el puesto" value="#{usuario.puesto}" />
+						<p:inputText required="false" class="form-control" placeholder="Introduce el puesto" value="#{usuario.puesto}" autocomplete="off" />
 						<p></p>
 						
 						<p:selectBooleanCheckbox value="#{usuario.terminalPropio}" />
@@ -51,7 +51,7 @@
        					 <p></p>
 						Observaciones
 						<p></p>
-						<p:inputTextarea value="#{usuario.observaciones}" rows="6" cols="33" />
+						<p:inputTextarea value="#{usuario.observaciones}" rows="6" cols="33" autocomplete="off" />
 						<p></p>
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"

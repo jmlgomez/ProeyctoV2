@@ -17,7 +17,7 @@
 				styleClass="EditarCompanias">
 				<ui:fragment id="EditarCompaniasfrag">
 						<div class="form-group col-md-6">
-							<p:inputText required="false" class="form-control" placeholder="Introduce la compañia al que pertenezca el terminal" value="#{Compania.companiasTerminal}" />
+							<p:inputText required="false" class="form-control" placeholder="Introduce la compañia al que pertenezca el terminal" value="#{Compania.companiasTerminal}" autocomplete="off" />
 						
 						<h:commandButton value="Guardar" id="guardar" action="guardar"
 							class="btn btn-primary"></h:commandButton>

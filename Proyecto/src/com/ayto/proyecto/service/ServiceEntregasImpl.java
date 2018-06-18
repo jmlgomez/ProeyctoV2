@@ -35,6 +35,7 @@ public class ServiceEntregasImpl implements ServiceEntregas{
 	public boolean borrarEntregas(Entregas e) {
 		try {
 			entregasDAO.borrarEntregas(e);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( "Se ha borrado con éxito",""));
 			return true;
 		}catch (Exception ecxp) {
 			 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar entregas!<br/>"+ecxp.getMessage(), "Contacta con el administrador."));

@@ -44,7 +44,7 @@
   										<f:selectItem itemValue="#{null}" itemLabel="Selecciona IMEI del terminal"/>
   							 		<f:selectItems value="#{terminales}" var="term" 
   							 		itemLabel="#{term.imei}" 
-  							 		itemValue="#{term}. "/><!-- Variable donde estan la lista de los terminales -->
+  							 		itemValue="#{term}"/><!-- Variable donde estan la lista de los terminales -->
   							 		 <p:column>
 						                <h:outputText styleClass="ui-theme ui-theme-#{term.imei}" /><!-- Critero de busqueda -->
 						            </p:column>
@@ -60,7 +60,7 @@
 						                         <f:selectItem itemValue="#{null}" itemLabel="Selecciona ICC de la tarjeta"/>
 						            <f:selectItems value="#{tarjetas}" var="tarj" 
 						            itemLabel="#{tarj.icc}" 
-						            itemValue="#{tarj}  " /> <!-- Variable donde estan la lista de las tarjetas -->
+						            itemValue="#{tarj}" /> <!-- Variable donde estan la lista de las tarjetas -->
 						 
 						            <p:column>
 						                <h:outputText styleClass="ui-theme ui-theme-#{tarj.icc}" /><!-- Critero de busqueda -->
@@ -80,7 +80,7 @@
        					 
 						<label>Observaciones</label>
 						<p></p>
-						<p:inputTextarea  value="#{entrega.observaciones}" rows="6" cols="33" />
+						<p:inputTextarea  value="#{entrega.observaciones}" rows="6" cols="33" autocomplete="off" />
 						<p></p>
 
 						<h:commandButton value="Guardar" id="guardar" action="guardar"

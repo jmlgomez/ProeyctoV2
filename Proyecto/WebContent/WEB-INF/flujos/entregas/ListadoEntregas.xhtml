@@ -1,128 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:p="http://primefaces.org/ui"
-		xmlns:c="http://java.sun.com/jsp/jstl/core"
-		template="/WEB-INF/plantillas/general.xhtml"
-		>
-		<ui:define name="title"><h:outputText value="Listado Asignaciones" /></ui:define>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/WEB-INF/plantillas/general.xhtml">
+	<ui:define name="title">
+		<h:outputText value="Listado Asignaciones" />
+	</ui:define>
 	<ui:define name="content">
-	<h:form id="ListadoEntregas" >
-			<h:panelGroup id="ListadoEntregas" layout="block" styleClass="ListadoEntregas">
+		<h:form id="ListadoEntregas">
+			<h:panelGroup id="ListadoEntregas" layout="block"
+				styleClass="ListadoEntregas">
 				<ui:fragment id="FListadoEntregasfrag">
-		
-						<table class="ListadoEntregas table-hover table-bordered" id="tablalistado">
-							<thead>
-								<tr>
-									<th>Fecha de Entrega</th>
-									<th>Apellidos y Nombre</th>
-									<th>DNI</th>
-									<th>IMEI del Terminal</th>
-									<th>Lote al que pertence el terminal</th>
-									<th>Tipo del terminal</th>
-									<th>Marca y modelo del terminal</th>
-									<th>ICC Tarjeta</th>
-									<th>PIN tarjeta</th>
-									<th>PUK tarjeta </th>
-									<th>Número Corto</th>
-									<th>Número Largo</th>
-									<th>Observaciones</th>
-								</tr>	
-							</thead>
-							<TBODY>
-								<h3>Listado Asignaciones</h3>
-								<ui:repeat value="#{entregas}" var="entr">
-									<tr class="m-5">
 
-										<td>
-											#{entr.fechaEntrega}
-										</td>
-										
-										<td>
-										 #{entr.usuarios.primerApellido} #{entr.usuarios.segundoApellido} #{entr.usuarios.nombre}
-										</td>
-										<td>
-										#{entr.usuarios.dni}
-										</td>
-										<td>
-										#{entr.terminales.imei}
-										</td>
-										<td>
-											#{entr.terminales.lotesTerminales.lote}
-										</td>
-										
-										<td>
-											#{entr.terminales.tiposTerminales.tipoTerminal}
-										
-										</td>
-										<td>
-											#{entr.terminales.modelosTerminales.marcas}, #{entr.terminales.modelosTerminales.modelos}
-							
-										</td>
-										<td>
-											#{entr.tarjetas.icc}
-										
-										</td>
-										<td>
-											#{entr.tarjetas.pin}
-										
-										</td>
-										
-										<td>
-											#{entr.tarjetas.puk}
-										
-										</td>
-										<td>
-											#{entr.tarjetas.numCorto}
-										
-										</td>
-										
-										<td>
-											#{entr.tarjetas.numLargo}
-										
-										</td>
-										
-										<td>
-											#{entr.observaciones}
-										</td>
-									
-									
-									
-									
-										<td>
-											<p:commandButton id="modificar" class="btn btn-secondary btn-sm fa" value="&#xf044; Modificar" action="modificar" >
-											<f:setPropertyActionListener value="#{entr}" target="#{entrega}" />
-											
-											</p:commandButton>
-											
-											<p:commandButton id="borrar" class="btn btn-danger btn-sm fa" value="&#xf12d; Borrar" action="borrar" >
-											<p:confirm header="¡Atención!" message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?" icon="ui-icon-alert" />
-											<f:setPropertyActionListener value="#{entr}" target="#{entrega}" />
-											</p:commandButton>
-											
-											<p:commandButton id="Imprimir" class="fa fa-print text-info" value="" action="Imprimir" >
-											<f:setPropertyActionListener value="#{entr}" target="#{entrega}" />
-											
-											</p:commandButton>
-											
-										</td>	
-										
-									</tr>
-								</ui:repeat>
-							</TBODY>
-						</table>
-						<h:commandButton class="btn btn-success fa" value="&#xf067; Nueva asignación" id="nuevo" action="nuevo"></h:commandButton>
-						 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-        				<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-       					 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-   							 </p:confirmDialog>
-						<p></p>
-						
+					<table class="ListadoEntregas table-hover table-bordered"
+						id="tablalistado">
+						<thead>
+							<tr>
+								<th>Fecha de Entrega</th>
+								<th>Apellidos y Nombre</th>
+								<th>DNI</th>
+								<th>IMEI del Terminal</th>
+								<th>Lote al que pertence el terminal</th>
+								<th>Tipo del terminal</th>
+								<th>Modelo del terminal</th>
+								<th>ICC Tarjeta</th>
+								<th>PIN tarjeta</th>
+								<th>PUK tarjeta</th>
+								<th>Número Corto</th>
+								<th>Número Largo</th>
+								<th>Observaciones</th>
+							</tr>
+						</thead>
+						<TBODY>
+							<h3>Listado Asignaciones</h3>
+							<ui:repeat value="#{entregas}" var="entr">
+								<tr class="m-5">
+
+									<td>#{entr.fechaEntrega}</td>
+
+									<td>#{entr.usuarios.primerApellido}
+										#{entr.usuarios.segundoApellido} #{entr.usuarios.nombre}</td>
+									<td>#{entr.usuarios.dni}</td>
+									<td>#{entr.terminales.imei}</td>
+									<td>#{entr.terminales.lotesTerminales.lote}</td>
+
+									<td>#{entr.terminales.tiposTerminales.tipoTerminal}</td>
+									<td>#{entr.terminales.modelosTerminales.modelos}</td>
+									<td>#{entr.tarjetas.icc}</td>
+									<td>#{entr.tarjetas.pin}</td>
+
+									<td>#{entr.tarjetas.puk}</td>
+									<td>#{entr.tarjetas.numCorto}</td>
+
+									<td>#{entr.tarjetas.numLargo}</td>
+
+									<td>#{entr.observaciones}</td>
+
+									<td><p:commandButton id="modificar"
+											class="btn btn-secondary btn-sm fa"
+											value="&#xf044; Modificar" action="modificar">
+											<f:setPropertyActionListener value="#{entr}"
+												target="#{entrega}" />
+
+										</p:commandButton> <p:commandButton id="borrar" class="btn btn-danger btn-sm fa"
+											value="&#xf12d; Borrar" action="borrar">
+											<p:confirm header="¡Atención!"
+												message="Se va a proceder a eliminar el elemento seleccionado. ¿Estas seguro?"
+												icon="ui-icon-alert" />
+											<f:setPropertyActionListener value="#{entr}"
+												target="#{entrega}" />
+										</p:commandButton> <p:commandButton id="Imprimir" class="fa fa-print text-info"
+											value="" action="Imprimir">
+											<f:setPropertyActionListener value="#{entr}"
+												target="#{entrega}" />
+
+										</p:commandButton></td>
+
+								</tr>
+							</ui:repeat>
+						</TBODY>
+					</table>
+					<p:commandButton class="btn btn-success fa"
+						value="&#xf067; Nueva asignación" id="nuevo" action="nuevo"></p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Si" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+					<p></p>
+
 				</ui:fragment>
 			</h:panelGroup>
-        </h:form>
-        <!--   <button class="btn btn-dark" value="" id="imprimir" onclick="imprimir()">Imprimir</button>-->
-        </ui:define>
+		</h:form>
+		<!--   <button class="btn btn-dark" value="" id="imprimir" onclick="imprimir()">Imprimir</button>-->
+	</ui:define>
 </ui:composition>
